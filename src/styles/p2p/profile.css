@@ -1,0 +1,443 @@
+.otc-maker-profile {
+    margin: var(--size-24) auto 0;
+    max-width: 1200px;
+    padding-bottom: var(--size-80);
+}
+.otc-profile-overview {
+    background-color: var(--primary-color-02);
+    border-radius: 16px;
+}
+.by-grid-row {
+    display: flex
+;
+    flex-flow: row wrap;
+}
+.otc-profile-overview .otc-profile__wrapper {
+    padding: var(--size-32);
+}
+.by-grid-row--space-between {
+    justify-content: space-between;
+}
+.by-grid-row--middle {
+    align-items: center;
+}
+.by-grid-row--space-between {
+    justify-content: space-between;
+}
+.by-grid-row--middle {
+    align-items: center;
+}
+.by-grid-row {
+    display: flex;
+    flex-flow: row wrap;
+}
+.by-space {
+    display: inline-flex
+;
+}
+.by-space-align--center {
+    align-items: center;
+}
+.by-avatar {
+    box-sizing: border-box;
+}
+.by-avatar .by-avatar__container {
+    align-items: center;
+    background: var(--bds-brand-100-bg);
+    border-radius: 50%;
+    color: var(--bds-brand-700-normal);
+    display: flex
+;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+.by-avatar--online .by-avatar__container__letter {
+    color: var(--bds-brand-700-normal);
+}
+.by-avatar__container__letter {
+    font-weight: 600;
+}
+.by-avatar--online .by-avatar__container__status {
+    background: var(--bds-green-700-normal);
+}
+.by-avatar__container__status {
+    right: 0;
+}
+.by-avatar__container__status {
+    border: 2px solid var(--bds-gray-bg-card);
+    border-radius: 50%;
+    bottom: 0;
+    height: var(--bds-font-size-12);
+    position: absolute;
+    width: var(--bds-font-size-12);
+}
+.by-space {
+    display: inline-flex
+;
+}
+.by-space--vertical {
+    flex-direction: column;
+}
+.by-space-align--center {
+    align-items: center;
+}
+.p2p__nickName--wrap, .p2p__report--self {
+    align-items: center;
+    display: flex
+;
+}
+.p2p__report--self {
+    font-weight: 400;
+}
+.index_besel__me3a7 {
+    color: #d6850d;
+    cursor: pointer;
+    font-size: 14px;
+}
+.index_besel__me3a7 {
+    margin-left: 8px;
+}
+.index_besel__me3a7 {
+    color: #d6850d;
+    cursor: pointer;
+    font-size: 14px;
+}
+.p2p__report--line {
+    background-color: #d5dae0;
+    height: 12px;
+    width: 1px;
+}
+.p2p__report--line {
+    margin-left: 8px;
+}
+.p2p__pcenter--report {
+    color: #d6850d;
+    cursor: pointer;
+    font-size: 14px;
+}
+.p2p__pcenter--report {
+    margin-left: 8px;
+}
+.by-space {
+    display: inline-flex;
+}
+.by-space-align--center {
+    align-items: center;
+}
+.otc-usercenter-no2fa__bind-status[data-status="1"] {
+    color: var(--success-color);
+}
+.otc-usercenter-no2fa__bind-status {
+    font-size: 12px;
+}
+.by-space-align--center {
+    align-items: center;
+}
+.otc-usercenter-no2fa__bind-status .fiat-iconfont {
+    font-size: var(--size-12);
+}
+.fiat-iconfont {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: fiat-iconfont !important;
+    font-size: 16px;
+    font-style: normal;
+}
+.fiat-icon--success:before {
+    content: "\e6b2";
+}
+.otc-usercenter-no2fa__bind-status[data-status="1"] {
+    color: var(--success-color);
+}
+.otc-usercenter-no2fa__bind-status {
+    font-size: 12px;
+}
+.fiat-icon--success:before {
+    content: "\e6b2";
+}
+.fiat-icon--notice:before {
+    content: "\e602";
+}
+.fiat-otc__online-status-tip {
+    color: var(--bds-gray-t2);
+    display: inline-block;
+    font-size: var(--bds-font-size-12);
+    font-weight: 400;
+    margin-top: 6px;
+}
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+.ring-btn-default {
+    --tw-ring-color: var(--bds-brand-100-bg);
+}
+.outline-none {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+.text-base-bds-gray-t1-title {
+    color: #121214;
+    color: var(--bds-gray-t1-title);
+}
+.leading-\[22px\] {
+    line-height: 22px;
+}
+.font-semibold {
+    font-weight: 600;
+    font-weight: var(--bds-font-weight-semibold);
+}
+.border-solid {
+    border-style: solid;
+}
+.px-\[16px\] {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.text-sm {
+    font-size: 14px;
+    line-height: 20px;
+}
+.leading-\[22px\] {
+    line-height: 22px;
+}
+.outline-none {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+.justify-center {
+    justify-content: center;
+}
+.rounded {
+    border-radius: .25rem;
+}
+.border {
+    border-width: 1px;
+}
+.border-y-\[1px\] {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+.inline-flex {
+    display: inline-flex
+;
+}
+.py-\[8px\] {
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+.px-\[16px\] {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.otc-profile-overview .otc-profile__wrapper_list {
+    padding: var(--size-24) var(--size-32);
+}
+.otc-profile-overview .otc-profile__wrapper_list ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.otc-profile-overview .otc-profile__wrapper_list .not-margin {
+    margin-left: 0;
+}
+.otc-profile-overview .otc-profile__wrapper_list li {
+    word-wrap: break-word;
+    border: 1px solid #f3f5f7;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    width: 210px;
+}
+.otc-profile-overview .otc-profile__wrapper_list li .lists-title {
+    color: var(--gray-t2-title);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.otc-profile-overview .otc-profile__wrapper_list li .lists-content {
+    margin-top: 4px;
+}
+.otc-profile-overview .otc-profile__ov-value {
+    color: var(--gray-t1-title);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+}
+.otc-profile-overview .otc-profile__wrapper_list li .lists-content #otc-profile__ov-highlightexd, [dir=ltr] .otc-profile-overview .otc-profile__wrapper_list li .lists-content .otc-profile__ov-highlight {
+    margin-right: var(--size-4);
+}
+.otc-profile-overview .otc-profile__wrapper_list li .lists-content #otc-profile__ov-highlightexd, .otc-profile-overview .otc-profile__wrapper_list li .lists-content .otc-profile__ov-highlight {
+    color: var(--gray-t1-title);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+}
+.otc-profile-overview .otc-profile__wrapper_list li .lists-content span:last-child {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+}
+.buysell-main__show {
+    align-items: center;
+    display: flex
+;
+}
+.fiat-divider {
+    border-bottom: 1px solid var(--gray-03);
+    width: 100%;
+}
+.otc-profile-overview .otc-profile__wrapper_list li {
+    margin-left: 8px;
+}
+.buysell-main__show {
+    align-items: center;
+    display: flex
+;
+}
+.buysell-main__show span:first-child {
+    color: #20b26c;
+}
+.buysell-main__show span {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.buysell-main__show .fiat-divider--vertical {
+    border-right: 1px solid #d5dae0;
+}
+.buysell-main__show .fiat-divider {
+    margin-left: 8px;
+}
+.buysell-main__show .fiat-divider {
+    width: 0;
+}
+.fiat-divider--vertical {
+    border: 0;
+    height: 10px;
+}
+.buysell-main__show span:last-child {
+    color: #ef454a;
+}
+.buysell-main__show span:last-child {
+    margin-left: 8px;
+}
+.buysell-main__show span {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.otc-profile-overview .otc-profile__wrapper_list #arrow-link {
+    align-items: center;
+    cursor: pointer;
+    display: flex
+;
+    justify-content: center;
+    width: 46px;
+}
+ .otc-profile-overview .otc-profile__wrapper_list li {
+    margin-left: 8px;
+}
+.otc-profile-overview .otc-profile__wrapper_list li {
+    word-wrap: break-word;
+    border: 1px solid #f3f5f7;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    width: 210px;
+}
+.otc-profile-overview .otc-profile__wrapper_list #arrow-link i {
+    color: var(--gray-t3-title);
+    font-size: 28px;
+    font-weight: 700;
+}
+.fiat-iconfont {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: fiat-iconfont !important;
+    font-size: 16px;
+    font-style: normal;
+}
+
+.fiat-icon--arrow:before {
+    content: "\e6ad";
+}
+.otc-maker-tab-section {
+    background: #fff;
+    border-radius: 16px;
+    margin-top: 24px;
+}
+.otc-maker-tab-section .otc-maker-tab-header {
+    padding-left: 32px;
+}
+.otc-maker-tab-section .otc-maker-tab-header {
+    box-shadow: inset 0 -1px 0 var(--bds-gray-bg-page);
+    display: flex;
+    height: 53px;
+    padding-top: 24px;
+}
+.otc-maker-tab-section .otc-maker-tab-header .otc-maker-tablist-item.active {
+    border-color: var(--bds-brand-700-normal);
+    color: var(--bds-gray-t1-title);
+}
+.otc-maker-tab-section .otc-maker-tab-header .otc-maker-tablist-item {
+    border-bottom: 2px solid transparent;
+    color: var(--bds-gray-t2);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    padding-bottom: 5px;
+}
+.otc-profile__ads .ad-table-wrapper {
+    background: var(--color-white);
+    border-radius: 16px;
+    margin-bottom: var(--size-30);
+}
+.fiat-otc__empty-list-img-wrapper {
+    color: var(--gray-06);
+    padding: 40px 0;
+    text-align: center;
+}
+.by-space--vertical {
+    flex-direction: column;
+}
+.fiat-otc__empty-list-img-wrapper .empty-list-img {
+    height: 55px;
+    width: auto;
+}
+.fiat-otc__empty-list-img-wrapper .fiat-otc__empty-list-no-data-btn {
+    font-size: var(--size-12);
+    font-weight: 400;
+    padding: 0 16px;
+}
+
+.by-button {
+    background-color: var(--color-transparent);
+    border: none;
+    border-radius: var(--size-4);
+    color: var(--gray-07);
+    cursor: pointer;
+    font-size: var(--font-size-12);
+    font: inherit;
+    height: var(--size-24);
+    line-height: 1;
+    outline: none;
+    transition: background-color .15s linear, color .15s linear, border-color .15s linear;
+    will-change: background-color color border-color;
+}
+.by-button--outlined {
+    background-clip: padding-box;
+    border: 1px solid var(--gray-04);
+}
+.by-button--x-large {
+    height: var(--size-36);
+}

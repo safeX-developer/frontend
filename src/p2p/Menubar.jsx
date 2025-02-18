@@ -1,0 +1,99 @@
+import React from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+
+export default function Menubar() {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const pathSegments = location.pathname.split("/").filter(Boolean); 
+    const handleRoutes = ((route)=>{
+        navigate(route)
+    })
+  return (
+    <div className="KojhihKHun menu-box">
+        <div onClick={()=> handleRoutes("/")} className="logo-holder">
+            <img src="/asset/logo.png" alt="" />
+        </div>
+        <div className="Lkoejihsn">
+            <div className="options">
+                <button onClick={()=> handleRoutes("/p2p/trade/buy")} className={`flip-button ${pathSegments[1] === "trade" ? "active" : ""} `}>
+                    <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon">
+                        <use xlinkHref="#icon_p2p"></use>
+                    </svg>
+                    P2P
+                </button>
+            </div>
+            <div className="options">
+                <button onClick={()=> handleRoutes("/p2p/my-ads")} className={`flip-button ${pathSegments[1] === "my-ads" ? "active" : ""} `}>
+                    <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_walletEl"></use></svg>
+                    My Ads
+                </button>
+            </div>
+            <div className="options">
+                <button className="flip-button">
+                    <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_walletEl"></use></svg>
+                    Transactions
+                </button>
+            </div>
+            <div className="options">
+                <button className="flip-button">
+                    <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_chatEl"></use></svg>
+                    Chat
+                </button>
+            </div>
+        </div>
+        <div className="explore-cards">
+            <div className="overlay">
+                <div className="Loejnsn">
+                    <img src="/asset/Frame 116.png" alt="" />
+                </div>
+            <div className="total Oinedns">
+                    <h4>Explore more with SAFEX When you Switch  to  clients </h4>
+                    <div className="Lkowuens">
+                        <button className="btn active">Switch</button>
+                        <button className="btn">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="kdoijiuhr">
+            <div className="options">
+                <button onClick={()=> handleRoutes("/p2p/rewards")} className={`flip-button ${pathSegments[1] === "reward" ? "active" : ""} `}>
+                    <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon">
+                        <use xlinkHref="#icon_Support"></use>
+                    </svg>
+                    Reward
+                </button>
+            </div>
+            <div className="options">
+                <button className="flip-button">
+                    <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_Support"></use></svg>
+                    Support
+                </button>
+            </div>
+            <div className="options">
+                <button className="flip-button">
+                    <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_Setting"></use></svg>
+                    Settings
+                </button>
+            </div>
+        </div>
+
+
+
+        <div className="line"></div>
+        <div className="logout">
+            <div className="avatar">
+                <img src="/asset/de1164e665fa4742b512d7c31057a4ed.png" alt="" />
+                <div className="active"></div>
+            </div>
+            <div className="name-address">
+                <div>Alison Eyo</div>
+                <div>OXjdkd..5jf5rkdoo</div>
+            </div>
+            <div className="logout-icon">
+                <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_Logout"></use></svg>
+            </div>
+        </div>
+    </div>    
+  )
+}

@@ -1,0 +1,463 @@
+.list-maker__container .list-maker-content {
+    margin: 0 auto;
+    padding: 40px 0 80px;
+    width: 100%;
+}
+.list-maker__container .list-maker__h1 {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.list-maker__container .list-maker__h1 .list-maker-left {
+    align-items: center;
+    display: inherit;
+}
+.list-maker__container .list-maker__h1 .list-maker__h1-title {
+    color: var(--gray-08);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31px;
+}
+.list__maker--level {
+    align-items: center;
+    display: flex
+;
+}
+.list__maker--level .create_maker--level {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+}
+ .create_maker--level {
+    margin-left: 8px;
+}
+.create_maker--level {
+    align-items: center;
+    background: rgba(32, 178, 108, .12);
+    background: var(--green-100-bg, rgba(32, 178, 108, .12));
+    border-radius: 4px;
+    color: var(--green-700-normal);
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 6px;
+}
+:where(.css-5jb6ku).ant-space {
+    display: inline-flex;
+}
+:where(.css-5jb6ku).ant-space-align-center {
+    align-items: center;
+}
+:where(.css-5jb6ku).ant-space {
+    display: inline-flex;
+}
+:where(.css-5jb6ku)[class^="ant-space"], :where(.css-5jb6ku)[class*=" ant-space"] {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+.ring-btn-default {
+    --tw-ring-color: var(--bds-brand-100-bg);
+}
+.outline-none {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+.text-base-bds-gray-t1-title {
+    color: #121214;
+    color: var(--bds-gray-t1-title);
+}
+.leading-\[22px\] {
+    line-height: 22px;
+}
+.font-semibold {
+    font-weight: 600;
+    font-weight: var(--bds-font-weight-semibold);
+}
+.text-sm {
+    font-size: 14px;
+    line-height: 20px;
+}
+.py-\[8px\] {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.px-\[16px\] {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.bg-transparent {
+    background-color: transparent;
+}
+.border-base-bds-gray-t4-dis {
+    border-color: #d5dae0;
+    border-color: var(--bds-gray-t4-dis);
+}
+.border-solid {
+    border-style: solid;
+}
+.border-y-\[1px\] {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+}
+.border {
+    border-width: 1px;
+}
+.list-maker__container .list-maker__nav {
+    background: var(--color-white);
+    border-radius: 8px;
+    display: flex;
+    height: 66px;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding: 0 24px;
+}
+.list-maker__container .list-maker__nav .list-left-nav {
+    display: inline-flex
+;
+}
+.list-maker__container .list-maker__nav .list-left-nav .list-maker__nav-item:first-child {
+    margin-left: 0;
+}
+.list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item:hover, .list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item[data-active=true] {
+    color: #e49a00;
+    font-weight: 900;
+}
+.list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item {
+    align-items: center;
+    color: var(--gray-07);
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+.list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item {
+    margin-left: 40px;
+}
+.list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item {
+    align-items: center;
+    color: var(--gray-07);
+    display: flex;
+    height: 100%;
+    position: relative;
+}
+.list-maker__container .list-maker__nav .list-right-nav {
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+ .list-maker__container .list-maker__nav .list-right-nav .otc-schedule-allowToggle {
+    margin-left: 8px;
+}
+:where(.css-5jb6ku).ant-switch.ant-switch-custom .ant-switch-handle {
+    width: 16px;
+    height: 16px;
+}
+:where(.css-5jb6ku).ant-switch .ant-switch-handle {
+    position: absolute;
+    top: 2px;
+    inset-inline-start: 2px;
+    width: 18px;
+    height: 18px;
+    transition: all 0.2s ease-in-out;
+}
+:where(.css-5jb6ku).ant-switch .ant-switch-handle::before {
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    inset-inline-start: 0;
+    background-color: #fff;
+    border-radius: 9px;
+    box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
+    transition: all 0.2s ease-in-out;
+    content: "";
+}
+.list-maker__container .list-maker__nav .list-right-nav .list-maker__navToggle {
+    margin-left: 8px;
+}
+:where(.css-5jb6ku).ant-text-link-custom.ant-text-link-custom-sm {
+    font-size: var(--bds-font-size-14);
+    line-height: var(--bds-line-height-14);
+}
+:where(.css-5jb6ku).ant-text-link-custom.ant-text-link-custom-primary {
+    color: var(--bds-brand-900-text);
+}
+:where(.css-5jb6ku).ant-btn-link.ant-text-link-custom {
+    height: auto;
+    font-weight: var(--bds-font-weight-medium);
+    border: none;
+    padding: 0px;
+}
+:where(.css-5jb6ku)[class^="ant-text-link"], :where(.css-5jb6ku)[class*=" ant-text-link"] {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+:where(.css-5jb6ku).ant-btn {
+    font-size: 14px;
+    height: 32px;
+    padding: 4px 15px;
+    border-radius: 4px;
+}
+:where(.css-5jb6ku).ant-btn {
+    outline: none;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    user-select: none;
+    touch-action: manipulation;
+    line-height: 1.5714285714285714;
+    color: rgba(0, 0, 0, 0.88);
+}
+:where(.css-5jb6ku).ant-btn >span {
+    display: inline-block;
+}
+.otc-schedule-workLineExp {
+    border: 1px solid #e9edf2;
+    height: 14px;
+    width: 0;
+}
+:where(.css-5jb6ku).ant-switch .ant-switch-inner {
+    display: block;
+    overflow: hidden;
+    border-radius: 100px;
+    height: 100%;
+    padding-inline-start: 24px;
+    padding-inline-end: 9px;
+    transition: padding-inline-start 0.2s ease-in-out, padding-inline-end 0.2s ease-in-out;
+}
+:where(.css-5jb6ku).ant-switch .ant-switch-inner .ant-switch-inner-checked, :where(.css-5jb6ku).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    transition: margin-inline-start 0.2s ease-in-out, margin-inline-end 0.2s ease-in-out;
+    pointer-events: none;
+}
+:where(.css-5jb6ku).ant-switch-custom.ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
+    margin-top: -20px;
+}
+:where(.css-5jb6ku).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
+    margin-top: -22px;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+:where(.css-5jb6ku).ant-switch .ant-switch-inner .ant-switch-inner-checked, :where(.css-5jb6ku).ant-switch .ant-switch-inner .ant-switch-inner-unchecked {
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    transition: margin-inline-start 0.2s ease-in-out, margin-inline-end 0.2s ease-in-out;
+    pointer-events: none;
+}
+:where(.css-5jb6ku).ant-switch.ant-switch-custom {
+    min-width: 42px;
+    height: 20px;
+    line-height: 20px;
+    background: var(--bds-gray-t3);
+}
+:where(.css-5jb6ku).ant-switch {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    line-height: 22px;
+    list-style: none;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
+    position: relative;
+    display: inline-block;
+    min-width: 44px;
+    height: 22px;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.25);
+    border: 0;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+.maker-list__wrapper {
+    background: var(--color-white);
+    border-radius: 8px;
+    margin-top: 24px;
+    padding: 0 32px;
+}
+.maker-table__wrapper {
+    background: var(--color-white);
+    border-radius: 8px;
+    margin-top: 24px;
+    position: relative;
+}
+.fiat__spin-container, .fiat__spin-wrapper {
+    position: relative;
+}
+.maker-table__table {
+    width: 100%;
+}
+.maker-table__thead {
+    color: var(--gray-06);
+    font-size: 12px;
+    height: 48px;
+    line-height: 16px;
+}
+.maker-table__tbody-tr, .maker-table__thead-tr {
+    box-shadow: inset 0 -1px 0 #f4f4f4;
+}
+.maker-table__th {
+    vertical-align: middle;
+}
+.maker-table__th {
+    text-align: left;
+}
+.maker-table__tbody-td:last-child, .maker-table__th:last-child {
+    text-align: end;
+}
+.maker-table__th {
+    vertical-align: middle;
+}
+.fiat-otc__empty-list-img-wrapper {
+    color: var(--gray-06);
+    padding: 40px 0;
+    text-align: center;
+}
+.by-space {
+    display: inline-flex;
+}
+.by-space--vertical {
+    flex-direction: column;
+}
+.fiat-otc__empty-list-img-wrapper .empty-list-img {
+    height: 55px;
+    width: auto;
+}
+.maker-list__pager {
+    align-items: center;
+    box-shadow: inset 0 1px 0 #f4f4f4;
+    display: flex;
+    height: 72px;
+    justify-content: flex-end;
+}
+.pagination {
+    font-size: var(--size-12);
+    margin: 0;
+    padding: 0;
+}
+.pagination-disabled, .pagination-disabled:focus, .pagination-disabled:hover {
+    cursor: not-allowed;
+}
+.pagination-next, .pagination-prev {
+    outline: 0;
+}
+.pagination-jump-next, .pagination-jump-prev, .pagination-next, .pagination-prev {
+    border-radius: 2px;
+    color: var(--gray-08);
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    list-style: none;
+    min-width: 24px;
+    text-align: center;
+    transition: all .3s;
+    vertical-align: middle;
+}
+.pagination-disabled .pagination-item-link, .pagination-disabled:focus .pagination-item-link, .pagination-disabled:hover .pagination-item-link {
+    background-color: var(--gray-01);
+    border-color: #c7cdd0;
+    color: #c7cdd0;
+    cursor: not-allowed;
+}
+.pagination-next .pagination-item-link, .pagination-prev .pagination-item-link {
+    background-color: var(--gray-01);
+    border: 1px solid #c7cdd0;
+    display: block;
+    font-size: var(--size-16);
+    height: 100%;
+    outline: none;
+    text-align: center;
+    transition: all .3s;
+    width: 100%;
+}
+.pagination-prev button:after {
+    content: "\02039";
+    display: block;
+}
+ .pagination-jump-next,  .pagination-jump-prev,  .pagination-prev {
+    margin-right: 8px;
+}
+.list-maker__container .list-maker__nav .list-left-nav .list-maker__nav-item[data-active=true]:after {
+    background: #e49a00;
+    border-radius: 4px;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+}
+.list-maker__container .list-maker__nav .list-left-nav .list-maker__nav-item[data-active=true]:after {
+    left: 0;
+}
+.maker-table__tbody .maker-table__tbody-tr:last-child {
+    box-shadow: none;
+}
+.maker-table__tbody-td {
+    text-align: left;
+}
+.maker-table__tbody-td {
+    padding: 24px 0;
+    vertical-align: top;
+}
+:where(.css-5jb6ku).ant-space-vertical {
+    flex-direction: column;
+}
+.maker-list__side-sell {
+    color: var(--fiat-red);
+}
+.maker-table__tbody-td {
+    text-align: left;
+}
+.maker-table__tbody-td {
+    padding: 24px 0;
+    vertical-align: top;
+}
+:where(.css-5jb6ku).ant-space-vertical {
+    flex-direction: column;
+}
+:where(.css-5jb6ku)[class^="ant-space"], :where(.css-5jb6ku)[class*=" ant-space"] {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
+    font-size: 12.5px;
+    box-sizing: border-box;
+}
+.maker-table__tbody-td {
+    padding: 24px 0;
+    vertical-align: top;
+}
+.trade-list-tag {
+    margin-right: 4px;
+}
+.maker-table__tbody-td:last-child, .maker-table__th:last-child {
+    text-align: end;
+}
+.maker-table__tbody-td {
+    padding: 24px 0;
+    vertical-align: top;
+}
+.maker-list__action-icon {
+    height: 8px;
+}
+.maker-table__tbody-td .maker-list__action-icon {
+    margin: 0 8px;
+}

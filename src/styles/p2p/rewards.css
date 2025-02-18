@@ -1,0 +1,88 @@
+.reward-section{
+    position: relative;
+}
+.reward-header{
+    width: 100%;
+    padding-bottom: 30px;
+    position: relative;
+    border-bottom: 1px solid #75737392;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: var(--color-white);
+    font-weight: 900;
+    font-size: 18px;
+}
+.title-details.btn{
+    border: 1px solid #5D5B5B8C;
+    padding: 10px;
+    border-radius: 8px;
+}
+.title-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+.title-details.points img{
+    width: 18px;
+    height: 18px;
+}
+.title-details.points span{
+    color: #FFC227;
+    font-size: 12px;
+    font-weight: 400;
+}
+.btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btns .btn{
+    background: #1D2739;
+    color: #FFFFFF;
+    padding: 10px 40px;
+    margin: 0 10px;
+    border-radius: 8px;
+}
+.btns .btn.active{
+    background: #FF5500;
+}
+.reward-body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.reward-frio{
+    color: #FFFFFF;
+    font-weight: 800;
+    text-align: center;
+    
+}
+.reward-frio span{
+    color: #F56630;
+    font-weight: 400;
+    padding: 10px;
+}
+.reward-frio div{
+    padding: 40px 0 0 0;
+    font-size: 18px;
+}
+.hgjgerx{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.day{
+    background: #1D2739;
+    border-radius: 10px;
+}
+.day .head{
+    text-align: center;
+    padding: 10px;
+}
