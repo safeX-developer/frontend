@@ -12,7 +12,7 @@ import Profile from './p2p/profile/Profile';
 // import MyAds from './pages/MyAds/MyAds';
 // import Listed from './pages/MyAds/Listed';
 // import AllMyAds from './pages/MyAds/All';
-import Create from './pages/MyAds/create';
+// import Create from './pages/MyAds/create';
 import Reward from './pages/reward/Index';
 import Register from './pages/register/Register';
 import DailyReward from './pages/reward/DailyReward';
@@ -45,7 +45,7 @@ function App() {
                 <Route path='task' element={<Task />} />
                 <Route path='socials' element={<SocialVerification />} />
               </Route> 
-                  <Route path='create-ad' element={<Create />}/> 
+                  {/* <Route path='create-ad' element={<Create />}/>  */}
                   {/* <Route path='my-ads' element={<MyAds />} >
                     <Route index element={<Listed />}/> 
                     <Route path='all' element={<AllMyAds />}/> 
