@@ -21,7 +21,7 @@ export default function Buy() {
 
   return (
     <>
-    {/* {showModal ? <BuyModal handleCancelMedal={()=> setShowModal(false)}/> : ""} */}
+    {showModal ? <BuyModal handleCancelMedal={()=> setShowModal(false)}/> : ""}
    
     <div className="trade-list__content">
 
