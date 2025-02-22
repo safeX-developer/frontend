@@ -3,8 +3,8 @@ import { Routes, Route, Navigate, useLocation } from 'react-router';
 import { BrowserRouter } from "react-router-dom";
 import P2P from "./p2p/Index"
 import P2pLayout from "./p2p/trade/P2pLayout"
-import Buy from './p2p/trade/buy';
-import Sell from './p2p/trade/Sell';
+// import Buy from './p2p/trade/buy';
+// import Sell from './p2p/trade/Sell';
 import "./styles/page.css"
 import Welcome from './pages/Welcome';
 import Select from './pages/Select';
@@ -35,8 +35,8 @@ function App() {
             <Route path='p2p' element={<P2P />}>
               <Route path='register' element={<Register />} />
               <Route path="trade" element={ <P2pLayout />} >
-                  <Route path='buy' element={<Buy />} />
-                  <Route path='sell' element={<Sell />} />
+                  {/* <Route path='buy' element={<Buy />} />
+                  <Route path='sell' element={<Sell />} /> */}
               </Route>
               <Route path='profile/:userId' element={<Profile />}/> 
               <Route path='rewards' element={<Reward />} >
