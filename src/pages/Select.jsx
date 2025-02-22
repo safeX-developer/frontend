@@ -11,17 +11,17 @@ export default function Select() {
 
 
   return (
-    <div class="KJkejojsn">
-        <div class="Kownsdjj">
+    <div className="KJkejojsn">
+        <div className="Kownsdjj">
             {welcomeBadge.map((gio)=>(
-                <div class="Kjieojuebs center" style={{backgroundColor: gio.color}}>
-                    <div class="kwqqqyiu">
+                <div key={gio.name} className="Kjieojuebs center" style={{backgroundColor: gio.color}}>
+                    <div className="kwqqqyiu">
                         <img src={gio.img} alt="" />
-                        <div class="uyiuytf titile-text">{gio.title}</div>
-                        <div class="_9jhuhk">{gio.details}</div>
-                        <div class="button-createel">
-                            <button onClick={()=> navigate(`/${gio.route}`)} class="sc-iqseJM sc-egiyK cBmlor fnKcEH button button-normal radius">
-                                <div class="button-inner">Continue</div>
+                        <div className="uyiuytf titile-text">{gio.title}</div>
+                        <div className="_9jhuhk">{gio.details}</div>
+                        <div className="button-createel">
+                            <button onClick={()=> navigate(`/${gio.route}`)} className="sc-iqseJM sc-egiyK cBmlor fnKcEH button button-normal radius">
+                                <div className="button-inner">Continue</div>
                             </button>
                         </div>
                     </div>

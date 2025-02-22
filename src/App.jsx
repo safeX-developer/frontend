@@ -1,9 +1,10 @@
 import { Toaster } from 'sonner'
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router';
 import { BrowserRouter } from "react-router-dom";
 import P2P from "./p2p/Index"
 import P2pLayout from "./p2p/trade/P2pLayout"
-import Buy from './p2p/trade/buy';
+const BuyPage = lazy(() => import("./p2p/trade/Buy"))
 // import Sell from './p2p/trade/Sell';
 import "./styles/page.css"
 import Welcome from './pages/Welcome';
@@ -23,7 +24,7 @@ import SocialVerification from './pages/reward/social-verification';
 
 function App() {
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <Toaster position="bottom-right" expand={false} richColors  />
       <div id="root" >
         <div className="sc-lhMiDA ePAxUv">
@@ -35,7 +36,7 @@ function App() {
             <Route path='p2p' element={<P2P />}>
               <Route path='register' element={<Register />} />
               <Route path="trade" element={ <P2pLayout />} >
-                  <Route path='buy' element={<Buy />} />
+                  <Route path='buy' element={<BuyPage />} />
                   {/* <Route path='sell' element={<Sell />} /> */}
               </Route>
               <Route path='profile/:userId' element={<Profile />}/> 
@@ -56,7 +57,7 @@ function App() {
         </div>
       </div>
 
-    </>
+      </Suspense>
   )
 }
 
