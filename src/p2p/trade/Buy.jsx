@@ -24,7 +24,8 @@ export default function Buy() {
     {/* {showModal ? <BuyModal handleCancelMedal={()=> setShowModal(false)}/> : ""} */}
    
     <div className="trade-list__content">
-    <div className="trade-table__wrapper">
+        hELLO
+    {/* <div className="trade-table__wrapper">
         <div className="nt-spin-nested-loading trade-table__spin css-7o12g0">
             <div className="ant-spin-container">
                 <div id="guide-step-five" style={{height: "150px"}}></div>
@@ -171,8 +172,8 @@ export default function Buy() {
                 </div>
             </div>
         </div>
+    </div> */}
     </div>
-</div>
     </>
 
 
