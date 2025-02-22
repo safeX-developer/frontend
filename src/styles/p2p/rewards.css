@@ -7,7 +7,7 @@
     position: relative;
     border-bottom: 1px solid #75737392;
 }
-.title{
+.reward-section .title{
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -15,18 +15,18 @@
     font-weight: 900;
     font-size: 18px;
 }
-.title-details.btn{
+.reward-section .title-details.btn{
     border: 1px solid #5D5B5B8C;
     padding: 10px;
     border-radius: 8px;
 }
-.title-details{
+.reward-section .title-details{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 6px;
 }
-.title-details.points img{
+.reward-section .title-details.points img{
     width: 18px;
     height: 18px;
 }
@@ -51,6 +51,7 @@
     background: #FF5500;
 }
 .reward-body{
+    margin: 0 0 60px 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -60,7 +61,6 @@
     color: #FFFFFF;
     font-weight: 800;
     text-align: center;
-    
 }
 .reward-frio span{
     color: #F56630;
@@ -72,17 +72,55 @@
     font-size: 18px;
 }
 .hgjgerx{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    margin-top: 20px;
+
+    gap: 10px;
 }
 .day{
+    width: 160px;
     background: #1D2739;
     border-radius: 10px;
+    padding: 15px 0;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
 }
 .day .head{
     text-align: center;
-    padding: 10px;
+    padding-bottom: 5px;
+}
+.day .img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    padding-left: 20px;
+}
+.day .img img{
+    width: 120px;
+}
+.day .points{
+    background: #FF5500;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    border-radius: 6px;
+    gap: 4px;
+    margin-top: 10px;
+    padding: 5px 20px;
+}
+.day .points span{
+    font-size: 11px;
+}
+.points h4{
+    margin: 0;
+}
+.cFDYcT {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-flow: dense;
 }

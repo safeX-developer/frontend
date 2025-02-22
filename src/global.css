@@ -4,6 +4,13 @@
 .ePAxUv > .loading, .ePAxUv > .empty {
   min-height: 80vh;
 }
+.kBjSXI {
+  position: fixed;
+  z-index: 1000;
+  inset: 0px;
+  background-color: rgba(0, 0, 0, 0.772);
+  filter: none !important;
+}
 .full-abs {
   position: absolute;
   left: 0;
@@ -94,13 +101,7 @@
   height: 1.4em;
   fill: rgba(153, 164, 176, 0.6);
 }
-.kBjSXI {
-  position: fixed;
-  z-index: 1000;
-  inset: 0px;
-  background-color: rgba(0, 0, 0, 0.7);
-  filter: none !important;
-}
+
 .dialog {
   position: absolute;
   display: flex;
@@ -115,6 +116,26 @@
   border-radius: .65rem;
   overflow: hidden;
   background-color: rgb(23, 24, 27);
+}
+.dialogEl {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  top: 50%;
+  width: 464px;
+  height: 520px;
+  margin: -275px 0px 0px -280px;
+  transition-property: width, height, margin-left, margin-top;
+  transition-duration: 0.5s;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background-color: rgb(23, 24, 27);
+  padding: 10px;
+}
+.fLASqZ:hover svg {
+  transform: rotate(-90deg);
+  fill: rgb(245, 246, 247);
 }
 .dialog-head {
   position: relative;
@@ -143,10 +164,7 @@
 .CmlqW .dialog-back .icon, .CmlqW .dialog-close .icon {
   fill: #98A2B3;
 }
-.fLASqZ:hover svg {
-  transform: rotate(-90deg);
-  fill: var(--background-color);
-}
+
 .fLASqZ svg {
   transition: transform 0.5s cubic-bezier(0.36, 0.66, 0.04, 1);
   cursor: pointer;
@@ -389,7 +407,10 @@ input, .moly-button, .moly-textarea {
   will-change: transform;
   animation-timing-function: linear;
 }
-
+h1, h2, h3, h4, h5{
+  margin: 0;
+  padding: 0;
+}
 @keyframes lds-1 {
   0% {
     transform: scale(0.4) translateX(28.57%);

@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import Loader from './component/loader'
-import { Routes, Route, Navigate } from 'react-router';
+import { Toaster } from 'sonner'
+import { Routes, Route, Navigate, useLocation } from 'react-router';
 import { BrowserRouter } from "react-router-dom";
 import P2P from "./p2p/Index"
 import P2pLayout from "./p2p/trade/P2pLayout"
@@ -15,11 +14,17 @@ import Listed from './pages/MyAds/Listed';
 import AllMyAds from './pages/MyAds/All';
 import Create from './pages/MyAds/create';
 import Reward from './pages/reward/Index';
+import Register from './pages/register/Register';
+import DailyReward from './pages/reward/DailyReward';
+import Referral from './pages/reward/Referral';
+import Task from './pages/reward/Task';
+import SocialVerification from './pages/reward/social-verification';
+
 
 function App() {
-  const [count, setCount] = useState(0)
   return (
     <>
+      <Toaster position="bottom-right" expand={false} richColors  />
       <div id="root" >
         <div className="sc-lhMiDA ePAxUv">
         <BrowserRouter>
@@ -27,13 +32,19 @@ function App() {
             <Route path='/' element={<Navigate to="welcome" />} />
             <Route path='/welcome' element={<Welcome />} />
             <Route path='/welcome/select' element={<Select />} />
-                <Route path='p2p' element={<P2P />}>
-                  <Route path="trade" element={ <P2pLayout />} >
-                      <Route path='buy' element={<Buy />} />
-                      <Route path='sell' element={<Sell />} />
-                  </Route>
-                  <Route path='profile/:userId' element={<Profile />}/> 
-                  <Route path='rewards' element={<Reward />}/> 
+            <Route path='p2p' element={<P2P />}>
+              <Route path='register' element={<Register />} />
+              <Route path="trade" element={ <P2pLayout />} >
+                  <Route path='buy' element={<Buy />} />
+                  <Route path='sell' element={<Sell />} />
+              </Route>
+              <Route path='profile/:userId' element={<Profile />}/> 
+              <Route path='rewards' element={<Reward />} >
+                <Route index element={<DailyReward />} />
+                <Route path='referral' element={<Referral />} />
+                <Route path='task' element={<Task />} />
+                <Route path='socials' element={<SocialVerification />} />
+              </Route> 
                   <Route path='create-ad' element={<Create />}/> 
                   <Route path='my-ads' element={<MyAds />} >
                     <Route index element={<Listed />}/> 

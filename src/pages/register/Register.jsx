@@ -1,0 +1,81 @@
+import React, { useEffect, useState } from 'react';
+import "../../styles/register.css";
+import Connector from '../../connector';
+import { toast } from 'sonner';
+import { useActiveAccount } from "thirdweb/react";
+
+export default function Register() {
+    const account = useActiveAccount();
+    let walletAddress = account?.address
+    const [ allInputs, setAllIputs ] = useState({})
+    const [ loading, setLoading ] = useState(false)
+    const register = new Connector()
+
+    const handleSubmit = (async()=>{
+        if(allInputs.Fname && allInputs.Fname.length < 8){
+            return toast.error("Invalid full name")
+        }
+        if(allInputs.username && allInputs.username.length < 2){
+            return toast.error("Invalid Username")
+        }
+        if(allInputs.country && allInputs.country.length < 2){
+            return toast.error("Invalid Country")
+        }
+        if(allInputs.address && allInputs.address.length < 10){
+            return toast.error("Invalid Address")
+        }
+        const response = await register.register({...allInputs, walletAddress})
+        
+    })
+
+
+  return (
+    <div className='register sc-bkkeKt kBjSXI'>
+        <div className="register-section">
+            <div className="dialogEl">
+                <div className="title">
+                    Tell us a bit about you
+                </div>
+                <button onClick={()=> history.back()} className="sc-ieecCq fLASqZ close-icon dialog-close">
+                    <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon">
+                        <use xlinkHref="#icon_Close"></use>
+                    </svg>
+                </button>
+                <div className="subtitle">Just basic information to help you get started</div>
+                <div className="dialog-body">
+                    <div className="sc-ezbkAF kDuLvp input ">
+                        <div className="input-label">Full Name</div>
+                        <div className="input-control">
+                            <input type="text" placeholder='Full name' onChange={(e)=> setAllIputs(prev=>({...prev, Fname: e.target.value}))}/>
+                        </div>
+                    </div>
+                    <div className="sc-ezbkAF kDuLvp input ">
+                        <div className="input-label">Username</div>
+                        <div className="input-control">
+                            <input type="text" placeholder='Username' onChange={(e)=> setAllIputs(prev=>({...prev, username: e.target.value}))}/>
+                        </div>
+                    </div>
+                    <div className="sc-ezbkAF kDuLvp input ">
+                        <div className="input-label">Country</div>
+                        <div className="input-control">
+                            <input type="text" placeholder='Country' onChange={(e)=> setAllIputs(prev=>({...prev, country: e.target.value}))}/>
+                        </div>
+                    </div>
+                    <div className="sc-ezbkAF kDuLvp input ">
+                        <div className="input-label">Address</div>
+                        <div className="input-control">
+                            <input type="text" placeholder='address' onChange={(e)=> setAllIputs(prev=>({...prev, address: e.target.value}))}/>
+                        </div>
+                    </div>
+                    <div className='contnu'>
+                        <button disabled={loading} onClick={handleSubmit} className="sc-iqseJM sc-egiyK cBmlor fnKcEH button button-normal">
+                            <div className="button-inner">Continue</div> 
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+  )
+}

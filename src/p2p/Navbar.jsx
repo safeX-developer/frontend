@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../styles/navbar.css"
 import { createThirdwebClient } from "thirdweb";
 import { ConnectButton } from "thirdweb/react";
@@ -8,6 +8,8 @@ import {
   inAppWallet,
   createWallet,
 } from "thirdweb/wallets";
+import { useLocation } from 'react-router-dom';
+import Connector from '../connector';
 
 const client = createThirdwebClient({
     clientId: "6d3bbd638121ead90345bff8365907d8",
@@ -36,13 +38,18 @@ const wallets = [
   ];
 
 export default function Navbar() {
+  const account = useActiveAccount();
+  const location = useLocation()
+  const _app = new Connector()
 
-    //   const account = useActiveAccount();
-    //   const { data: balance, isLoading } = useWalletBalance({
-    //     client,
-    //     chain,
-    //     address: account.address,
-    //   });
+  useEffect(()=>{
+    const handleUserProfile = (async()=>{
+      if(location.pathname !== "/p2p/register"){
+         await _app.userProfile(account)
+      }
+    })
+    handleUserProfile()
+  },[account])
 
   return (
     <div id="header" className="sc-gVkuDy gAvMHL">
