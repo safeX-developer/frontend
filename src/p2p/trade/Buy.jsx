@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
-// import { useNavigate } from "react-router-dom";
-// import BuyModal from './modal/BuyModal';
+import { useNavigate } from "react-router-dom";
+import BuyModal from './modal/BuyModal';
 export default function Buy() {
-    // const navigate = useNavigate()
-    // const [showModal, setShowModal] = useState(false)
-    // const thHuish =  [
-    //     {id:1, Mla:1},
-    //     {id:2, Mla:1},
-    //     {id:3, Mla:1},
-    //     {id:4, Mla:1},
-    //     {id:15, Mla:1},
-    //     {id:5, Mla:1},
-    //     {id:6, Mla:1},
-    //     {id:7, Mla:1}      
-    // ]
+    const navigate = useNavigate()
+    const [showModal, setShowModal] = useState(false)
+    const thHuish =  [
+        {id:1, Mla:1},
+        {id:2, Mla:1},
+        {id:3, Mla:1},
+        {id:4, Mla:1},
+        {id:15, Mla:1},
+        {id:5, Mla:1},
+        {id:6, Mla:1},
+        {id:7, Mla:1}      
+    ]
 
-    // const handleProfile = (event = {})=>{
-    //     navigate("/p2p/profile/280987389738902820-10902893")
-    // }
+    const handleProfile = (event = {})=>{
+        navigate("/p2p/profile/280987389738902820-10902893")
+    }
 
   return (
     <>
