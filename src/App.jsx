@@ -9,9 +9,9 @@ import "./styles/page.css"
 import Welcome from './pages/Welcome';
 import Select from './pages/Select';
 import Profile from './p2p/profile/Profile';
-import MyAds from './pages/MyAds/MyAds';
-import Listed from './pages/MyAds/Listed';
-import AllMyAds from './pages/MyAds/All';
+// import MyAds from './pages/MyAds/MyAds';
+// import Listed from './pages/MyAds/Listed';
+// import AllMyAds from './pages/MyAds/All';
 import Create from './pages/MyAds/create';
 import Reward from './pages/reward/Index';
 import Register from './pages/register/Register';
@@ -46,10 +46,10 @@ function App() {
                 <Route path='socials' element={<SocialVerification />} />
               </Route> 
                   <Route path='create-ad' element={<Create />}/> 
-                  <Route path='my-ads' element={<MyAds />} >
+                  {/* <Route path='my-ads' element={<MyAds />} >
                     <Route index element={<Listed />}/> 
                     <Route path='all' element={<AllMyAds />}/> 
-                  </Route> 
+                  </Route>  */}
                 </Route>
             </Routes>
           </BrowserRouter>
