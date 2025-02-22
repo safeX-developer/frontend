@@ -18,6 +18,7 @@ export default function Buy() {
     const handleProfile = (event = {})=>{
         navigate("/p2p/profile/280987389738902820-10902893")
     }
+    
   return (
     <>
     {showModal ? <BuyModal handleCancelMedal={()=> setShowModal(false)}/> : ""}
