@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import BuyModal from './modal/BuyModal';
+// import BuyModal from './modal/BuyModal';
 export default function Buy() {
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false)
@@ -18,10 +18,10 @@ export default function Buy() {
     const handleProfile = (event = {})=>{
         navigate("/p2p/profile/280987389738902820-10902893")
     }
-    
+
   return (
     <>
-    {showModal ? <BuyModal handleCancelMedal={()=> setShowModal(false)}/> : ""}
+    {/* {showModal ? <BuyModal handleCancelMedal={()=> setShowModal(false)}/> : ""} */}
    
     <div className="trade-list__content">
     <div className="trade-table__wrapper">
@@ -120,7 +120,6 @@ export default function Buy() {
                                     </button>
                                 </td>
                             </tr>
-
                         ))}
                     </tbody>
                 </table>
