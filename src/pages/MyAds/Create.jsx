@@ -7,25 +7,25 @@ import { createAd } from '../../api/tradeApi';
 
 
 export default function Create() {
-    // const [creatingAd, setCreatingAd] = useState(false)
-    // const { mutate: sendTx, data: transactionResult } = useSendTransaction();
+    const [creatingAd, setCreatingAd] = useState(false)
+    const { mutate: sendTx, data: transactionResult } = useSendTransaction();
 
-    // useEffect(() => {
-    //     console.log('Transaction Result!')
-    // }, [transactionResult])
+    useEffect(() => {
+        console.log('Transaction Result!')
+    }, [transactionResult])
 
-    // const handleCreateAd = async (ev) => {
-    //     if (creatingAd) return;
-    //     setCreatingAd(true);
-    //     try {
-    //         const tx = await createAd({
+    const handleCreateAd = async (ev) => {
+        if (creatingAd) return;
+        setCreatingAd(true);
+        try {
+            const tx = await createAd({
 
-    //         });
-    //         if (tx) sendTx(tx);
-    //     } catch (error) {
-    //         console.log('Error creating add => ', error)
-    //     }
-    // }
+            });
+            if (tx) sendTx(tx);
+        } catch (error) {
+            console.log('Error creating add => ', error)
+        }
+    }
     return (
         <div className="fiat__spin-wrapper">
             hello
