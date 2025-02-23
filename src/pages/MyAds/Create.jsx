@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-// import "../../styles/p2p/create-ads.css"
-// import { useSendTransaction } from "thirdweb/react";
-// import { createAd } from '../../api/tradeApi';
+import "../../styles/p2p/create-ads.css"
+import { useSendTransaction } from "thirdweb/react";
+import { createAd } from '../../api/tradeApi';
 
 
 
