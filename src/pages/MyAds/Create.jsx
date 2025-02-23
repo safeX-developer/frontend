@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import "../../styles/p2p/create-ads.css"
-import { useSendTransaction } from "thirdweb/react";
-import { createAd } from '../../api/tradeApi';
+// import { useSendTransaction } from "thirdweb/react";
+// import { createAd } from '../../api/tradeApi';
 
 
 
 
 export default function Create() {
-    const [creatingAd, setCreatingAd] = useState(false)
-    const { mutate: sendTx, data: transactionResult } = useSendTransaction();
+    // const [creatingAd, setCreatingAd] = useState(false)
+    // const { mutate: sendTx, data: transactionResult } = useSendTransaction();
 
-    useEffect(() => {
-        console.log('Transaction Result!')
-    }, [transactionResult])
+    // useEffect(() => {
+    //     console.log('Transaction Result!')
+    // }, [transactionResult])
 
-    const handleCreateAd = async (ev) => {
-        if (creatingAd) return;
-        setCreatingAd(true);
-        try {
-            const tx = await createAd({
+    // const handleCreateAd = async (ev) => {
+    //     if (creatingAd) return;
+    //     setCreatingAd(true);
+    //     try {
+    //         const tx = await createAd({
 
-            });
-            if (tx) sendTx(tx);
-        } catch (error) {
-            console.log('Error creating add => ', error)
-        }
-    }
+    //         });
+    //         if (tx) sendTx(tx);
+    //     } catch (error) {
+    //         console.log('Error creating add => ', error)
+    //     }
+    // }
     return (
         <div className="fiat__spin-wrapper">
            
             <div className="fiat__spin-container">
+                Hello
                 {/* <div className="create-maker__title">
                     <div className="flex">Post Ads
                         <div className="list__maker--level">
@@ -48,7 +49,9 @@ export default function Create() {
                         </svg>
                     </span>
                 </div> */}
-                <div className="create-maker__container">
+
+
+                {/* <div className="create-maker__container">
                     <div className="create-maker__input-container">
                         <div className="ant-space css-5jb6ku ant-space-horizontal ant-space-align-center create-maker__header-wrapper" style={{ gap: "8px" }}>
                             <div className="ant-space-item" >
@@ -404,7 +407,7 @@ export default function Create() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
