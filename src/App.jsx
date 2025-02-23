@@ -9,7 +9,7 @@ const SellPage = lazy(() => import("./p2p/trade/Sell"))
 const MyAds = lazy(() => import('./pages/MyAds/MyAds'))
 const Listed = lazy(() => import('./pages/MyAds/Listed'))
 const AllMyAds = lazy(() => import('./pages/MyAds/All'));
-const Create = lazy(() => import('./pages/MyAds/create'));
+// const Create = lazy(() => import('./pages/MyAds/create'));
 
 import "./styles/page.css"
 import Welcome from './pages/Welcome';
@@ -47,7 +47,7 @@ function App() {
                 <Route path='task' element={<Task />} />
                 <Route path='socials' element={<SocialVerification />} />
               </Route> 
-                  <Route path='create-ad' element={<Create />}/> 
+                  {/* <Route path='create-ad' element={<Create />}/>  */}
                   <Route path='my-ads' element={<MyAds />} >
                     <Route index element={<Listed />}/> 
                     <Route path='all' element={<AllMyAds />}/> 

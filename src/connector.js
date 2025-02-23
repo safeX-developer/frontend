@@ -2,7 +2,7 @@ import axios from "axios"
 import { toast } from "sonner"
 const backendUrl = ()=>{
     let localhostUrl = "http://localhost:8000"
-    let remoteUrl = "https://cat3poker-d07112c3d84c.herokuapp.com"
+    let remoteUrl = "https://safex.onrender.com"
     const _api = location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? localhostUrl : remoteUrl
     return _api

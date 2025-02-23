@@ -1,6 +1,4 @@
-
 import React from 'react'
-
 export default function SocialVerification() {
     const tasks = [
         {id: 1, display: "Watch video on YouTube.", icon: "/asset/youtube.png", amount: 90000, isClaimed: false, canClaim: true}, 
@@ -28,7 +26,6 @@ export default function SocialVerification() {
                     <button disabled={!item.canClaim} className='claim-btn'>{item.isClaimed ? "Claimed" :  "Start"}</button>
                 </div>
             ))}
-           
         </div>
    </div>
   )
