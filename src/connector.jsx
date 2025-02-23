@@ -1,5 +1,6 @@
 import axios from "axios"
 import { toast } from "sonner"
+import { useAuthContext } from "./context/useContext"
 const backendUrl = ()=>{
     let localhostUrl = "http://localhost:8000"
     let remoteUrl = "https://safex.onrender.com"
@@ -13,9 +14,11 @@ export default class Connector{
         this.wallect = "6872862"
         this.user = ""
         this.url = backendUrl()
+        this.dispatch = useAuthContext();
     }
     async register(data){
-        if(!data?.walletAddress){
+
+        if(!data?.userId){
           return  toast.error("Something went wrong, Please return to home page")
         }
         let path = "/api/profile/register"
@@ -23,10 +26,10 @@ export default class Connector{
             register: data
         })
         .then((res)=>{
-            console.log(res)
+           history.back()
         })
         .catch((err)=>{
-            console.log(err)
+            toast.error(err.response.data.error)
         })
     }
     async userProfile(address){
@@ -34,11 +37,12 @@ export default class Connector{
         let path = "/api/profile/user/"+ address?.address
         await axios.get(this.url + path)
         .then((res)=>{
-            console.log(res)
+            this.dispatch?.dispatch({ type: "LOGIN", payload:  res.data});
         })
         .catch((err)=>{
             if(err.response.data.error === "User not found"){
-             return   window.location.href = "/p2p/register"
+                toast.warning("Authenticate your new account with your details")
+             return window.location.href = "/p2p/register"
             }
             toast.error(err.response.data.error)
             console.log(err.response.data.error)

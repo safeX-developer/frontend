@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import "../../styles/register.css";
-import Connector from '../../connector';
+import Connector from '../../connector.jsx';
 import { toast } from 'sonner';
 import { useActiveAccount } from "thirdweb/react";
 
 export default function Register() {
     const account = useActiveAccount();
-    let walletAddress = account?.address
+    let userId = account?.address
     const [ allInputs, setAllIputs ] = useState({})
     const [ loading, setLoading ] = useState(false)
     const register = new Connector()
 
     const handleSubmit = (async()=>{
-        if(allInputs.Fname && allInputs.Fname.length < 8){
+        if(allInputs.Fname && allInputs.Fname.length < 9 || !allInputs.Fname){
             return toast.error("Invalid full name")
         }
-        if(allInputs.username && allInputs.username.length < 2){
+        if(allInputs.username && allInputs.username.length < 2 || !allInputs.username){
             return toast.error("Invalid Username")
         }
-        if(allInputs.country && allInputs.country.length < 2){
+        if(allInputs.country && allInputs.country.length < 2 || !allInputs.country){
             return toast.error("Invalid Country")
         }
-        if(allInputs.address && allInputs.address.length < 10){
+        if(allInputs.address && allInputs.address.length < 10 || !allInputs.address){
             return toast.error("Invalid Address")
         }
-        const response = await register.register({...allInputs, walletAddress})
+        const response = await register.register({...allInputs, userId})
         
     })
 

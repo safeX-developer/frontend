@@ -1,13 +1,25 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { useAuthContext } from "../context/useContext";
 
 export default function Menubar() {
+    const { user } = useAuthContext();
     const navigate = useNavigate()
     const location = useLocation()
     const pathSegments = location.pathname.split("/").filter(Boolean); 
     const handleRoutes = ((route)=>{
         navigate(route)
     })
+    function truncateMiddle(str) {
+        if(!str) return false
+        if (str.length <= 10) return str; // If string is short, no need to truncate
+      
+        return str.slice(0, 6) + "..." + str.slice(-6);
+    }
+    const getFirstCharUpper = (str) => {
+        if(!str) return false
+        return str ? str.charAt(0).toUpperCase() : "";
+    };
   return (
     <div className="KojhihKHun menu-box">
         <div onClick={()=> handleRoutes("/")} className="logo-holder">
@@ -83,12 +95,13 @@ export default function Menubar() {
         <div className="line"></div>
         <div className="logout">
             <div className="avatar">
-                <img src="/asset/de1164e665fa4742b512d7c31057a4ed.png" alt="" />
+                {/* <img src="/asset/de1164e665fa4742b512d7c31057a4ed.png" alt="" /> */}
+                <div className="img">{getFirstCharUpper(user?.username)}</div>
                 <div className="active"></div>
             </div>
             <div className="name-address">
-                <div>Alison Eyo</div>
-                <div>OXjdkd..5jf5rkdoo</div>
+                <div>{user?.username}</div>
+                <div>{truncateMiddle(user?.userId)}</div>
             </div>
             <div className="logout-icon">
                 <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_Logout"></use></svg>

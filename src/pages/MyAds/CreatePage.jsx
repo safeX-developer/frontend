@@ -4,8 +4,6 @@ import { useSendTransaction } from "thirdweb/react";
 import { createAd } from '../../api/tradeApi';
 
 
-
-
 export default function CreatePage() {
     const [creatingAd, setCreatingAd] = useState(false)
     const { mutate: sendTx, data: transactionResult } = useSendTransaction();
