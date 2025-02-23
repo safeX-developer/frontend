@@ -28,9 +28,9 @@ export default function Create() {
     }
     return (
         <div className="fiat__spin-wrapper">
-            hello
-            {/* <div className="fiat__spin-container">
-                <div className="create-maker__title">
+           
+            <div className="fiat__spin-container">
+                {/* <div className="create-maker__title">
                     <div className="flex">Post Ads
                         <div className="list__maker--level">
                             <span className="create_maker--level">New
@@ -47,7 +47,7 @@ export default function Create() {
                             <path fill="currentColor" d="M353.835 225.835a42.667 42.667 0 0 1 60.33 0l256 256a42.667 42.667 0 0 1 0 60.33l-256 256a42.667 42.667 0 0 1-60.33-60.33L579.669 512 353.835 286.165a42.667 42.667 0 0 1 0-60.33z"></path>
                         </svg>
                     </span>
-                </div>
+                </div> */}
                 <div className="create-maker__container">
                     <div className="create-maker__input-container">
                         <div className="ant-space css-5jb6ku ant-space-horizontal ant-space-align-center create-maker__header-wrapper" style={{ gap: "8px" }}>
@@ -405,7 +405,7 @@ export default function Create() {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }
