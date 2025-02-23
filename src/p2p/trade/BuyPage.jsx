@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import BuyModal from './modal/BuyModal';
-export default function Buy() {
+export default function BuyPage() {
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false)
     const thHuish =  [

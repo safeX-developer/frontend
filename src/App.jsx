@@ -1,19 +1,20 @@
 import { Toaster } from 'sonner'
 import React, { Suspense, lazy } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router';
 import { BrowserRouter } from "react-router-dom";
 import P2P from "./p2p/Index"
 import P2pLayout from "./p2p/trade/P2pLayout"
-const BuyPage = lazy(() => import("./p2p/trade/Buy"))
-// import Sell from './p2p/trade/Sell';
+const BuyPage = lazy(() => import("./p2p/trade/BuyPage"))
+const SellPage = lazy(() => import("./p2p/trade/Sell"))
+const MyAds = lazy(() => import('./pages/MyAds/MyAds'))
+const Listed = lazy(() => import('./pages/MyAds/Listed'))
+const AllMyAds = lazy(() => import('./pages/MyAds/All'));
+const Create = lazy(() => import('./pages/MyAds/create'));
+
 import "./styles/page.css"
 import Welcome from './pages/Welcome';
 import Select from './pages/Select';
 import Profile from './p2p/profile/Profile';
-// import MyAds from './pages/MyAds/MyAds';
-// import Listed from './pages/MyAds/Listed';
-// import AllMyAds from './pages/MyAds/All';
-// import Create from './pages/MyAds/create';
 import Reward from './pages/reward/Index';
 import Register from './pages/register/Register';
 import DailyReward from './pages/reward/DailyReward';
@@ -37,7 +38,7 @@ function App() {
               <Route path='register' element={<Register />} />
               <Route path="trade" element={ <P2pLayout />} >
                   <Route path='buy' element={<BuyPage />} />
-                  {/* <Route path='sell' element={<Sell />} /> */}
+                  <Route path='sell' element={<SellPage />} />
               </Route>
               <Route path='profile/:userId' element={<Profile />}/> 
               <Route path='rewards' element={<Reward />} >
@@ -46,11 +47,11 @@ function App() {
                 <Route path='task' element={<Task />} />
                 <Route path='socials' element={<SocialVerification />} />
               </Route> 
-                  {/* <Route path='create-ad' element={<Create />}/>  */}
-                  {/* <Route path='my-ads' element={<MyAds />} >
+                  <Route path='create-ad' element={<Create />}/> 
+                  <Route path='my-ads' element={<MyAds />} >
                     <Route index element={<Listed />}/> 
                     <Route path='all' element={<AllMyAds />}/> 
-                  </Route>  */}
+                  </Route> 
                 </Route>
             </Routes>
           </BrowserRouter>
