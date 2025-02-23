@@ -6,7 +6,7 @@ import "../../styles/p2p/create-ads.css"
 
 
 
-export default function Create() {
+export default function CreatePage() {
     // const [creatingAd, setCreatingAd] = useState(false)
     // const { mutate: sendTx, data: transactionResult } = useSendTransaction();
 

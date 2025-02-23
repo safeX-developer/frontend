@@ -9,7 +9,7 @@ const SellPage = lazy(() => import("./p2p/trade/Sell"))
 const MyAds = lazy(() => import('./pages/MyAds/MyAds'))
 const Listed = lazy(() => import('./pages/MyAds/Listed'))
 const AllMyAds = lazy(() => import('./pages/MyAds/All'));
-const Create = lazy(() => import('./pages/MyAds/create'));
+const CreatePage = lazy(() => import('./pages/MyAds/CreatePage'));
 
 import "./styles/page.css"
 import Welcome from './pages/Welcome';
