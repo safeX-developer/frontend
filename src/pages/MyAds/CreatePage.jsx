@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import "../../styles/p2p/create-ads.css"
-// import { useSendTransaction } from "thirdweb/react";
-// import { createAd } from '../../api/tradeApi';
+import { useSendTransaction } from "thirdweb/react";
+import { createAd } from '../../api/tradeApi';
 
 
 
 
 export default function CreatePage() {
-    // const [creatingAd, setCreatingAd] = useState(false)
-    // const { mutate: sendTx, data: transactionResult } = useSendTransaction();
+    const [creatingAd, setCreatingAd] = useState(false)
+    const { mutate: sendTx, data: transactionResult } = useSendTransaction();
 
-    // useEffect(() => {
-    //     console.log('Transaction Result!')
-    // }, [transactionResult])
+    useEffect(() => {
+        console.log('Transaction Result!')
+    }, [transactionResult])
 
-    // const handleCreateAd = async (ev) => {
-    //     if (creatingAd) return;
-    //     setCreatingAd(true);
-    //     try {
-    //         const tx = await createAd({
+    const handleCreateAd = async (ev) => {
+        if (creatingAd) return;
+        setCreatingAd(true);
+        try {
+            const tx = await createAd({
 
-    //         });
-    //         if (tx) sendTx(tx);
-    //     } catch (error) {
-    //         console.log('Error creating add => ', error)
-    //     }
-    // }
+            });
+            if (tx) sendTx(tx);
+        } catch (error) {
+            console.log('Error creating add => ', error)
+        }
+    }
     return (
         <div className="fiat__spin-wrapper">
            

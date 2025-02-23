@@ -47,7 +47,7 @@ function App() {
                 <Route path='task' element={<Task />} />
                 <Route path='socials' element={<SocialVerification />} />
               </Route> 
-                  {/* <Route path='create-ad' element={<Create />}/>  */}
+                  <Route path='create-ad' element={<CreatePage />}/> 
                   <Route path='my-ads' element={<MyAds />} >
                     <Route index element={<Listed />}/> 
                     <Route path='all' element={<AllMyAds />}/> 
