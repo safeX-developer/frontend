@@ -93,7 +93,7 @@ export default function Menubar() {
 
 
         <div className="line"></div>
-        <div className="logout">
+        {!user ? "" : <div className="logout">
             <div className="avatar">
                 {/* <img src="/asset/de1164e665fa4742b512d7c31057a4ed.png" alt="" /> */}
                 <div className="img">{getFirstCharUpper(user?.username)}</div>
@@ -106,7 +106,8 @@ export default function Menubar() {
             <div className="logout-icon">
                 <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_Logout"></use></svg>
             </div>
-        </div>
+        </div>  }
+       
     </div>    
   )
 }

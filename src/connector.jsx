@@ -17,7 +17,6 @@ export default class Connector{
         this.dispatch = useAuthContext();
     }
     async register(data){
-
         if(!data?.userId){
           return  toast.error("Something went wrong, Please return to home page")
         }
@@ -26,20 +25,21 @@ export default class Connector{
             register: data
         })
         .then((res)=>{
-           history.back()
+            return window.location.href = "/p2p/trade/buy"
         })
         .catch((err)=>{
             toast.error(err.response.data.error)
         })
     }
     async userProfile(address){
-        if(!address) return
+        if(!address?.address) return
         let path = "/api/profile/user/"+ address?.address
         await axios.get(this.url + path)
         .then((res)=>{
             this.dispatch?.dispatch({ type: "LOGIN", payload:  res.data});
         })
         .catch((err)=>{
+            console.log(err)
             if(err.response.data.error === "User not found"){
                 toast.warning("Authenticate your new account with your details")
              return window.location.href = "/p2p/register"
