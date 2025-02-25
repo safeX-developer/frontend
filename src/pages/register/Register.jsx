@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import "../../styles/register.css";
-import Connector from '../../connector.jsx';
 import { toast } from 'sonner';
-import { useActiveAccount } from "thirdweb/react";
+import { AppContext } from '../../context/AppContext.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
-    const account = useActiveAccount();
-    let userId = account?.address
+    const { wallet, register, user } = useContext(AppContext)
     const [ allInputs, setAllIputs ] = useState({})
     const [ loading, setLoading ] = useState(false)
-    const register = new Connector()
+    const navigate = useNavigate()
+
+    if(user){
+        navigate("/p2p/trade/buy")
+    }
 
     const handleSubmit = (async()=>{
         if(allInputs.Fname && allInputs.Fname.length < 9 || !allInputs.Fname){
@@ -24,7 +27,7 @@ export default function Register() {
         if(allInputs.address && allInputs.address.length < 10 || !allInputs.address){
             return toast.error("Invalid Address")
         }
-        const response = await register.register({...allInputs, userId})
+        await register({...allInputs, userId:wallet})
         
     })
 

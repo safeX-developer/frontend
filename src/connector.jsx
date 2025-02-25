@@ -48,4 +48,16 @@ export default class Connector{
             console.log(err.response.data.error)
         })
     }
+    async getRewards(){
+        let result = null
+        let path = "/api/rewards/daily"
+        await axios.get(this.url + path)
+        .then((res)=>{
+            result = res.data
+        })
+        .catch((err)=>{
+            toast.error(err.response.data.error)
+        })
+        return {result}
+    }
 }

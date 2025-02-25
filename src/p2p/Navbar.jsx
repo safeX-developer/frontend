@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import "../styles/navbar.css"
 import { createThirdwebClient } from "thirdweb";
 import { ConnectButton } from "thirdweb/react";
 import { darkTheme } from "thirdweb/react";
-import { useActiveAccount, useWalletBalance } from "thirdweb/react";
-import {
-  inAppWallet,
-  createWallet,
-} from "thirdweb/wallets";
-import { useLocation } from 'react-router-dom';
-import Connector from '../connector';
+import { inAppWallet, createWallet } from "thirdweb/wallets";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 
 const client = createThirdwebClient({
     clientId: "6d3bbd638121ead90345bff8365907d8",
@@ -38,18 +34,22 @@ const wallets = [
   ];
 
 export default function Navbar() {
-  const account = useActiveAccount();
+  const { wallet, userProfile } = useContext(AppContext)
   const location = useLocation()
-  const _app = new Connector()
+  const navigate = useNavigate()
 
   useEffect(()=>{
-    const handleUserProfile = (async()=>{
-      if(location.pathname !== "/p2p/register"){
-         await _app.userProfile(account)
+    async function handleProfile(){
+      if(wallet && location.pathname !== "/p2p/register"){
+       const result = await userProfile()
+       if(!result){
+          navigate("/p2p/register")
+       }
       }
-    })
-    handleUserProfile()
-  },[account])
+    }
+    handleProfile()
+},[wallet])
+
 
   return (
     <div id="header" className="sc-gVkuDy gAvMHL">

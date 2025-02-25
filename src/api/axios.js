@@ -1,16 +1,26 @@
 import axios from 'axios';
+import { getCookie } from './cookies';
+
+
+const backendUrl = ()=>{
+  let localhostUrl = "http://localhost:8000"
+  let remoteUrl = "https://safex.onrender.com"
+  const _api = location.hostname === "localhost" || location.hostname === "127.0.0.1"
+  ? localhostUrl : remoteUrl
+  return _api
+}
+
 const api = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: backendUrl(),
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   }
 });
-
 api.interceptors.request.use(
   (config) => {
     // Do Add auth token
-    const token = localStorage.getItem('token');
+    const token = getCookie("token")
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

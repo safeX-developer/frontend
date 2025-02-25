@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useAuthContext } from "../context/useContext";
+import { AppContext } from '../context/AppContext';
 
 export default function Menubar() {
-    const { user } = useAuthContext();
+    const { user} = useContext(AppContext)
     const navigate = useNavigate()
     const location = useLocation()
     const pathSegments = location.pathname.split("/").filter(Boolean); 
