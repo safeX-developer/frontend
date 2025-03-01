@@ -42,13 +42,13 @@ export default function Navbar() {
     async function handleProfile(){
       if(wallet && location.pathname !== "/p2p/register"){
        const result = await userProfile()
-       if(!result){
-          navigate("/p2p/register")
-       }
+          if(!result){
+              navigate("/p2p/register")
+          }
+        }
       }
-    }
-    handleProfile()
-},[wallet])
+      handleProfile()
+  },[wallet])
 
 
   return (

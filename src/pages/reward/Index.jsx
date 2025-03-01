@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "../../styles/p2p/rewards.css"
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { AppContext } from '../../context/AppContext'
 
 export default function Reward() {
     const navigate = useNavigate()
     const location = useLocation()
     const pathSegments = location.pathname.split("/").filter(Boolean); 
+
+    const { user, rewardResults} = useContext(AppContext)
+
+
   return (
     <div className='reward-section'>
         <div className='reward-header'>
@@ -13,8 +18,8 @@ export default function Reward() {
                 <div className='title-details reward-hub'>REWARDS HUB</div>
                 <div className='title-details points' >
                     <img src="/asset/twemoji_coin.png" alt="" />
-                    910,215,106 
-                    <span>Points</span>
+                    {user ? parseFloat(rewardResults?.balance).toLocaleString() : ""}
+                    <span>{!user ? "" : !rewardResults?.balance ? "Point" : "Points" }</span>
                 </div>
                 <button className='title-details btn'>Claim Rewards</button>
             </div>

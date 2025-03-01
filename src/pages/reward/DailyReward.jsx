@@ -1,17 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../../context/AppContext'
 
 export default function DailyReward() {
-    const {getRewards, user} = useContext(AppContext)
+    const { rewardResults, claimRecord , getRewards, wallet} = useContext(AppContext)
+    const handleClaimReward = ((reward)=> {
+        claimRecord(reward)
+    })
 
-    const [rewards, setrewards] = useState([])
     useEffect(()=>{
         const fetchRewards = async ()=>{
-            const {result} = await getRewards()
-            setrewards(result)
+         await getRewards(wallet)
         }
         fetchRewards()
-    },[])
+    },[wallet])
 
   return (
     <div className="reward-body">
@@ -20,17 +21,17 @@ export default function DailyReward() {
             <span>Do not miss your streak or else you will restart from day 1</span>
         </div>
         <div className="hgjgerx sc-bjeSbO cFDYcT grid-list">
-            {rewards.map((er)=>(
-                <div key={er.day} className="day">
+            {rewardResults?.reward?.map((er)=>(
+                <div key={er?.day} className="day">
                     <div className="head">
                         Day {er.day}
                     </div>
                     <div className='img'>
                         <img src="/asset/logo.png" alt="" />
                     </div>
-                    <button className="points">
-                        <h4>CLAIM</h4>
-                        <span>{er.rewards} points</span>
+                    <button onClick={()=> handleClaimReward(er)} disabled={er.isClaimed || !er?.canClaim} className={`points ${!er.isClaimed && er?.canClaim ? "active" : ""} `}>
+                        <h4>{er.isClaimed ? "CLAIMED" : "CLAIM"}</h4>
+                        <span>{`${er.isClaimed ? "" : er.rewards +" points"}`}</span>
                     </button>
                 </div>
             ))}

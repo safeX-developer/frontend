@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getCookie } from './cookies';
-
+import { toast } from 'sonner';
 
 const backendUrl = ()=>{
   let localhostUrl = "http://localhost:8000"
@@ -38,10 +38,13 @@ api.interceptors.response.use(
   (error) => {
     if (error.response) {
       console.error('API Error:', error.response.data);
+      toast.error(error.response.data?.error)
     } else if (error.request) {
       console.error('Network Error:', error.request);
+      toast.error(error.request)
     } else {
       console.error('Error:', error.message);
+      toast.error(error.message)
     }
     return Promise.reject(error);
   }

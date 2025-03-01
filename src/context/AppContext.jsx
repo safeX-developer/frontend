@@ -7,6 +7,7 @@ import { setCookie } from "../api/cookies.js";
 export const AppContext = createContext(); 
 export const AppContextProvider = ({ children }) => {
     const [ user, setUser ] = useState(null)
+    const [ rewardResults, setrewardResults ] = useState(null)
     const wallet = useActiveAccount()
 
     const register = async(data) =>{
@@ -35,14 +36,25 @@ export const AppContextProvider = ({ children }) => {
         return result
     }
 
-    const getRewards = async()=>{
+    const getRewards = async(wallet)=>{
+        if(!wallet) return {result: []}
         let path = "/api/rewards/daily"
         const result = await api.get(path)
-        return {result}
+        let reward = result.reward
+        let user = result.user
+        const key = {reward, ...user}
+        setrewardResults(key)
     }
 
+    const claimRecord = (async(data)=>{
+      let path = "/api/rewards/claim";
+      const result = await api.post(path, data)
+      setrewardResults(result)
+    })
+
   return (
-    <AppContext.Provider value={{ getRewards, userProfile, register , user, wallet: wallet?.address}}>
+    <AppContext.Provider value={{ getRewards, userProfile, register ,claimRecord,
+     user, wallet: wallet?.address, rewardResults}}>
       {children}
     </AppContext.Provider>
   );
