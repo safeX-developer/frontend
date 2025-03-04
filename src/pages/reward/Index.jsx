@@ -8,8 +8,13 @@ export default function Reward() {
     const location = useLocation()
     const pathSegments = location.pathname.split("/").filter(Boolean); 
 
-    const { user, rewardResults} = useContext(AppContext)
-
+    const { user, rewardResults, getRewards, wallet} = useContext(AppContext)
+    useEffect(()=>{
+        const fetchRewards = async ()=>{
+         await getRewards(wallet)
+        }
+        fetchRewards()
+    },[wallet])
 
   return (
     <div className='reward-section'>

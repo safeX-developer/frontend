@@ -21,6 +21,7 @@ import DailyReward from './pages/reward/DailyReward';
 import Referral from './pages/reward/Referral';
 import Task from './pages/reward/Task';
 import SocialVerification from './pages/reward/social-verification';
+import Referal from './pages/reward/Referal';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Routes>
             <Route path='/' element={<Navigate to="welcome" />} />
             <Route path='/welcome' element={<Welcome />} />
+            <Route path='/ref/:code' element={<Referal />} />
             <Route path='/welcome/select' element={<Select />} />
             <Route path='p2p' element={<P2P />}>
               <Route path='register' element={<Register />} />

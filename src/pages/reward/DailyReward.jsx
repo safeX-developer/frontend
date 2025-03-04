@@ -2,17 +2,12 @@ import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../../context/AppContext'
 
 export default function DailyReward() {
-    const { rewardResults, claimRecord , getRewards, wallet} = useContext(AppContext)
+    const { rewardResults, claimRecord } = useContext(AppContext)
     const handleClaimReward = ((reward)=> {
         claimRecord(reward)
     })
 
-    useEffect(()=>{
-        const fetchRewards = async ()=>{
-         await getRewards(wallet)
-        }
-        fetchRewards()
-    },[wallet])
+
 
   return (
     <div className="reward-body">

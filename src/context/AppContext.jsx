@@ -3,18 +3,21 @@ import { toast } from "sonner"
 import { useActiveAccount } from "thirdweb/react";
 import api from "../api/axios.js";
 import { setCookie } from "../api/cookies.js";
+import { appScript } from "./app.js";
 
 export const AppContext = createContext(); 
 export const AppContextProvider = ({ children }) => {
     const [ user, setUser ] = useState(null)
     const [ rewardResults, setrewardResults ] = useState(null)
     const wallet = useActiveAccount()
+    const _app = new appScript(wallet)
+    const ref = localStorage.getItem("ref")
 
     const register = async(data) =>{
         if(!data?.userId){
           return toast.error("Something went wrong, Please return to home page")
         }
-        let path = "/api/profile/register"
+        let path = "/api/profile/register/"+ ref
          const res = await api.post(path, {
             register: data
         })
@@ -54,7 +57,7 @@ export const AppContextProvider = ({ children }) => {
 
   return (
     <AppContext.Provider value={{ getRewards, userProfile, register ,claimRecord,
-     user, wallet: wallet?.address, rewardResults}}>
+     user, wallet: wallet?.address, rewardResults, _app}}>
       {children}
     </AppContext.Provider>
   );
