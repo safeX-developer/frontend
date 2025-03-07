@@ -7,6 +7,14 @@ import { createAd } from '../../api/tradeApi';
 export default function CreatePage() {
     const [creatingAd, setCreatingAd] = useState(false)
     const { mutate: sendTx, data: transactionResult } = useSendTransaction();
+    const [ tab, setTab ] = useState(0)
+    const [ duration, setDuration ] = useState("15")
+    const [ priceSetting, setpriceSetting ] = useState(0)
+    const [ fixedPrice, setFixedPrice] = useState("")
+
+    const handlePriceInput = ((data)=>{
+        
+    })
 
     useEffect(() => {
         console.log('Transaction Result!')
@@ -26,29 +34,14 @@ export default function CreatePage() {
     }
     return (
         <div className="fiat__spin-wrapper">
-           
             <div className="fiat__spin-container">
-                Hello
                 <div className="create-maker__title">
                     <div className="flex">Post Ads
                         <div className="list__maker--level">
-                            <span className="create_maker--level">New
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" className="directionright_icon_svg__icon" viewBox="0 0 1024 1024" data-rtl="true">
-                                    <path fill="currentColor" d="M707.755 554.752 481.92 780.587a42.667 42.667 0 1 0 60.33 60.33L840.62 542.55a43.093 43.093 0 0 0 0-60.928L542.293 183.253a42.667 42.667 0 1 0-60.33 60.331l225.834 225.835H210.773c-22.101 0-40.021 19.114-40.021 42.666s17.92 42.667 40.021 42.667h496.982z"></path>
-                                </svg>
-                            </span>
                             <i className="fiat-iconfont fiat-icon--wenhao css-5jb6ku ant-tooltip-custom bds-theme-component-light"></i>
                         </div>
                     </div>
-                    <span className="create-maker-bulk__tag">
-                        Become a Block Trade Advertiser
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="arrowchevron_right_icon_svg__icon" viewBox="0 0 1024 1024" data-rtl="true" style={{ verticalAlign: "-3px" }}>
-                            <path fill="currentColor" d="M353.835 225.835a42.667 42.667 0 0 1 60.33 0l256 256a42.667 42.667 0 0 1 0 60.33l-256 256a42.667 42.667 0 0 1-60.33-60.33L579.669 512 353.835 286.165a42.667 42.667 0 0 1 0-60.33z"></path>
-                        </svg>
-                    </span>
                 </div>
-
-
                 <div className="create-maker__container">
                     <div className="create-maker__input-container">
                         <div className="ant-space css-5jb6ku ant-space-horizontal ant-space-align-center create-maker__header-wrapper" style={{ gap: "8px" }}>
@@ -75,9 +68,9 @@ export default function CreatePage() {
                                             </div>
                                         </div>
                                         <div className="ant-space-item">
-                                            <div className="by-switch action-type-switch create-maker__side sell">
-                                                <div className="by-switch__item">Buy</div>
-                                                <div className="by-switch__item by-switch__item--active">Sell</div>
+                                            <div className={`by-switch action-type-switch create-maker__side ${!tab ? "sell" : "buy"}`}>
+                                                <div onClick={()=> setTab(1)} className={`by-switch__item ${tab ? "by-switch__item--active" : ""}`}>Buy</div>
+                                                <div onClick={()=> setTab(0)} className={`by-switch__item ${!tab ? "by-switch__item--active" : ""}`}>Sell</div>
                                             </div>
                                         </div>
                                     </div>
@@ -93,13 +86,53 @@ export default function CreatePage() {
                                                             <span className="ant-select-selection-search">
                                                                 <input type="search" autocomplete="off" className="ant-select-selection-search-input" role="combobox" aria-haspopup="listbox" aria-owns="rc_select_4_list" aria-autocomplete="list" aria-controls="rc_select_4_list" aria-activedescendant="rc_select_4_list_0" readonly="" unselectable="on" value="" id="rc_select_4" style={{ opacity: 0 }} />
                                                             </span>
-                                                            <span className="ant-select-selection-item" title=""></span>
+                                                            <span className="ant-select-selection-item" title="">USDT</span>
                                                         </div>
+                                                        
                                                         <span className="ant-select-arrow" unselectable="on" aria-hidden="true" style={{ userSelect: "none" }}>
                                                             <svg className="icon-caret-down" width="1em" height="1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M8.77701 10.6106L11.8139 6.51324C12.1281 6.08933 12.0349 5.49409 11.6058 5.18373C11.4407 5.06435 11.2415 5 11.0369 5H4.96304C4.43117 5 4 5.4259 4 5.95128C4 6.15336 4.06515 6.35019 4.186 6.51324L7.22293 10.6106C7.53712 11.0345 8.13972 11.1266 8.56887 10.8162C8.64851 10.7586 8.7187 10.6893 8.77701 10.6106Z"></path>
                                                             </svg>
                                                         </span>
+
+
+                                                        {/* <div>
+                                                            <div class="ant-select-dropdown ant-select-custom-dropdown ant-select-custom-dropdown-sm bds-theme-component-light css-5jb6ku ant-select-dropdown-placement-bottomLeft " style={{minWidth: "232px", width: "232px", left: "216px", top:"509.833px"}}>
+                                                                <div>
+                                                                    <div role="listbox" id="rc_select_5_list" style={{height: "0px", width: "0px", overflow: "hidden"}}>
+                                                                        <div aria-label="USDT" role="option" id="rc_select_5_list_0" aria-selected="true">USDT</div>
+                                                                        <div aria-label="BTC" role="option" id="rc_select_5_list_1" aria-selected="false">BTC</div>
+                                                                    </div>
+                                                                    <div class="rc-virtual-list" style={{position: "relative"}}>
+                                                                        <div class="rc-virtual-list-holder" style={{maxHeight: "256px", overflowY: "hidden", overflowAnchor: "none"}}>
+                                                                            <div>
+                                                                                <div class="rc-virtual-list-holder-inner" style={{display: "flex", flexDirection: "column"}}>
+                                                                                    <div aria-selected="true" class="ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected" title="USDT">
+                                                                                        <div class="ant-select-item-option-content">USDT</div>
+                                                                                        <span class="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
+                                                                                    </div>
+                                                                                    <div aria-selected="false" class="ant-select-item ant-select-item-option" title="BTC">
+                                                                                        <div class="ant-select-item-option-content">BTC</div>
+                                                                                        <span class="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
+                                                                                    </div>
+                                                                                    <div aria-selected="false" class="ant-select-item ant-select-item-option" title="ETH">
+                                                                                        <div class="ant-select-item-option-content">ETH</div>
+                                                                                        <span class="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
+                                                                                    </div>
+                                                                                    <div aria-selected="false" class="ant-select-item ant-select-item-option" title="USDC">
+                                                                                        <div class="ant-select-item-option-content">USDC</div>
+                                                                                        <span class="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="rc-virtual-list-scrollbar" style={{width: "8px", top: "0px", bottom: "0px", right: "0px", position: "absolute", display: "none"}}>
+                                                                            <div class="rc-virtual-list-scrollbar-thumb" style={{width: "100%", height: "128px", top: "0px", left: "0px", position: "absolute", background: "rgba(0, 0, 0, 0.5)", borderRadius: "99px", cursor: "pointer", userSelect: "none"}}></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,9 +146,9 @@ export default function CreatePage() {
                                                     <div className="ant-select css-5jb6ku ant-select-custom ant-select-custom-sm bds-theme-component-light css-5jb6ku ant-select-single ant-select-show-arrow" style={{ width: "232px" }}>
                                                         <div className="ant-select-selector">
                                                             <span className="ant-select-selection-search">
-                                                                <input type="search" autocomplete="off" className="ant-select-selection-search-input" role="combobox" aria-haspopup="listbox" aria-owns="rc_select_5_list" aria-autocomplete="list" aria-controls="rc_select_5_list" aria-activedescendant="rc_select_5_list_0" readonly="" unselectable="on" value="" id="rc_select_5" style={{ opacity: 0 }} />
-                                                            </span>
-                                                            <span className="ant-select-selection-item" title=""></span>
+                                                                <input type="search"  autocomplete="off" className="ant-select-selection-search-input" role="combobox" aria-haspopup="listbox" aria-owns="rc_select_5_list" aria-autocomplete="list" aria-controls="rc_select_5_list" aria-activedescendant="rc_select_5_list_0" unselectable="on"  id="rc_select_5" style={{ opacity: 0 }} />
+                                                            </span> 
+                                                            <span className="ant-select-selection-item" title="">NGN</span>
                                                         </div>
                                                         <span className="ant-select-arrow" unselectable="on" aria-hidden="true" style={{ userSelect: "none" }}>
                                                             <svg className="icon-caret-down" width="1em" height="1em" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -138,17 +171,18 @@ export default function CreatePage() {
                                 <div className="create-maker__item-content">
                                     <div className="ant-radio-group ant-radio-group-outline create-maker__price-type css-5jb6ku">
                                         <label className="ant-radio-wrapper ant-radio-wrapper-checked css-5jb6ku ant-radio-custom bds-theme-component-light css-5jb6ku">
-                                            <span className="ant-radio ant-radio-checked">
+                                            <span onClick={()=> setpriceSetting(0)} className={`ant-radio ${priceSetting ? "" : "ant-radio-checked"}`}>
                                                 <input type="radio" className="ant-radio-input" value="0" checked="" />
                                                 <span className="ant-radio-inner"></span>
                                             </span>
                                             <span>Fixed Price</span>
                                         </label>
-                                        <label className="ant-radio-wrapper css-5jb6ku ant-radio-custom create-maker__price-type-float bds-theme-component-light css-5jb6ku">
-                                            <span className="ant-radio">
+                                        <label className={`ant-radio-wrapper css-5jb6ku ant-radio-custom create-maker__price-type-float bds-theme-component-light css-5jb6ku`}>
+                                            <span onClick={()=> setpriceSetting(1)} className={`ant-radio ${!priceSetting ? "" : "ant-radio-checked"}`}>
                                                 <input type="radio" className="ant-radio-input" value="1" />
                                                 <span className="ant-radio-inner"></span>
-                                            </span><span>
+                                            </span>
+                                            <span>
                                                 <span>Floating Price</span>
                                                 <span className="create-maker__price-float-tips-wrapper">
                                                     <span className="create-maker__price-float-tips">Floating Price = Reference Price × Premium</span>
@@ -156,17 +190,17 @@ export default function CreatePage() {
                                             </span>
                                         </label>
                                     </div>
-                                    <div className="create-maker__tips-price">A fixed price does not fluctuate based on market movements</div>
+                                    <div className="create-maker__tips-price">{ !priceSetting ? "A fixed price does not fluctuate based on market movements" : "Your floating offer price is calculated by multiplying the premium and the reference price"}</div>
                                     <div className="ant-space-compact css-5jb6ku create-maker__price-input">
                                         <div className="by-space by-space--vertical create-maker__form-item" style={{ gap: "4px" }}>
                                             <div className="by-space-item" >
-                                                <div className="create-maker__form-title">Fixed Price</div>
+                                                <div className="create-maker__form-title">{!priceSetting ? "Fixed price" : "Premium"}</div>
                                             </div>
                                             <div className="by-space-item" >
                                                 <div className="moly-input relative flex items-center bg-base-bds-gray-ele-line border border-solid border-base-bds-gray-ele-line transition-all ease-in-out duration-100 font-IBM hover:border hover:border-solid hover:border-brandColor-bds-brand-800-pressed h-[40px] pl-[11px] pr-[9px] rounded gap-[8px] create-maker__form-input">
-                                                    <input type="text" placeholder="The fixed price must be between 0% and 0% of the reference price." className="text-[12px] font-medium leading-[18px] appearance-none placeholder:text-[#ADB1B8] css-qydx2u" data="" value="" style={{ background: "transparent", outline: "medium", border: "none", width: "100%" }} />
+                                                    <input type="text" onChange={(e)=> handlePriceInput(e.target.value) } placeholder={!priceSetting ? `The fixed price must be between 90% and 110% of the reference price.` : "90% ~ 110%"} className="text-[12px] font-medium leading-[18px] appearance-none placeholder:text-[#ADB1B8] css-qydx2u" data="" style={{ background: "transparent", outline: "medium", border: "none", width: "100%" }} />
                                                     <div className="justify-items-center text-brandColor-bds-brand-900-text text-[12px] font-medium leading-[18px]" style={{ marginRight: "0px" }}>
-                                                        <span className="moly-text text-[var(--bds-gray-t1-title)] css-1016zpq font-[400] inline"></span>
+                                                        <span className="moly-text text-[var(--bds-gray-t1-title)] css-1016zpq font-[400] inline">NGN</span>
                                                     </div>
                                                     <div className="color-[#121214] pl-[32px]" style={{ position: "absolute", inset: "0px", zIndex: 0, pointerEvents: "none" }}></div>
                                                 </div>
@@ -195,9 +229,24 @@ export default function CreatePage() {
                             <div className="create-maker__input-item create-maker__input-item-border">
                                 <div className="create-maker__input-item-title">Transaction Settings</div>
                                 <div className="create-maker__item-content">
-                                    <div className="create-maker__time">
+                                    <div class="create-maker__time">
                                         <span>Payment Duration</span>
-                                        <div className="ant-radio-group ant-radio-group-outline create-maker__time-num css-5jb6ku"></div>
+                                        <div class="ant-radio-group ant-radio-group-outline create-maker__time-num css-5jb6ku">
+                                            <label class="ant-radio-wrapper ant-radio-wrapper-checked css-5jb6ku ant-radio-custom bds-theme-component-light css-5jb6ku">
+                                                <span onClick={()=> setDuration("30")} class={`ant-radio ${duration !== "15" ? "ant-radio-checked" : ""}`}>
+                                                    <input type="radio" class="ant-radio-input" value="30" />
+                                                    <span class="ant-radio-inner"></span>
+                                                </span>
+                                                <span>30Minute(s)</span>
+                                            </label>
+                                            <label class="ant-radio-wrapper css-5jb6ku ant-radio-custom bds-theme-component-light css-5jb6ku">
+                                                <span onClick={()=> setDuration("15")} class={`ant-radio ${duration === "15" ? "ant-radio-checked" : ""}`}>
+                                                    <input type="radio" class="ant-radio-input" value="15" />
+                                                    <span class="ant-radio-inner"></span>
+                                                </span>
+                                                <span>15Minute(s)</span>
+                                            </label>
+                                        </div>
                                     </div>
                                     <div className="ant-space-compact css-5jb6ku create-maker__price-input">
                                         <div className="by-space by-space--vertical create-maker__form-item" style={{ gap: "4px" }}>
@@ -341,7 +390,8 @@ export default function CreatePage() {
                             <div className="create-maker__publish-side create-maker__sell-color">
                                 <div className="space-between" style={{ width: "100%" }}>
                                     <span>
-                                        <i className="fiat-iconfont fiat-icon--sell fiat-type-icon"></i>Sell&nbsp;
+                                        {/* <i className="fiat-iconfont fiat-icon--sell fiat-type-icon"></i> */}
+                                        Sell&nbsp;
                                     </span>
                                 </div>&nbsp;
                             </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext';
+import { BsDatabaseGear } from "react-icons/bs";
 
 export default function Menubar() {
     const { user} = useContext(AppContext)
@@ -52,27 +53,9 @@ export default function Menubar() {
                     Chat
                 </button>
             </div>
-        </div>
-        <div className="explore-cards">
-            <div className="overlay">
-                <div className="Loejnsn">
-                    <img src="/asset/Frame 116.png" alt="" />
-                </div>
-            <div className="total Oinedns">
-                    <h4>Explore more with SAFEX When you Switch  to  clients </h4>
-                    <div className="Lkowuens">
-                        <button className="btn active">Switch</button>
-                        <button className="btn">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div className="kdoijiuhr">
             <div className="options">
-                <button onClick={()=> handleRoutes("/p2p/rewards")} className={`flip-button ${pathSegments[1] === "reward" ? "active" : ""} `}>
-                    <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon">
-                        <use xlinkHref="#icon_Support"></use>
-                    </svg>
+                <button onClick={()=> handleRoutes("/p2p/rewards")} className={`flip-button ${pathSegments[1] === "rewards" ? "active" : ""} `}>
+                    <BsDatabaseGear />
                     Reward
                 </button>
             </div>
@@ -91,6 +74,20 @@ export default function Menubar() {
         </div>
 
 
+        <div className="explore-cards">
+            <div className="overlay">
+                {/* <div className="Loejnsn">
+                    <img src="/asset/Frame 116.png" alt="" />
+                </div> */}
+            <div className="total Oinedns">
+                    <h4>Explore more with SAFEX When you Switch  to  clients </h4>
+                    <div className="Lkowuens">
+                        <button className="btn active">Switch</button>
+                        <button className="btn">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div className="line"></div>
         {!user ? "" : <div className="logout">
@@ -100,7 +97,7 @@ export default function Menubar() {
                 <div className="active"></div>
             </div>
             <div className="name-address">
-                <div>{user?.username}</div>
+                <div className='user'>{user?.username}</div>
                 <div>{truncateMiddle(user?.userId)}</div>
             </div>
             <div className="logout-icon">

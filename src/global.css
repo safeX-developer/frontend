@@ -51,8 +51,8 @@
 .fnKcEH.button {
   color: rgb(245, 246, 247);
   box-shadow: rgba(29, 34, 37, 0.1) 0px 4px 8px 0px;
-  background-color: var(--primary-color);
-  background-image: conic-gradient(from 1turn, var(--primary-color), #e25724);
+  background-color: var(--secondary-color);
+  background-image: conic-gradient(from 1turn, var(--secondary-color), #e25724);
 }
 .button-create {
   position: relative;

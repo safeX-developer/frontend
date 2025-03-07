@@ -1,6 +1,6 @@
 .list-maker__container .list-maker-content {
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 40px 15px  20px 15px;
     /* width: 1200px; */
 }
 .list-maker__container .list-maker__h1 {
@@ -13,7 +13,7 @@
     display: inherit;
 }
 .list-maker__container .list-maker__h1 .list-maker__h1-title {
-    color: var(--gray-08);
+    color: #ffff;
     font-size: 24px;
     font-weight: 700;
     line-height: 31px;
@@ -69,10 +69,7 @@
     outline: 2px solid transparent;
     outline-offset: 2px;
 }
-.text-base-bds-gray-t1-title {
-    color: #121214;
-    color: var(--bds-gray-t1-title);
-}
+
 .leading-\[22px\] {
     line-height: 22px;
 }
@@ -81,7 +78,7 @@
     font-weight: var(--bds-font-weight-semibold);
 }
 .list-maker__container .list-maker__nav {
-    background: var(--color-white);
+    background: var(--card-color);
     border-radius: 8px;
     display: flex
 ;
@@ -434,6 +431,7 @@ a, a:focus, a:hover, a:visited {
 }
 .border {
     border-width: 1px;
+    border-color: #75737392;
 }
 .py-\[8px\] {
     padding-top: 8px;

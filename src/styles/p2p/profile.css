@@ -179,10 +179,7 @@
     outline: 2px solid transparent;
     outline-offset: 2px;
 }
-.text-base-bds-gray-t1-title {
-    color: #121214;
-    color: var(--bds-gray-t1-title);
-}
+
 .leading-\[22px\] {
     line-height: 22px;
 }
@@ -216,6 +213,7 @@
 }
 .border {
     border-width: 1px;
+    border-color: #75737392;
 }
 .border-y-\[1px\] {
     border-top-width: 1px;

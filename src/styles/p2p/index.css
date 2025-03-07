@@ -20,7 +20,7 @@
     box-sizing: border-box;
 }
 .by-switch.action-type-switch {
-    background-color: var(--gray-bg-page);
+    background-color: var(--card-primary-color);
     border: 0;
     width: 192px;
 }

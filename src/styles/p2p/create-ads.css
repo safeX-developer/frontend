@@ -1,9 +1,11 @@
 .fiat__spin-container, .fiat__spin-wrapper {
     position: relative;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 .create-maker__title {
     align-items: center;
-    color: var(--gray-08);
+    color: #ffff;
     display: flex
 ;
     font-size: 24px;
@@ -47,37 +49,29 @@
     width: 690px;
 }
 .create-maker__header-wrapper {
-    background-color: var(--color-white);
+    background-color: var(--card-color);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    box-shadow: inset 0 -1px 0 #f4f4f4;
+    box-shadow: inset 0 -1px 0 #75737392;
     height: 74px;
     justify-content: space-between;
     padding: 24px;
     width: 100%;
 }
 .create-maker__header {
-    color: var(--gray-08);
     font-size: 20px;
     font-weight: 600;
 }
 .create-maker__share-stock-link {
     background-color: var(--fiat-background-02);
     border-radius: var(--size-32);
-    color: var(--gray-08);
+ 
     cursor: pointer;
     padding: var(--size-12) var(--size-16);
 }
 .create-maker__share-stock-new {
     height: 16px;
     width: 35px;
-}
-.create-maker__content {
-    background-color: var(--color-white);
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    padding-left: 24px;
-    padding-right: 24px;
 }
 .create-maker__input-item {
     padding: 24px 88px 24px 0;
@@ -89,7 +83,7 @@
     flex: 1 1;
 }
 .create-maker__form-input, .create-maker__form-title {
-    color: var(--gray-08);
+ 
     font-size: 14px;
     line-height: 18px;
 }
@@ -100,7 +94,6 @@
     display: flex;
 }
 .create-maker__input-item-title {
-    color: var(--gray-08);
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
@@ -119,7 +112,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, 0.88);
+    
     font-size: 14px;
     line-height: 1.5714285714285714;
     list-style: none;
@@ -128,9 +121,7 @@
     display: inline-block;
     cursor: pointer;
 }
-:where(.css-5jb6ku).ant-select:not(.ant-select-customize-input).ant-select-custom.ant-select-single .ant-select-selector {
-    color: var(--bds-gray-t1-title);
-}
+
 :where(.css-5jb6ku).ant-select.ant-select-single.ant-select-custom.ant-select-custom-sm .ant-select-selector {
     height: 40px;
     border-radius: 4px;
@@ -138,7 +129,7 @@
 }
 :where(.css-5jb6ku).ant-select:not(.ant-select-customize-input).ant-select-custom .ant-select-selector {
     align-items: center;
-    background: var(--bds-gray-ele-line);
+    background: var(--card-primary-color);
     border: none;
 }
 :where(.css-5jb6ku).ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
@@ -148,7 +139,7 @@
 }
 :where(.css-5jb6ku).ant-select:not(.ant-select-customize-input) .ant-select-selector {
     position: relative;
-    background-color: #ffffff;
+    background: var(--card-primary-color);
     border: 1px solid #d9d9d9;
     transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
@@ -156,7 +147,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, 0.88);
+
     font-size: 14px;
     line-height: 1.5714285714285714;
     list-style: none;
@@ -225,7 +216,7 @@
 ;
 }
 .create-maker__input-item-title {
-    color: var(--gray-08);
+ 
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
@@ -246,7 +237,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, 0.88);
+    
     font-size: 0;
     line-height: 1.5714285714285714;
     list-style: none;
@@ -257,7 +248,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, 0.88);
+    
     font-size: 14px;
     line-height: 1.5714285714285714;
     list-style: none;
@@ -274,7 +265,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, 0.88);
+    
     font-size: 14px;
     line-height: 1.5714285714285714;
     list-style: none;
@@ -330,12 +321,20 @@
     display: block;
     width: 16px;
     height: 16px;
-    background-color: #ffffff;
-    border-color: #d9d9d9;
+    /* background-color: #ffffff; */
+    border-color: #75737392;
     border-style: solid;
     border-width: 1px;
     border-radius: 50%;
     transition: all 0.2s;
+}
+:where(.css-5jb6ku).ant-radio-wrapper .ant-radio-checked .ant-radio-inner::after {
+    transform: scale(0.5);
+    opacity: 1;
+    transition: all 0.3scubic-bezier(0.78, 0.14, 0.15, 0.86);
+}
+:where(.css-5jb6ku).ant-space-vertical {
+    flex-direction: column;
 }
 :where(.css-5jb6ku).ant-radio-wrapper span.ant-radio+* {
     padding-inline-start: 8px;
@@ -428,8 +427,7 @@
     font-size: 12px;
 }
 .bg-base-bds-gray-ele-line {
-    background-color: #f3f5f7;
-    background-color: var(--bds-gray-ele-line);
+    background-color: var(--card-primary-color);
 }
 .create-maker__form-item {
     width: 100%;
@@ -451,7 +449,7 @@
     cursor: pointer;
 }
 .create-maker__time {
-    color: var(--gray-08);
+ 
     display: flex;
     font-size: 14px;
     line-height: 22px;
@@ -491,7 +489,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 4px 11px;
-    color: rgba(0, 0, 0, 0.88);
     font-size: 14px;
     line-height: 1.5714285714285714;
     list-style: none;
@@ -500,11 +497,11 @@
     display: inline-block;
     width: 100%;
     min-width: 0;
-    background-color: #ffffff;
+    background-color: var(--card-primary-color);
     background-image: none;
     border-width: 1px;
     border-style: solid;
-    border-color: #d9d9d9;
+    border-color: #75737392;
     border-radius: 6px;
     transition: all 0.2s;
 }
@@ -532,7 +529,6 @@
     padding-right: 24px;
 }
 .create-maker__input-item-title {
-    color: var(--gray-08);
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
@@ -545,8 +541,7 @@
     align-items: center;
 }
 :where(.css-5jb6ku).ant-space {
-    display: inline-flex
-;
+    display: inline-flex;
 }
 :where(.css-5jb6ku).ant-btn-custom.ant-btn-custom-middle {
     padding: 12px 24px;
@@ -582,7 +577,7 @@
     user-select: none;
     touch-action: manipulation;
     line-height: 1.5714285714285714;
-    color: rgba(0, 0, 0, 0.88);
+    
 }
 
 .index_tipContainer__nJzO3 {
@@ -626,12 +621,14 @@
     user-select: none;
     touch-action: manipulation;
     line-height: 1.5714285714285714;
-    color: rgba(0, 0, 0, 0.88);
 }
 :where(.css-5jb6ku).ant-btn-default {
-    background-color: #ffffff;
-    border-color: #d9d9d9;
+    /* background-color: #ffffff; */
+    border-color: #75737392;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.02);
+}
+.create-maker__time-num {
+    margin-left: 24px;
 }
 .create-maker__publish-container {
     border-radius: 8px;
@@ -647,19 +644,32 @@
 }
 .create-maker__h2 {
     align-items: center;
-    background-color: var(--color-white);
+    background-color: var(--card-color);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    box-shadow: inset 0 -1px 0 #f4f4f4;
-    color: var(--gray-08);
+    box-shadow: inset 0 -1px 0  #75737392;;
     display: flex;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     height: 74px;
     line-height: 26px;
 }
+:where(.css-5jb6ku).ant-select .ant-select-selection-item {
+    flex: 1;
+    font-weight: normal;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+:where(.css-5jb6ku).ant-select-single .ant-select-selector .ant-select-selection-search {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 11px;
+    inset-inline-end: 11px;
+    bottom: 0;
+}
 .create-maker__content {
-    background-color: var(--color-white);
+    background-color: var(--card-color);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     padding-left: 24px;
@@ -673,7 +683,7 @@
 }
 .create-maker__publish-side {
     align-items: center;
-    box-shadow: inset 0 -1px 0 #f4f4f4;
+    box-shadow: inset 0 -1px 0 #75737392;
     display: flex;
     font-size: 16px;
     font-weight: 600;
@@ -696,19 +706,16 @@
     margin-right: 12px;
 }
 
-.create-maker__publish-info {
-    box-shadow: inset 0 -1px 0 #f4f4f4;
-    padding-bottom: 24px;
-}
 .fiat-icon--sell:before {
     content: "\e604";
 }
 .create-maker__publish-info {
-    box-shadow: inset 0 -1px 0 #f4f4f4;
+    box-shadow: inset 0 -1px 0 #75737392;
     padding-bottom: 24px;
 }
+
 .create-maker__publish-item {
-    color: var(--gray-08);
+ 
     display: flex;
     font-size: 16px;
     justify-content: space-between;
@@ -731,7 +738,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, 0.88);
+    
     font-size: 14px;
     line-height: 1.5714285714285714;
     list-style: none;
@@ -791,7 +798,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, 0.88);
+    
     font-size: 14px;
     line-height: 1.5714285714285714;
     list-style: none;
@@ -834,23 +841,6 @@ a, a:focus, a:hover, a:visited {
 .create-maker__publish-btn {
     margin-top: 40px;
 }
-:where(.css-5jb6ku).ant-btn {
-    outline: none;
-    position: relative;
-    display: inline-block;
-    font-weight: 400;
-    white-space: nowrap;
-    text-align: center;
-    background-image: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-    user-select: none;
-    touch-action: manipulation;
-    line-height: 1.5714285714285714;
-    color: rgba(0, 0, 0, 0.88);
-}
 :where(.css-5jb6ku).ant-btn-primary {
     color: #fff;
     background-color: #f7a600;
@@ -884,8 +874,28 @@ a, a:focus, a:hover, a:visited {
     height: 18px;
     width: 18px;
 }
+.text-\[var\(--bds-gray-t1-title\)\] {
+    color: white;
+}
+
 .share-stock-tips-title {
-    color: var(--gray-08);
     font-size: var(--size-16);
     font-weight: 700;
+}
+:where(.css-5jb6ku).ant-select-dropdown.ant-select-custom-dropdown {
+    background: var(--bds-gray-bg-card);
+    border: 1px solid var(--bds-gray-ele-line);
+    box-shadow: var(--bds-shadow-l1);
+    border-radius: 8px;
+}
+.text-\[12px\] {
+    font-size: 11px;
+}
+.create-maker__tips-2 {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+}
+.bg-base-bds-gray-ele-line:focus-within{
+    border: 1px solid var(--secondary-color);
 }

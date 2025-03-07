@@ -1,6 +1,6 @@
 .list-maker__container .list-maker-content {
     margin: 0 auto;
-    padding: 40px 0 80px;
+    padding: 40px 15px  20px 15px;
     width: 100%;
 }
 .list-maker__container .list-maker__h1 {
@@ -13,10 +13,10 @@
     display: inherit;
 }
 .list-maker__container .list-maker__h1 .list-maker__h1-title {
-    color: var(--gray-08);
     font-size: 24px;
     font-weight: 700;
     line-height: 31px;
+    color: #ffff;
 }
 .list__maker--level {
     align-items: center;
@@ -69,10 +69,7 @@
     outline: 2px solid transparent;
     outline-offset: 2px;
 }
-.text-base-bds-gray-t1-title {
-    color: #121214;
-    color: var(--bds-gray-t1-title);
-}
+
 .leading-\[22px\] {
     line-height: 22px;
 }
@@ -98,6 +95,8 @@
 .border-base-bds-gray-t4-dis {
     border-color: #d5dae0;
     border-color: var(--bds-gray-t4-dis);
+    display: flex;
+    gap: 5px;
 }
 .border-solid {
     border-style: solid;
@@ -108,9 +107,11 @@
 }
 .border {
     border-width: 1px;
+    border-color: #75737392;
 }
+
 .list-maker__container .list-maker__nav {
-    background: var(--color-white);
+    background: var(--card-color);
     border-radius: 8px;
     display: flex;
     height: 66px;
@@ -126,22 +127,15 @@
     margin-left: 0;
 }
 .list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item:hover, .list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item[data-active=true] {
-    color: #e49a00;
+    color: var(--primary-color);
     font-weight: 900;
 }
-.list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item {
-    align-items: center;
-    color: var(--gray-07);
-    display: flex;
-    height: 100%;
-    position: relative;
-}
+
 .list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item {
     margin-left: 40px;
 }
 .list-maker__container .list-maker__nav .list-left-nav button.list-maker__nav-item {
     align-items: center;
-    color: var(--gray-07);
     display: flex;
     height: 100%;
     position: relative;
@@ -150,6 +144,7 @@
     align-items: center;
     display: flex;
     position: relative;
+    gap: 10px;
 }
  .list-maker__container .list-maker__nav .list-right-nav .otc-schedule-allowToggle {
     margin-left: 8px;
@@ -289,13 +284,12 @@
     user-select: none;
 }
 .maker-list__wrapper {
-    background: var(--color-white);
+    background: var(--card-color);
     border-radius: 8px;
     margin-top: 24px;
     padding: 0 32px;
 }
 .maker-table__wrapper {
-    background: var(--color-white);
     border-radius: 8px;
     margin-top: 24px;
     position: relative;
@@ -307,13 +301,12 @@
     width: 100%;
 }
 .maker-table__thead {
-    color: var(--gray-06);
     font-size: 12px;
     height: 48px;
     line-height: 16px;
 }
 .maker-table__tbody-tr, .maker-table__thead-tr {
-    box-shadow: inset 0 -1px 0 #f4f4f4;
+    box-shadow: inset 0 -1px 0 #75737392;
 }
 .maker-table__th {
     vertical-align: middle;
@@ -344,7 +337,7 @@
 }
 .maker-list__pager {
     align-items: center;
-    box-shadow: inset 0 1px 0 #f4f4f4;
+    box-shadow: inset 0 1px 0 #75737392;
     display: flex;
     height: 72px;
     justify-content: flex-end;
@@ -398,7 +391,7 @@
     margin-right: 8px;
 }
 .list-maker__container .list-maker__nav .list-left-nav .list-maker__nav-item[data-active=true]:after {
-    background: #e49a00;
+    background: var(--primary-color);
     border-radius: 4px;
     bottom: 0;
     content: "";
