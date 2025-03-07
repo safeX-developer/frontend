@@ -215,7 +215,6 @@
     user-select: none;
     touch-action: manipulation;
     line-height: 1.5714285714285714;
-    color: rgba(0, 0, 0, 0.88);
 }
 :where(.css-5jb6ku).ant-btn >span {
     display: inline-block;

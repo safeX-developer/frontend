@@ -562,24 +562,6 @@
     box-sizing: border-box;
 }
 
-:where(.css-5jb6ku).ant-btn {
-    outline: none;
-    position: relative;
-    display: inline-block;
-    font-weight: 400;
-    white-space: nowrap;
-    text-align: center;
-    background-image: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-    user-select: none;
-    touch-action: manipulation;
-    line-height: 1.5714285714285714;
-    
-}
-
 .index_tipContainer__nJzO3 {
     color: var(--bds-gray-t3);
     margin-bottom: 16px;
@@ -737,18 +719,16 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    
     font-size: 14px;
     line-height: 1.5714285714285714;
     list-style: none;
     font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
-    display: inline-flex
-;
+    display: inline-flex;
     align-items: baseline;
     cursor: pointer;
 }
 :where(.css-5jb6ku).ant-checkbox .ant-checkbox-input {
-    /* position: absolute; */
+    position: absolute;
     inset: 0;
     z-index: 1;
     width: 100%;
@@ -1133,7 +1113,7 @@ a, a:focus, a:hover, a:visited {
     overflow-y: scroll;
 }
 .paymentItemNew .itemContent {
-    border: 1px solid var(--gray-element-line);
+    border: 1px solid var(--border);
     border-radius: var(--size-8);
 }
 :where(.css-5jb6ku).ant-checkbox-custom.ant-checkbox-custom-sm.ant-checkbox-wrapper {
@@ -1153,9 +1133,66 @@ a, a:focus, a:hover, a:visited {
     cursor: pointer;
 }
 .paymentItemNew .paymentItemHeader {
+    background: var(--card-primary-color);
     border-top-left-radius: var(--size-4);
     border-top-right-radius: var(--size-4);
     line-height: 20px;
     padding: 8px 16px;
     position: relative;
+}
+.footCustom .btnWrapper {
+    display: flex;
+    justify-content: space-around;
+}
+.footCustom .btnWrapper .ant-space-item {
+    flex: 1 1;
+}
+.footCustom .btnWrapper .ant-space-item .ant-btn-custom {
+    width: 100%;
+}
+.paymentItemNew .paymentItemBody {
+    margin-top: 0 !important;
+    padding: 16px;
+}
+.paymentItemNew .paymentItemBody .paymentItemBreak {
+    display: inline-block;
+    padding: 0 8px;
+    position: relative;
+    word-break: break-all;
+}
+.paymentItemNew .paymentItemBody .paymentItemBreak:first-child {
+    padding-left: 0;
+}
+.paymentItemNew .paymentItemBody .paymentItemBreak .paymentItemSpan {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
+.paymentItemNew .paymentItemBody .paymentItemBreak:after {
+    background-color: var(--border);
+    content: "";
+    height: 12px;
+    position: absolute;
+    top: 5px;
+    width: 1px;
+}
+.paymentItemNew .paymentItemBody .paymentItemBreak:after {
+    margin-left: 8px;
+}
+.footCustom {
+    padding-top: 24px;
+    width: 100%;
+}
+:where(.css-5jb6ku).ant-checkbox-wrapper.ant-checkbox-custom .ant-checkbox-checked .ant-checkbox-inner, :where(.css-5jb6ku).ant-checkbox-group .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--bds-brand-700-normal);
+    border-color: var(--bds-brand-700-normal);
+}
+:where(.css-5jb6ku).ant-checkbox-wrapper.ant-checkbox-custom .ant-checkbox-checked .ant-checkbox-inner:after, :where(.css-5jb6ku).ant-checkbox-group .ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner:after {
+    border-color: #121214;
+}
+:where(.css-5jb6ku).ant-checkbox-checked .ant-checkbox-inner:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1) translate(-50%, -50%);
+    transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
 }

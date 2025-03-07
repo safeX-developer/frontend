@@ -15,6 +15,7 @@ export default function CreatePage() {
     const [ priceSetting, setpriceSetting ] = useState(0)
     const [ fixedPrice, setFixedPrice] = useState(0)
     const [ totalQuality, setTotalQuality] = useState(0)
+    const [ paymentMethod, setpaymentMethod] = useState(0)
 
     const handlePriceInput = ((data)=>{
         setFixedPrice(data)
@@ -373,7 +374,7 @@ export default function CreatePage() {
                         <div className="create-maker__input-item create-maker__input-item-border">
                             <div className="create-maker__input-item-title">Payment Method</div>
                             <div className="create-maker__item-content">
-                                <button type="button" className="ant-btn css-5jb6ku ant-btn-default css-5jb6ku ant-btn-custom index_createPaymentBtn__rFYMh ant-btn-custom-middle bds-theme-component-light">
+                                <button onClick={()=> setpaymentMethod(true)} type="button" className="ant-btn css-5jb6ku ant-btn-default css-5jb6ku ant-btn-custom index_createPaymentBtn__rFYMh ant-btn-custom-middle bds-theme-component-light">
                                     <div className="ant-space css-5jb6ku ant-space-horizontal ant-space-align-center" style={{ gap: "8px" }}>
                                         <div className="ant-space-item" >
                                             <i className="iconfont icon-plus"></i>
@@ -473,7 +474,8 @@ export default function CreatePage() {
             </div>
         </div>
     </div>
-    <PaymentMethod />
+    {paymentMethod ? 
+    <PaymentMethod handleCancel={()=> setpaymentMethod(false)} /> : ""}
 </>
   
     )
