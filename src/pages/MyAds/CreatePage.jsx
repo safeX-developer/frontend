@@ -16,13 +16,15 @@ export default function CreatePage() {
     const [ fixedPrice, setFixedPrice] = useState(0)
     const [ totalQuality, setTotalQuality] = useState(0)
     const [ paymentMethod, setpaymentMethod] = useState(0)
-
+    const [minTrade, setMinTrade] = useState(0)
+    const [maxTrade, setMaxTrade] = useState(0)
+    const [ markPostTrade, setMarkPostTrade ] = useState(false)
     const handlePriceInput = ((data)=>{
         setFixedPrice(data)
     })
 
     const tradedPrice = (()=>{
-        return "USDT/NGN"
+        return fixedPrice + " USDT/NGN"
     })
 
     useEffect(() => {
@@ -298,7 +300,7 @@ export default function CreatePage() {
                                             </div>
                                             <div className="by-space-item" >
                                                 <div className="moly-input relative flex items-center bg-base-bds-gray-ele-line border border-solid border-base-bds-gray-ele-line transition-all ease-in-out duration-100 font-IBM hover:border hover:border-solid hover:border-brandColor-bds-brand-800-pressed h-[40px] pl-[11px] pr-[9px] rounded gap-[8px] create-maker__form-input">
-                                                    <input type="text" placeholder="0" className="text-[12px] font-medium leading-[18px] appearance-none placeholder:text-[#ADB1B8] css-qydx2u" min="0" data="" value="" style={{ background: "transparent", outline: "medium", border: "none", width: "100%" }} />
+                                                    <input type="text" onChange={(e)=> setMinTrade(e.target.value)} placeholder="4,500" className="text-[12px] font-medium leading-[18px] appearance-none placeholder:text-[#ADB1B8] css-qydx2u" min="0" data="" style={{ background: "transparent", outline: "medium", border: "none", width: "100%" }} />
                                                     <div className="justify-items-center text-brandColor-bds-brand-900-text text-[12px] font-medium leading-[18px]" style={{ marginRight: "0px" }}>
                                                         <span className="moly-text text-[var(--bds-gray-t1-title)] css-1016zpq font-[400] inline"></span>
                                                     </div>
@@ -322,7 +324,7 @@ export default function CreatePage() {
                                             </div>
                                             <div className="by-space-item" >
                                                 <div className="moly-input relative flex items-center bg-base-bds-gray-ele-line border border-solid border-base-bds-gray-ele-line transition-all ease-in-out duration-100 font-IBM hover:border hover:border-solid hover:border-brandColor-bds-brand-800-pressed h-[40px] pl-[11px] pr-[9px] rounded gap-[8px] create-maker__form-input">
-                                                    <input type="text" placeholder="0" className="text-[12px] font-medium leading-[18px] appearance-none placeholder:text-[#ADB1B8] css-qydx2u" min="0" data="" value="" style={{ background: "transparent", outline: "medium", border: "none", width: "100%" }} />
+                                                    <input onChange={(e)=> setMaxTrade(e.target.value)} type="text" placeholder="23,000,000" className="text-[12px] font-medium leading-[18px] appearance-none placeholder:text-[#ADB1B8] css-qydx2u" min="0" data=""  style={{ background: "transparent", outline: "medium", border: "none", width: "100%" }} />
                                                     <div className="justify-items-center text-brandColor-bds-brand-900-text text-[12px] font-medium leading-[18px]" style={{ marginRight: "0px" }}>
                                                         <span className="moly-text text-[var(--bds-gray-t1-title)] css-1016zpq font-[400] inline">
                                                         </span></div>
@@ -415,7 +417,7 @@ export default function CreatePage() {
                             <div className="create-maker__publish-item">
                                 <span>Price</span>
                                 <span className="create-maker__publish-item-value">
-                                <span className="create-maker__placeholder">--</span></span>
+                                <span className="create-maker__placeholder">{fixedPrice ? fixedPrice : "--"}</span></span>
                             </div>
                             <div className="create-maker__publish-item">
                                 <span>Total Quantity</span>
@@ -426,14 +428,14 @@ export default function CreatePage() {
                             <div className="create-maker__publish-item">
                                 <span>Limits</span>
                                 <span className="create-maker__publish-item-value">
-                                    <span className="create-maker__placeholder">--</span>&nbsp; ~ &nbsp;<span className="create-maker__placeholder">--</span></span>
+                                    <span className="create-maker__placeholder">{minTrade ? minTrade : "--"}</span>&nbsp; ~ &nbsp;<span className="create-maker__placeholder">{maxTrade ? maxTrade : "--"}</span></span>
                             </div>
                             <div className="create-maker__publish-item">
                                 <span className="create-maker__payment-method-name">Payment Method</span>
                             </div>
                         </div>
                         <label className="ant-checkbox-wrapper css-5jb6ku ant-checkbox-custom create-maker__publish-agreement bds-theme-component-light css-5jb6ku">
-                            <span className="ant-checkbox css-5jb6ku">
+                            <span onClick={()=> setCreatingAd(true)} className={`ant-checkbox css-5jb6ku ${creatingAd ? "ant-checkbox-checked" : ""} `}>
                                 <input type="checkbox" className="ant-checkbox-input" value="" />
                                 <span className="ant-checkbox-inner"></span>
                             </span>
@@ -444,7 +446,7 @@ export default function CreatePage() {
                                 </span>
                             </span>
                         </label>
-                        <button onClick={handleCreateAd} type="button" className="ant-btn css-5jb6ku ant-btn-primary ant-btn-block css-5jb6ku ant-btn-custom create-maker__publish-btn ant-btn-custom-middle ant-btn-custom-primary bds-theme-component-light" disabled={creatingAd}>
+                        <button onClick={handleCreateAd} type="button" className="ant-btn css-5jb6ku ant-btn-primary ant-btn-block css-5jb6ku ant-btn-custom create-maker__publish-btn ant-btn-custom-middle ant-btn-custom-primary bds-theme-component-light" disabled={!creatingAd}>
                             <span>Post Ads</span>
                         </button>
                     </div>
