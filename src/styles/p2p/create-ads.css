@@ -899,3 +899,224 @@ a, a:focus, a:hover, a:visited {
 .bg-base-bds-gray-ele-line:focus-within{
     border: 1px solid var(--secondary-color);
 }
+:where(.css-5jb6ku).ant-modal-root .ant-modal-mask {
+    position: fixed;
+    top: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    inset-inline-start: 0;
+    z-index: 1000;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal-wrap {
+    position: fixed;
+    top: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    inset-inline-start: 0;
+    overflow: auto;
+    outline: 0;
+    -webkit-overflow-scrolling: touch;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal-centered {
+    text-align: center;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal-wrap {
+    z-index: 1000;
+    position: fixed;
+    inset: 0;
+    overflow: auto;
+    outline: 0;
+    -webkit-overflow-scrolling: touch;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal-centered::before {
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom {
+    height: auto;
+    /* color: var(--bds-gray-t1-title); */
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal-centered .ant-modal {
+    top: 0;
+    display: inline-block;
+    padding-bottom: 0;
+    text-align: start;
+    vertical-align: middle;
+}
+:where(.css-5jb6ku).ant-modal {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    /* color: rgba(0, 0, 0, 0.88); */
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    list-style: none;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
+    pointer-events: none;
+    position: relative;
+    top: 100px;
+    width: auto;
+    max-width: calc(100vw - 32px);
+    padding-bottom: 24px;
+}
+:where(.css-5jb6ku)[class^="ant-modal"] [class^="ant-modal"], :where(.css-5jb6ku)[class*=" ant-modal"] [class^="ant-modal"], :where(.css-5jb6ku)[class^="ant-modal"] [class*=" ant-modal"], :where(.css-5jb6ku)[class*=" ant-modal"] [class*=" ant-modal"] {
+    box-sizing: border-box;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal-centered .ant-modal {
+    top: 0;
+    display: inline-block;
+    padding-bottom: 0;
+    text-align: start;
+    vertical-align: middle;
+}
+
+
+.ant-modal-content {
+    position: relative;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    pointer-events: auto;
+    padding: 20px 24px;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-content {
+    padding: 24px 32px;
+    background-color: rgb(21 21 30);
+    border-radius: 16px;
+    box-shadow: var(--bds-shadow-l2);
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-close {
+    width: 24px;
+    height: 24px;
+    color: var(--bds-gray-t3);
+}
+:where(.css-5jb6ku).ant-modal .ant-modal-close {
+    position: absolute;
+    top: 17px;
+    inset-inline-end: 17px;
+    z-index: 1010;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.45);
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    background: transparent;
+    border-radius: 4px;
+    width: 22px;
+    height: 22px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-close .ant-modal-close-x {
+    height: 24px;
+    font-size: 24px;
+}
+:where(.css-5jb6ku).ant-modal .ant-modal-close-x {
+    display: block;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 22px;
+    text-align: center;
+    text-transform: none;
+    text-rendering: auto;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-close:hover {
+    color: #ffff;
+}
+:where(.css-5jb6ku).ant-modal .ant-modal-close:hover {
+  color: #ffff;
+    background-color: rgba(0, 0, 0, 0.06);
+    text-decoration: none;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-content .ant-modal-header {
+    margin-bottom: 24px;
+}
+:where(.css-5jb6ku).ant-modal .ant-modal-header {
+    color: #ffff;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 8px;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-content .ant-modal-header .ant-modal-title {
+    font-size: var(--bds-font-size-18);
+    font-weight: var(--bds-font-weight-semibold);
+    color: #fff;
+}
+:where(.css-5jb6ku).ant-modal .ant-modal-title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+:where(.css-5jb6ku).ant-modal .ant-modal-body {
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    word-wrap: break-word;
+}
+.p2p_level--wrap-decribe {
+    margin-bottom: 24px;
+}
+
+.p2p_level--next {
+    background: rgba(247, 166, 0, .12);
+    background: var(--brand-100-bg, rgba(247, 166, 0, .12));
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+.p2p_level--wrap-current, .p2p_level--wrap-next {
+    display: flex;
+    justify-content: space-between;
+    height: 28px;
+}
+.p2p_level--wrap-current p:first-child {
+    font-weight: 600;
+}
+.p2p_level--main-cur p:last-child, [dir=ltr] .p2p_level--wrap-current p:last-child {
+    margin-left: 8px;
+}
+
+.p2p_level--next-line {
+    background-color: rgba(247, 166, 0, .12);
+    background-color: var(--brand-100-bg, rgba(247, 166, 0, .12));
+    height: 1px;
+    margin-top: 12px;
+    width: 100%;
+}
+.p2p_level--cur {
+    background: var(--card-primary-color);
+}
+.p2p_level--next-lineCur {
+    background-color: #f3f5f7;
+}
+.p2p_level--wrap-content-next {
+    margin-top: 16px;
+}
+.p2p_level--wrap-next p:first-child {
+    color: #81858c;
+    font-size: 12px;
+}
+.p2p_level--main-img {
+    text-align: center;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-content .ant-modal-custom-content .ant-modal-custom-footer {
+    margin-top: 24px;
+    display: flex
+;
+    justify-content: space-evenly;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-content .ant-modal-custom-content .ant-modal-custom-footer Button {
+    width: 100%;
+    margin-left: 24px;
+}
+:where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-content .ant-modal-custom-content .ant-modal-custom-footer Button:first-child {
+    margin-left: 0;
+}
