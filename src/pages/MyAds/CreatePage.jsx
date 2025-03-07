@@ -3,6 +3,7 @@ import "../../styles/p2p/create-ads.css"
 import { useSendTransaction } from "thirdweb/react";
 import { createAd } from '../../api/tradeApi';
 import Tip from './Tip';
+import PaymentMethod from './PaymentMethod';
 
 
 export default function CreatePage() {
@@ -12,10 +13,15 @@ export default function CreatePage() {
     const [ tab, setTab ] = useState(0)
     const [ duration, setDuration ] = useState("15")
     const [ priceSetting, setpriceSetting ] = useState(0)
-    const [ fixedPrice, setFixedPrice] = useState("")
+    const [ fixedPrice, setFixedPrice] = useState(0)
+    const [ totalQuality, setTotalQuality] = useState(0)
 
     const handlePriceInput = ((data)=>{
-        
+        setFixedPrice(data)
+    })
+
+    const tradedPrice = (()=>{
+        return "USDT/NGN"
     })
 
     useEffect(() => {
@@ -224,7 +230,7 @@ export default function CreatePage() {
                                 </div>
                                 <div className="ant-space css-5jb6ku ant-space-vertical create-maker__tips create-maker__tips-top" style={{ gap: "0px" }}>
                                     <div className="ant-space-item" >
-                                        <span className="create-maker__tips-2 create-maker__tips-last-traded-price">Traded Price:&nbsp;<span className="create-maker__tips-2-font">-- /</span>&nbsp;&nbsp;</span>
+                                        <span className="create-maker__tips-2 create-maker__tips-last-traded-price">Traded Price:&nbsp;<span className="create-maker__tips-2-font">{tradedPrice()}</span>&nbsp;&nbsp;</span>
                                     </div>
                                     <div className="ant-space-item" >
                                         <span className="create-maker__tips-2">Reference Price:&nbsp;<span className="create-maker__tips-2-font">0 /</span></span>
@@ -264,7 +270,7 @@ export default function CreatePage() {
                                         </div>
                                         <div className="by-space-item" >
                                             <div className="moly-input relative flex items-center bg-base-bds-gray-ele-line border border-solid border-base-bds-gray-ele-line transition-all ease-in-out duration-100 font-IBM hover:border hover:border-solid hover:border-brandColor-bds-brand-800-pressed h-[40px] pl-[11px] pr-[9px] rounded gap-[8px] create-maker__form-input">
-                                                <input type="text" placeholder="Enter" className="text-[12px] font-medium leading-[18px] appearance-none placeholder:text-[#ADB1B8] css-qydx2u" min="0" data="" value="" style={{ background: "transparent", outline: "medium", border: "none", width: "100%" }} />
+                                                <input type="text" onChange={(e)=> setTotalQuality(e.target.value)} placeholder="Enter" className="text-[12px] font-medium leading-[18px] appearance-none placeholder:text-[#ADB1B8] css-qydx2u" min="0" data=""  style={{ background: "transparent", outline: "medium", border: "none", width: "100%" }} />
                                                 <div className="justify-items-center text-brandColor-bds-brand-900-text text-[12px] font-medium leading-[18px]" style={{ marginRight: "0px" }}>
                                                     <span className="moly-text text-[var(--bds-gray-t1-title)] css-1016zpq font-[400] inline"></span>
                                                 </div>
@@ -408,12 +414,12 @@ export default function CreatePage() {
                             <div className="create-maker__publish-item">
                                 <span>Price</span>
                                 <span className="create-maker__publish-item-value">
-                                    <span className="create-maker__placeholder">--</span></span>
+                                <span className="create-maker__placeholder">--</span></span>
                             </div>
                             <div className="create-maker__publish-item">
                                 <span>Total Quantity</span>
                                 <span className="create-maker__publish-item-value">
-                                    <span className="create-maker__placeholder">--</span>
+                                    <span className="create-maker__placeholder">{totalQuality ? totalQuality : "--"}</span>
                                 </span>
                             </div>
                             <div className="create-maker__publish-item">
@@ -467,7 +473,8 @@ export default function CreatePage() {
             </div>
         </div>
     </div>
-        </>
+    <PaymentMethod />
+</>
   
     )
 }

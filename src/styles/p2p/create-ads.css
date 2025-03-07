@@ -726,7 +726,6 @@
     font-weight: 600;
 }
 :where(.css-5jb6ku).ant-checkbox-wrapper.ant-checkbox-custom, :where(.css-5jb6ku).ant-checkbox-group .ant-checkbox-wrapper {
-    color: var(--bds-gray-t1-title);
     background-color: transparent;
 }
 :where(.css-5jb6ku)[class^="ant-checkbox"], :where(.css-5jb6ku)[class*=" ant-checkbox"] {
@@ -1094,6 +1093,9 @@ a, a:focus, a:hover, a:visited {
 .p2p_level--cur {
     background: var(--card-primary-color);
 }
+.create-maker__tips-2-font {
+    font-weight: 500;
+}
 .p2p_level--next-lineCur {
     background-color: #f3f5f7;
 }
@@ -1119,4 +1121,41 @@ a, a:focus, a:hover, a:visited {
 }
 :where(.css-5jb6ku).ant-modal-root .ant-modal.ant-modal-custom .ant-modal-content .ant-modal-custom-content .ant-modal-custom-footer Button:first-child {
     margin-left: 0;
+}
+.createPaymentManageDialog .subtitle {
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 16px;
+}
+.createPaymentManageDialog .paymentList {
+    margin-top: 10px;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+.paymentItemNew .itemContent {
+    border: 1px solid var(--gray-element-line);
+    border-radius: var(--size-8);
+}
+:where(.css-5jb6ku).ant-checkbox-custom.ant-checkbox-custom-sm.ant-checkbox-wrapper {
+    font-size: 12px;
+}
+:where(.css-5jb6ku).ant-checkbox {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1;
+    list-style: none;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
+    top: 0.2em;
+    position: relative;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.paymentItemNew .paymentItemHeader {
+    border-top-left-radius: var(--size-4);
+    border-top-right-radius: var(--size-4);
+    line-height: 20px;
+    padding: 8px 16px;
+    position: relative;
 }
