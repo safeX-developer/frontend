@@ -22,6 +22,7 @@ import Referral from './pages/reward/Referral';
 import Task from './pages/reward/Task';
 import SocialVerification from './pages/reward/social-verification';
 import Referal from './pages/reward/Referal';
+import Transaction from './pages/transactions/Transaction';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
                 <Route path='socials' element={<SocialVerification />} />
               </Route> 
                   <Route path='create-ad' element={<CreatePage />}/> 
+                  <Route path='transaction' element={<Transaction />}/> 
                   <Route path='my-ads' element={<MyAds />} >
                     <Route index element={<Listed />}/> 
                     <Route path='all' element={<AllMyAds />}/> 

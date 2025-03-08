@@ -85,11 +85,12 @@
     -webkit-box-pack: justify;
     justify-content: space-between;
     background-color: var(--card-color);
+    border: 1px solid var(--border);
     border-radius: 1.4375rem;
     padding: 0px 0.875rem;
     height: 100%;
     width: 100%;
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
 }
 .dwaOxj input {
     width: 100%;
@@ -116,10 +117,8 @@
     margin-left: 3.125rem;
 }
 .dwaOxj:focus-within {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--secondary-color);
 }
-
-
 .logout{
     position: relative;
     margin: 10px;

@@ -1,0 +1,135 @@
+
+.trx-page-section{
+    position: relative;
+    width: 100%;
+    padding: 15px;
+}
+.trx-header{
+    display: flex;
+    justify-content: space-between;
+}
+.trx-header .right{
+    font-size: 13px;
+    margin: 0 15px;
+}
+.trx-header .right .amount{
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+.trx-header .right .pending{
+    padding: 10px 0;
+    color: #667185;
+}
+.trx-header .right .pending span{
+    color: #98A2B3;
+}
+.trx-header .right .pending span img{
+    width: 10px;
+    margin: 0 3px;
+}
+.left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 25px;
+    gap: 20px;
+}
+.left button{
+    /* margin: 15px; */
+    background: var(--card-primary-color);
+    padding: 13px ;
+    width: 140px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    border-radius: 30px;
+}
+.left button img{
+    width: 12px;
+    margin: 0 10px 0 0;
+}
+.trx-page .line{
+    width: 100%;
+    height: 0.4px;
+    background: var(--border);
+}
+.trx-body{
+    position: relative;
+    margin: 10px;
+}
+.trx-body .filter-box{
+    display: flex;
+    justify-content: space-between;
+}
+.drop-down-btn{
+    border: 1px solid var(--border);
+    width: 150px;
+    padding: 10px;
+    border-radius: 7px;
+}
+.trx-container{
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 12px;
+    max-width: 400px;
+    min-width: 300px;
+}
+.trx-container .header{
+    color: #fff;
+    padding: 10px 0;
+}
+.trx-container .header .buy{
+    color: var(--green-900-focus);
+    font-weight: 600;
+}
+.oigfghfe{
+    position: relative;
+    width: 100%;
+    padding: 15px 0;
+}
+.oigfghfe .title-name-title-details{
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 0;
+    font-size: 13px;
+}
+.title-name-title-details .title-details-btn{
+    background: #FEF6E7;
+    padding: 5px 20px;
+    color: #F3A218;
+    border-radius: 10px;
+}
+.footer{
+    width: 100%;
+    position: relative;
+}
+.footer .footer-body{
+    display: flex;
+    justify-content: space-between;
+}
+.page-numbering, .pagnigation, .direction-njukfdd{
+    padding: 15px;
+    font-size: 13px;
+}
+.pagnigation .pag{
+    background: #1D2739;
+    color: #98A2B3;
+    margin: 0 5px;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+.pagnigation .pag.active{
+    background: #FFECE5;
+    color: #EB5017;
+}
+.direction-njukfdd{
+    display: flex;
+    gap: 10px;
+}
+.direction-njukfdd button{
+    background: #1D2739;
+    color: #667185;
+    padding: 0 15px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+}

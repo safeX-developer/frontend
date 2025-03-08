@@ -42,7 +42,7 @@ export default function Menubar() {
                 </button>
             </div>
             <div className="options">
-                <button className="flip-button">
+                <button onClick={()=> handleRoutes("/p2p/transaction")} className={`flip-button ${pathSegments[1] === "transaction" ? "active" : ""} `}>
                     <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_walletEl"></use></svg>
                     Transactions
                 </button>
