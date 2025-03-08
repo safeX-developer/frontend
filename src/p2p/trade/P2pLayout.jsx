@@ -65,7 +65,7 @@ export default function P2pLayout() {
             <div  className="ant-space-item" >
                 <div className="ant-space css-7o12g0 ant-space-horizontal ant-space-align-center" style={{gap: "0"}}>
                     <div  className="ant-space-item" >
-                        <input placeholder="Enter Amount" className="ant-input css-7o12g0 css-7o12g0 ant-input-custom fiat-otc-input no-border-radius-right ant-input-custom-sm bds-theme-component-light" type="text" value="" style={{width: "120px", height: "40px"}} /></div>
+                        <input placeholder="Enter Amount" className="ant-input css-7o12g0 css-7o12g0 ant-input-custom fiat-otc-input no-border-radius-right ant-input-custom-sm bds-theme-component-light" type="text"  style={{width: "120px", height: "40px"}} /></div>
                         <div className="ant-space-item">
                             <div className="ant-select css-7o12g0 ant-select-custom fiat-otc-select no-border-radius-left ant-select-custom-sm bds-theme-component-light css-7o12g0 ant-select-single ant-select-show-arrow" style={{width: "100px"}}>
                                 <div onMouseEnter={()=> setselectCountry(1)} onMouseLeave={()=> setselectCountry(0)} className="ant-select-selector" style={{position:"relative"}}>
@@ -74,9 +74,6 @@ export default function P2pLayout() {
                                         <input type="search" autoComplete="off" className="ant-select-selection-search-input" aria-haspopup="listbox" aria-owns="rc_select_0_list" aria-autocomplete="list" aria-controls="rc_select_0_list" aria-activedescendant="rc_select_0_list_0"  unselectable="on" value="" id="rc_select_0" style={{opacity: 0}} /></span>
                                         <span className="ant-select-selection-item">
                                             <div className="fiat-otc-option-flex">
-                                                <span className="fiat-otc__currency-wrapper token-image" style={{backgroundColor: "rgb(132, 189, 123)"}}>
-                                                    <img className="fiat-otc__currency-symbol" src="https://www.bybit.com/bycsi-root/common-static/fiat-static/icons/currency/NGN.svg" alt="" />
-                                                </span>
                                                 <span title="GBP">NGN</span>
                                             </div>
                                         </span>
