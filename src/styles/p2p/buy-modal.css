@@ -36,7 +36,7 @@
     z-index: 0;
 }
 .by-dialog {
-    background-color: var(--modal-bg-main);
+    background-color: var(--card-primary-color);
     border-radius: var(--size-4);
     box-shadow: var(--popover-shadow);
     width: 440px;
@@ -45,7 +45,6 @@
     padding: 0;
 }
 .otc__dialog.by-modal .by-dialog__body {
-    color: var(--gray-07);
     font-size: var(--size-14);
     font-weight: 400;
     line-height: 22px;
@@ -72,7 +71,7 @@
     position: relative;
 }
 .order-create-modal__advertiser-info {
-    background-color: var(--bds-gray-bg-page);
+    background-color: var(--card-primary-color);
     font-size: var(--size-12);
     height: 100%;
     line-height: var(--size-16);
@@ -103,15 +102,13 @@
     flex-direction: column;
 }
 .order-create-modal__advertiser-info .advertiser-name {
-    color: var(--gray-08);
+    color: #ffff;
     font-size: var(--size-16);
     font-weight: 600;
     line-height: 21px;
     margin-bottom: 8px;
 }
-.order-create-modal__advertiser-info .advertiser-info {
-    color: var(--gray-07);
-}
+
 .fiat-otc__online-status-tip {
     color: var(--bds-gray-t2);
     display: inline-block;
@@ -161,11 +158,9 @@
     margin-bottom: 8px;
     position: relative;
 }
-.order-create-modal__advertiser-info .advertiser-crypto-info .crypto-info-item .crypto-info-item-title {
-    color: var(--bds-gray-t2);
-}
+
 .order-create-modal__advertiser-info .advertiser-crypto-info .crypto-info-item .crypto-info-item-value {
-    color: var(--gray-08);
+
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;
@@ -177,9 +172,9 @@
     position: relative;
 }
 .order-create-modal__advertiser-info .advertiser-crypto-info .crypto-info-item-payments li.tags {
-    background-color: #e9edf2;
+    background-color: var(--card-color);
     border-radius: 4px;
-    color: var(--bds-gray-t1-title);
+    color:#e9edf2;
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;
@@ -191,16 +186,15 @@
     white-space: nowrap;
 }
 .order-create-modal__advertiser-info .advertiser-remark-name {
-    color: #121214;
     display: block;
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 4px;
     margin-top: 16px;
+    color: #ffff;
 }
 .order-create-modal__advertiser-info .advertiser-remark {
     word-wrap: break-word;
-    color: #81858c;
     font-size: 12px;
     line-height: 18px;
     margin-top: 4px;
@@ -209,6 +203,7 @@
 }
 .order-create-modal__form-wrapper {
     padding: 40px;
+    background-color: var(--card-primary-color);
 }
 .order-create-modal__form-wrapper .order-create-modal__form-wrapperPay {
     align-items: center;
@@ -225,7 +220,7 @@
     margin-right: 8px;
 }
 .order-create-modal__form-wrapper .amount-input-wrapper {
-    background-color: #f3f5f7;
+    background-color: var(--card-color);
     border-radius: 8px;
     padding: 13px 16px;
     width: 100%;
@@ -299,7 +294,6 @@
     font-weight: 600;
 }
 .order-create-modal__form-wrapper .order-create-modal__transfer-icon .order-create-modal__balance-wrapper {
-    color: var(--gray-06);
     font-size: var(--size-12);
     max-width: 280px;
     top: 0;
@@ -331,7 +325,7 @@
     width: 100%;
 }
 .otc__dialog.by-modal .by-select-adv--outlined, .otc__root .by-select-adv--outlined, .otc__select-dropdown .by-select-adv--outlined {
-    border: 1px solid var(--gray-03);
+    border: 1px solid var(--border);
     border-radius: var(--size-4);
 }
 .otc__dialog.by-modal .by-select-adv, .otc__root .by-select-adv, .otc__select-dropdown .by-select-adv {
@@ -421,7 +415,6 @@
 ;
 }
 .PaymentSelect_paymentSelectLabel__2NcXo {
-    color: #81858c;
     font-size: 12px;
     line-height: 18px;
 }

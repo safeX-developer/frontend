@@ -1,0 +1,421 @@
+.fiat-otc__order-list-wrapper {
+    margin: var(--size-24) auto 0;
+    padding-bottom: 80px;
+    width: 100%;
+}
+.fiat-otc__order-list-wrapper .tab-list {
+    align-items: center;
+    background-color: var(--card-primary-color);
+    border-radius: var(--size-8);
+    display: flex;
+    height: 66px;
+    justify-content: space-between;
+    margin-bottom: var(--size-24);
+    padding: 0 32px;
+}
+.fiat-otc__order-list-wrapper .tab-list .tab:after {
+    background-color: transparent;
+    border-radius: var(--size-4);
+    content: "";
+    display: block;
+    height: var(--size-2);
+}
+.fiat-otc__order-list-wrapper .tab-list .tab.selected {
+    color: var(--brand-color);
+    display: flex
+;
+    flex-direction: column;
+    font-weight: 700;
+}
+.fiat-otc__order-list-wrapper .tab-list .tab {
+    color: var(--bds-gray-t3);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 64px;
+}
+.fiat-otc__order-list-wrapper .order-list {
+    background-color: var(--card-primary-color);
+    border-radius: var(--size-8);
+}
+.fiat-otc__order-list-wrapper .order-list .search-bar-wrapper {
+    border-bottom: 1px solid var(--border);
+    height: 110px;
+    padding: 24px 32px;
+}
+.by-grid-row--top {
+    align-items: flex-start;
+}
+.by-grid-col {
+    max-width: 100%;
+    min-height: 1px;
+    position: relative;
+}
+:where(.css-5jb6ku).ant-select-single .ant-select-selector {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    list-style: none;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
+    display: flex
+;
+    border-radius: 6px;
+}
+:where(.css-5jb6ku).ant-space-vertical {
+    flex-direction: column;
+}
+:where(.css-5jb6ku).ant-space {
+    display: inline-flex;
+}
+:where(.css-5jb6ku).ant-select {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    list-style: none;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+:where(.css-5jb6ku).ant-select .ant-select-arrow {
+    display: flex
+;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.25);
+    font-style: normal;
+    line-height: 1;
+    text-align: center;
+    text-transform: none;
+    vertical-align: -0.125em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    top: 50%;
+    inset-inline-start: auto;
+    inset-inline-end: 11px;
+    height: 12px;
+    margin-top: -6px;
+    font-size: 12px;
+    pointer-events: none;
+}
+.ant-select-focused:where(.css-5jb6ku).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+    border-color: #ffbf29;
+    box-shadow: 0 0 0 2px rgba(255, 215, 5, 0.1);
+    outline: 0;
+}
+:where(.css-5jb6ku).ant-select-single .ant-select-selector .ant-select-selection-search {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 11px;
+    inset-inline-end: 11px;
+    bottom: 0;
+}
+:where(.css-5jb6ku).ant-select:not(.ant-select-customize-input).ant-select-custom .ant-select-selector {
+    align-items: center;
+    background: var(--card-color);
+    border: none;
+}
+:where(.css-5jb6ku).ant-select.ant-select-single.ant-select-custom.ant-select-custom-sm .ant-select-selector {
+    height: 40px;
+    border-radius: 4px;
+    padding: 0 12px;
+}
+.fiat-otc__order-list-wrapper .order-list .search-bar-wrapper .by-date-picker {
+    background-color: var(--card-color);
+    border: 0;
+    border-radius: 4px;
+    font-size: var(--size-12);
+    height: 40px;
+    width: 378px;
+}
+.by-date-picker-range {
+    display: inline-flex;
+    position: relative;
+}
+.by-date-picker {
+    font-feature-settings: "tnum", "tnum";
+    align-items: center;
+    background: var(--card-color);
+    border: 1px solid var(--gray-04);
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: var(--gray-08);
+    display: inline-flex
+;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    margin: 0;
+    padding: 4px 11px;
+    position: relative;
+    transition: border .3s, box-shadow .3s;
+}
+.fiat-otc__order-list-wrapper .order-list .search-bar-wrapper .by-date-picker .by-date-picker-input>input {
+    color: var(--gray-07);
+    font-size: var(--size-14);
+}
+.by-date-picker-input>input {
+    background-color: var(--gray-01);
+    background-image: none;
+    background: transparent;
+    border: 0;
+    border-radius: 2px;
+    color: var(--gray-08);
+    display: inline-block;
+    flex: auto;
+    font-size: 14px;
+    height: auto;
+    line-height: 1.5715;
+    min-width: 0;
+    min-width: 1px;
+    padding: 0;
+    position: relative;
+    transition: all .3s;
+    width: 100%;
+}
+.by-date-picker-range-separator {
+    align-items: center;
+    line-height: 1;
+    padding: 0 8px;
+}
+.by-date-picker-separator {
+    color: var(--gray-05);
+    cursor: default;
+    display: inline-block;
+    font-size: 16px;
+    height: 16px;
+    position: relative;
+    vertical-align: top;
+    width: 1em;
+}
+.iconfont {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: by-iconfont !important;
+    font-style: normal;
+}
+.iconfont, .regular {
+    font-weight: 400;
+}
+.icon-transferin:before {
+    content: "\e887";
+}
+.fiat__spin-container, .fiat__spin-wrapper {
+    position: relative;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table {
+    width: 100%;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table thead tr {
+    font-size: var(--size-12);
+    line-height: 48px;
+    position: relative;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td:first-child,  .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th:first-child {
+    padding-left: 32px;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td:first-child, .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th:first-child {
+    width: 220px;
+}
+ .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td,  .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th {
+    text-align: left;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th {
+    color: var(--bds-gray-t2);
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td, .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th {
+    padding-top: 24px;
+    vertical-align: top;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table thead tr:after {
+    background-color: var(--border);
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 32px;
+    position: absolute;
+    right: 32px;
+}
+ .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td:first-child,  .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th:first-child {
+    padding-left: 32px;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td:first-child, .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th:first-child {
+    width: 220px;
+}
+ .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td,  .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th {
+    text-align: left;
+}
+
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td, .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th {
+    padding-top: 24px;
+    vertical-align: top;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td .sell {
+    color: var(--short);
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td .side {
+    align-items: center;
+    display: flex
+;
+    font-weight: 700;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table tbody tr:hover {
+    background-color: var(--brand-color-row-hover);
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table tbody tr {
+    cursor: pointer;
+    height: 90px;
+    position: relative;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td .order-detail-couterparty-name {
+    line-height: 18px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td .order-unread-message-icon {
+    background-color: var(--card-color);
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 6px;
+    padding: 3px 4px;
+    position: relative;
+}
+ .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td .order-unread-message-icon .icon-chatroom {
+    margin-right: 4px;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td i {
+    font-size: var(--size-12);
+}
+.iconfont {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: by-iconfont !important;
+    font-style: normal;
+}
+.iconfont, .regular {
+    font-weight: 400;
+}
+.icon-chatroom:before {
+    content: "\e8a4";
+}
+ .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td.fiat-order-status {
+    text-align: right;
+}
+
+ .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td:last-child,  .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table th:last-child {
+    padding-right: 32px;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td.fiat-order-status {
+    width: 280px;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-table td i {
+    font-size: var(--size-12);
+}
+.fiat-iconfont {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: fiat-iconfont !important;
+    font-size: 16px;
+    font-style: normal;
+}
+.success {
+    color: var(--f-success-01);
+}
+.fiat-icon--success-big:before {
+    content: "\e609";
+}
+.otc-order__download-span {
+    border-bottom: 1px solid #d6850d;
+    color: #d6850d;
+    color: var(--Brand-900-text, #d6850d);
+}
+:where(.css-5jb6ku)[class^="ant-tooltip"], :where(.css-5jb6ku)[class*=" ant-tooltip"] {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Roboto', 'Arial', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-pagination-wrapper {
+    padding: 32px;
+    text-align: end;
+}
+.pagination {
+    font-size: var(--size-12);
+    margin: 0;
+    padding: 0;
+}
+[dir=ltr] .pagination-jump-next, [dir=ltr] .pagination-jump-prev, [dir=ltr] .pagination-prev {
+    margin-right: 8px;
+}
+.pagination-disabled, .pagination-disabled:focus, .pagination-disabled:hover {
+    cursor: not-allowed;
+}
+.pagination-next, .pagination-prev {
+    outline: 0;
+}
+.pagination-jump-next, .pagination-jump-prev, .pagination-next, .pagination-prev {
+    border-radius: 2px;
+    color: var(--gray-08);
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    list-style: none;
+    min-width: 24px;
+    text-align: center;
+    transition: all .3s;
+    vertical-align: middle;
+}
+.pagination-next .pagination-item-link, .pagination-prev .pagination-item-link {
+    background-color: var(--gray-01);
+    border: 1px solid #c7cdd0;
+    display: block;
+    font-size: var(--size-16);
+    height: 100%;
+    outline: none;
+    text-align: center;
+    transition: all .3s;
+    width: 100%;
+}
+.pagination-disabled .pagination-item-link, .pagination-disabled:focus .pagination-item-link, .pagination-disabled:hover .pagination-item-link {
+    background-color: var(--gray-01);
+    border-color: #c7cdd0;
+    color: #c7cdd0;
+    cursor: not-allowed;
+}
+.fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-pagination-wrapper .pagination-item-active, .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-pagination-wrapper .pagination-item:focus, .fiat-otc__order-list-wrapper .order-list .otc-order-table-wrapper .otc-order-pagination-wrapper .pagination-item:hover {
+    background-color: var(--bds-brand-700-normal);
+}
+.pagination-item {
+    background-color: var(--gray-01);
+    border: 1px solid #c7cdd0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    height: 24px;
+    line-height: 22px;
+    list-style: none;
+    min-width: 24px;
+    outline: 0;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+}
+.pagination-item a {
+    color: var(--gray-08);
+    display: block;
+    padding: 0 6px;
+    transition: none;
+}

@@ -48,7 +48,7 @@
     flex-direction: row;
 }
 .im-container-caption__info-verified {
-    color: var(--gray-07);
+    /* color: var(--gray-07); */
     font-size: var(--size-12);
 }
 .fiat-iconfont {
@@ -317,6 +317,7 @@
     border-color: initial;
     border-image: initial;
     padding: 0px;
+    background: transparent;
 }
 .im-container__bottom__input-compute {
     left: 0px;
@@ -336,20 +337,7 @@
     border-image: initial;
     padding: 0px;
 }
-.im-container__bottom__input-textarea {
-    font-family: inherit;
-    font-size: var(--size-14);
-    line-height: 18px;
-    max-height: 72px;
-    min-height: 19px;
-    resize: none;
-    width: 100%;
-    border-width: 0px;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
-    padding: 0px;
-}
+
 .im-container__bottom__upload {
     margin-right: 12px;
 }
@@ -373,7 +361,7 @@
     user-select: none;
     touch-action: manipulation;
     line-height: 1.5714285714285714;
-    color: rgba(0, 0, 0, 0.88);
+    /* color: rgba(0, 0, 0, 0.88); */
 }
 .iconfont, .regular {
     font-weight: 400;

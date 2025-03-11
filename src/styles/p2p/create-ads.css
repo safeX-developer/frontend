@@ -129,7 +129,7 @@
 }
 :where(.css-5jb6ku).ant-select:not(.ant-select-customize-input).ant-select-custom .ant-select-selector {
     align-items: center;
-    background: var(--card-primary-color);
+    background: var(--card-color);
     border: none;
 }
 :where(.css-5jb6ku).ant-select-single:not(.ant-select-customize-input) .ant-select-selector {

@@ -41,16 +41,16 @@ export default function Menubar() {
                     My Ads
                 </button>
             </div>
-            <div className="options">
+            {/* <div className="options">
                 <button onClick={()=> handleRoutes("/p2p/transaction")} className={`flip-button ${pathSegments[1] === "transaction" ? "active" : ""} `}>
                     <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_walletEl"></use></svg>
                     Transactions
                 </button>
-            </div>
+            </div> */}
             <div className="options">
-                <button className="flip-button">
+                <button onClick={()=> handleRoutes("/p2p/order")} className={`flip-button ${pathSegments[1] === "order" ? "active" : ""} `}>
                     <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_chatEl"></use></svg>
-                    Chat
+                    Order
                 </button>
             </div>
             <div className="options">

@@ -1072,7 +1072,7 @@
 }
 .text-\[var\(--bds-gray-t1-title\)\] {
     color: #121214;
-    color: var(--bds-gray-t1-title);
+    color: #ffff;
 }
 .order-create-modal__form-wrapper .amount-input-wrapper .amount-input-delimiter {
     color: var(--fiat-gray-04);

@@ -23,9 +23,12 @@ import Task from './pages/reward/Task';
 import SocialVerification from './pages/reward/social-verification';
 import Referal from './pages/reward/Referal';
 import Transaction from './pages/transactions/Transaction';
+import Order from './pages/order/Order';
+import OrderList from './pages/order/OrderList';
 
 
 function App() {
+  
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Toaster position="bottom-right" expand={false} richColors  />
@@ -52,6 +55,8 @@ function App() {
               </Route> 
                   <Route path='create-ad' element={<CreatePage />}/> 
                   <Route path='transaction' element={<Transaction />}/> 
+                  <Route path='order' element={<Order />}/> 
+                  <Route path='order-list/:id' element={<OrderList />}/> 
                   <Route path='my-ads' element={<MyAds />} >
                     <Route index element={<Listed />}/> 
                     <Route path='all' element={<AllMyAds />}/> 
