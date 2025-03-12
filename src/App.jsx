@@ -25,6 +25,10 @@ import Referal from './pages/reward/Referal';
 import Transaction from './pages/transactions/Transaction';
 import Order from './pages/order/Order';
 import OrderList from './pages/order/OrderList';
+import SettingIndex from './pages/setting/SettingIndex';
+import ProfileSetting from './pages/setting/ProfileSetting';
+import SecuritySetting from './pages/setting/SecuritySetting';
+import Deactivate from './pages/setting/Deactivate';
 
 
 function App() {
@@ -54,6 +58,11 @@ function App() {
                 <Route path='socials' element={<SocialVerification />} />
               </Route> 
                   <Route path='create-ad' element={<CreatePage />}/> 
+                  <Route path='setting' element={<SettingIndex />} >
+                    <Route index element={<ProfileSetting />} />
+                    <Route path='security' element={<SecuritySetting />} />
+                    <Route path='deactivate' element={<Deactivate />} />
+                  </Route>
                   <Route path='transaction' element={<Transaction />}/> 
                   <Route path='order' element={<Order />}/> 
                   <Route path='order-list/:id' element={<OrderList />}/> 

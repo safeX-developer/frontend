@@ -1,0 +1,124 @@
+.Lsjkjeis{
+    position: relative;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.LOjesljsn{
+    margin: 20px 20px 0px 20px;
+    background: var(--card-color);
+    display: flex;
+    border-radius: 12px;
+    width: 80%;
+    min-height: 500px;
+}
+.tab-section{
+    width:234px;
+    border-right: 1px solid var(--border);
+}
+.tab-section .tap-con{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding: 15px;
+}
+.tab-section .tap-con .tab-btns{
+    background: var(--card-primary-color);
+    margin: 7px 0;
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.tab-section .tap-con .tab-btns:hover{
+    background: var(--card-color-light);
+}
+.tab-section .tap-con .tab-btns.deactivate{
+    background: none;
+    color: #E11D48;
+}
+.body-second{
+    padding: 15px;
+    width: 80%;
+}
+.body-second .dialog-body{
+    margin: 10px 25px;
+}
+.profile-Jskj .ljOosmie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+}
+.head-title{
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-white);
+}
+.profile-Jskj .ljOosmie .lojUSne{
+    font-size: 12px;
+}
+.profile-img {
+    position: relative;
+}
+.profile-img .text-img{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 19px;
+    color: #f5f5f5;
+    border-radius: 50%;
+    background-image: radial-gradient(at left bottom, rgb(196, 181, 253), rgb(109, 40, 217));
+}
+.kDuLvp .input-control.KlnskeJsj{
+    padding: .25rem;
+    height: 4.5rem;
+}
+.kDuLvp .input-control.KlnskeJsj textarea{
+    resize: none;
+}
+.Kjsoerqw .input-label{
+    margin: 0;
+}
+.fullname-item{
+    font-size: 12px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.switch {
+    background-color: rgba(30, 32, 36, 0.6);
+}
+.hRMjrF {
+    width: 1.75rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+    background-color: rgb(49, 52, 60);
+    position: relative;
+    cursor: pointer;
+}
+.switch {
+    background-color: rgba(30, 32, 36, 0.6);
+}
+.hRMjrF .dot {
+    transition: 0.2s;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+    background-color: rgba(153, 164, 176, 0.6);
+}
+.hRMjrF.open .dot {
+    left: 0.75rem;
+    background-color: var(--secondary-color);
+}
+

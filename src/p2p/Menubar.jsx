@@ -25,7 +25,7 @@ export default function Menubar() {
     <div className="KojhihKHun menu-box">
         <div onClick={()=> handleRoutes("/")} className="logo-holder">
             <img src="/asset/logo.png" alt="" />
-        </div>
+        </div> 
         <div className="Lkoejihsn">
             <div className="options">
                 <button onClick={()=> handleRoutes("/p2p/trade/buy")} className={`flip-button ${pathSegments[1] === "trade" ? "active" : ""} `}>
@@ -36,7 +36,7 @@ export default function Menubar() {
                 </button>
             </div>
             <div className="options">
-                <button onClick={()=> handleRoutes("/p2p/my-ads")} className={`flip-button ${pathSegments[1] === "my-ads" ? "active" : ""} `}>
+                <button onClick={()=> handleRoutes("/p2p/my-ads")} className={`flip-button ${pathSegments[1] === "my-ads" || pathSegments[1] === "create-ad" ? "active" : ""} `}>
                     <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_walletEl"></use></svg>
                     My Ads
                 </button>
@@ -66,7 +66,7 @@ export default function Menubar() {
                 </button>
             </div>
             <div className="options">
-                <button className="flip-button">
+                <button onClick={()=> handleRoutes("/p2p/setting")} className={`flip-button ${pathSegments[1] === "setting" ? "active" : ""} `}>
                     <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_Setting"></use></svg>
                     Settings
                 </button>
