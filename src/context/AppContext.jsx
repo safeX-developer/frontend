@@ -37,7 +37,7 @@ export const AppContextProvider = ({ children }) => {
             setCookie("token", response.token)
         }
         return result
-    }
+    } 
 
     const getRewards = async(wallet)=>{
         if(!wallet) return {result: []}
@@ -56,7 +56,7 @@ export const AppContextProvider = ({ children }) => {
     })
 
   return (
-    <AppContext.Provider value={{ getRewards, userProfile, register ,claimRecord,
+    <AppContext.Provider value={{ getRewards, userProfile, register ,claimRecord, setUser, 
      user, wallet: wallet?.address, rewardResults, _app}}>
       {children}
     </AppContext.Provider>

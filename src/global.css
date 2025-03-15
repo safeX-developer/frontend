@@ -215,6 +215,10 @@
 :focus {
   outline: none;
 }
+.cBmlor:disabled.sc-iqseJM:not(.is-loading) {
+  opacity: 0.5;
+  cursor: default;
+}
 .kDuLvp .input-control:focus-within {
   border: 1px solid var(--primary-color);
 }

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getCookie } from './cookies';
 import { toast } from 'sonner';
 
-const backendUrl = ()=>{
+export const backendUrl = ()=>{
   let localhostUrl = "http://localhost:8000"
   let remoteUrl = "https://safex.onrender.com"
   const _api = location.hostname === "localhost" || location.hostname === "127.0.0.1"

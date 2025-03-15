@@ -115,37 +115,37 @@ export default function CreatePage() {
 
 
                                                     {/* <div>
-                                                        <div class="ant-select-dropdown ant-select-custom-dropdown ant-select-custom-dropdown-sm bds-theme-component-light css-5jb6ku ant-select-dropdown-placement-bottomLeft " style={{minWidth: "232px", width: "232px", left: "216px", top:"509.833px"}}>
+                                                        <div className="ant-select-dropdown ant-select-custom-dropdown ant-select-custom-dropdown-sm bds-theme-component-light css-5jb6ku ant-select-dropdown-placement-bottomLeft " style={{minWidth: "232px", width: "232px", left: "216px", top:"509.833px"}}>
                                                             <div>
                                                                 <div role="listbox" id="rc_select_5_list" style={{height: "0px", width: "0px", overflow: "hidden"}}>
                                                                     <div aria-label="USDT" role="option" id="rc_select_5_list_0" aria-selected="true">USDT</div>
                                                                     <div aria-label="BTC" role="option" id="rc_select_5_list_1" aria-selected="false">BTC</div>
                                                                 </div>
-                                                                <div class="rc-virtual-list" style={{position: "relative"}}>
-                                                                    <div class="rc-virtual-list-holder" style={{maxHeight: "256px", overflowY: "hidden", overflowAnchor: "none"}}>
+                                                                <div className="rc-virtual-list" style={{position: "relative"}}>
+                                                                    <div className="rc-virtual-list-holder" style={{maxHeight: "256px", overflowY: "hidden", overflowAnchor: "none"}}>
                                                                         <div>
-                                                                            <div class="rc-virtual-list-holder-inner" style={{display: "flex", flexDirection: "column"}}>
-                                                                                <div aria-selected="true" class="ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected" title="USDT">
-                                                                                    <div class="ant-select-item-option-content">USDT</div>
-                                                                                    <span class="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
+                                                                            <div className="rc-virtual-list-holder-inner" style={{display: "flex", flexDirection: "column"}}>
+                                                                                <div aria-selected="true" className="ant-select-item ant-select-item-option ant-select-item-option-active ant-select-item-option-selected" title="USDT">
+                                                                                    <div className="ant-select-item-option-content">USDT</div>
+                                                                                    <span className="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
                                                                                 </div>
-                                                                                <div aria-selected="false" class="ant-select-item ant-select-item-option" title="BTC">
-                                                                                    <div class="ant-select-item-option-content">BTC</div>
-                                                                                    <span class="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
+                                                                                <div aria-selected="false" className="ant-select-item ant-select-item-option" title="BTC">
+                                                                                    <div className="ant-select-item-option-content">BTC</div>
+                                                                                    <span className="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
                                                                                 </div>
-                                                                                <div aria-selected="false" class="ant-select-item ant-select-item-option" title="ETH">
-                                                                                    <div class="ant-select-item-option-content">ETH</div>
-                                                                                    <span class="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
+                                                                                <div aria-selected="false" className="ant-select-item ant-select-item-option" title="ETH">
+                                                                                    <div className="ant-select-item-option-content">ETH</div>
+                                                                                    <span className="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
                                                                                 </div>
-                                                                                <div aria-selected="false" class="ant-select-item ant-select-item-option" title="USDC">
-                                                                                    <div class="ant-select-item-option-content">USDC</div>
-                                                                                    <span class="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
+                                                                                <div aria-selected="false" className="ant-select-item ant-select-item-option" title="USDC">
+                                                                                    <div className="ant-select-item-option-content">USDC</div>
+                                                                                    <span className="ant-select-item-option-state" unselectable="on" aria-hidden="true" style={{userUelect: "none"}}></span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="rc-virtual-list-scrollbar" style={{width: "8px", top: "0px", bottom: "0px", right: "0px", position: "absolute", display: "none"}}>
-                                                                        <div class="rc-virtual-list-scrollbar-thumb" style={{width: "100%", height: "128px", top: "0px", left: "0px", position: "absolute", background: "rgba(0, 0, 0, 0.5)", borderRadius: "99px", cursor: "pointer", userSelect: "none"}}></div>
+                                                                    <div className="rc-virtual-list-scrollbar" style={{width: "8px", top: "0px", bottom: "0px", right: "0px", position: "absolute", display: "none"}}>
+                                                                        <div className="rc-virtual-list-scrollbar-thumb" style={{width: "100%", height: "128px", top: "0px", left: "0px", position: "absolute", background: "rgba(0, 0, 0, 0.5)", borderRadius: "99px", cursor: "pointer", userSelect: "none"}}></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -247,20 +247,20 @@ export default function CreatePage() {
                         <div className="create-maker__input-item create-maker__input-item-border">
                             <div className="create-maker__input-item-title">Transaction Settings</div>
                             <div className="create-maker__item-content">
-                                <div class="create-maker__time">
+                                <div className="create-maker__time">
                                     <span>Payment Duration</span>
-                                    <div class="ant-radio-group ant-radio-group-outline create-maker__time-num css-5jb6ku">
-                                        <label class="ant-radio-wrapper ant-radio-wrapper-checked css-5jb6ku ant-radio-custom bds-theme-component-light css-5jb6ku">
-                                            <span onClick={()=> setDuration("30")} class={`ant-radio ${duration !== "15" ? "ant-radio-checked" : ""}`}>
-                                                <input type="radio" class="ant-radio-input" value="30" />
-                                                <span class="ant-radio-inner"></span>
+                                    <div className="ant-radio-group ant-radio-group-outline create-maker__time-num css-5jb6ku">
+                                        <label className="ant-radio-wrapper ant-radio-wrapper-checked css-5jb6ku ant-radio-custom bds-theme-component-light css-5jb6ku">
+                                            <span onClick={()=> setDuration("30")} className={`ant-radio ${duration !== "15" ? "ant-radio-checked" : ""}`}>
+                                                <input type="radio" className="ant-radio-input" value="30" />
+                                                <span className="ant-radio-inner"></span>
                                             </span>
                                             <span>30Minute(s)</span>
                                         </label>
-                                        <label class="ant-radio-wrapper css-5jb6ku ant-radio-custom bds-theme-component-light css-5jb6ku">
-                                            <span onClick={()=> setDuration("15")} class={`ant-radio ${duration === "15" ? "ant-radio-checked" : ""}`}>
-                                                <input type="radio" class="ant-radio-input" value="15" />
-                                                <span class="ant-radio-inner"></span>
+                                        <label className="ant-radio-wrapper css-5jb6ku ant-radio-custom bds-theme-component-light css-5jb6ku">
+                                            <span onClick={()=> setDuration("15")} className={`ant-radio ${duration === "15" ? "ant-radio-checked" : ""}`}>
+                                                <input type="radio" className="ant-radio-input" value="15" />
+                                                <span className="ant-radio-inner"></span>
                                             </span>
                                             <span>15Minute(s)</span>
                                         </label>

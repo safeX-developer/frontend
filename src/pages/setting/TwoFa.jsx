@@ -8,7 +8,7 @@ export default function TwoFa() {
             <button className="dialog-back" style={{opacity: 1, transform: "none"}}>
                 <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_Arrow"></use></svg>
             </button>
-            <div class="dialog-head has-back has-close"><div class="dialog-title">Security-2FA</div></div>
+            <div className="dialog-head has-back has-close"><div className="dialog-title">Security-2FA</div></div>
             <button className="sc-ieecCq fLASqZ close-icon dialog-close">
                 <svg xmlnsXlink="http://www.w3.org/1999/xlink" className="sc-gsDKAQ hxODWG icon"><use xlinkHref="#icon_Close"></use></svg>
             </button>
