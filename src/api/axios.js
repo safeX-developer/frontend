@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 
 export const backendUrl = ()=>{
   let localhostUrl = "http://localhost:8000"
-  let remoteUrl = "https://safex.onrender.com"
+  let remoteUrl = "https://safe-dev.onrender.com"
   const _api = location.hostname === "localhost" || location.hostname === "127.0.0.1"
   ? localhostUrl : remoteUrl
   return _api
