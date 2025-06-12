@@ -1,64 +1,128 @@
-import { createContext, useEffect, useState } from "react";
-import { toast } from "sonner"
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useActiveAccount } from "thirdweb/react";
-import api from "../api/axios.js";
-import { setCookie } from "../api/cookies.js";
-import { appScript } from "./app.js";
+import ApiService from '../api/api';
+// Create context
+const AppContext = createContext();
 
-export const AppContext = createContext(); 
-export const AppContextProvider = ({ children }) => {
-    const [ user, setUser ] = useState(null)
-    const [ rewardResults, setrewardResults ] = useState(null)
-    const wallet = useActiveAccount()
-    const _app = new appScript(wallet)
-    const ref = localStorage.getItem("ref")
+// Provider component
+export const AppProvider = ({ children }) => {
+  // User state
+  const [user, setUser] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const api = new ApiService()
+  const wallet = useActiveAccount()
+  // Screen state
+  const [screen, setScreen] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+    isMobile: window.innerWidth < 768
+  });
 
-    const register = async(data) =>{
-        if(!data?.userId){
-          return toast.error("Something went wrong, Please return to home page")
-        }
-        let path = "/api/profile/register/"+ ref
-         const res = await api.post(path, {
-            register: data
-        })
-        setUser(res.user)
-        setCookie("token", res.token)
-    }
-
-    const userProfile = async() => {
-        let result = true
-        if(!wallet?.address) return
-        let path = "/api/profile/user/"+ wallet?.address
-        const response = await api.get(path)
-        if(response.error){
-            result =  false
+  useEffect(()=>{
+    async function getUser(){
+      if(wallet){
+      const userEl = await api.getUserByAddress(wallet.address)
+        if(userEl){
+          setUser(userEl)
         }else{
-            setUser(response.user)
-            setCookie("token", response.token)
+          setShowLoginModal(true)
         }
-        return result
-    } 
-
-    const getRewards = async(wallet)=>{
-        if(!wallet) return {result: []}
-        let path = "/api/rewards/daily"
-        const result = await api.get(path)
-        let reward = result.reward
-        let user = result.user
-        const key = {reward, ...user}
-        setrewardResults(key)
+      }
     }
+    getUser()
+  },[wallet])
+  
+  // Sidebar state
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
+  
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      setScreen({
+        width,
+        height,
+        isMobile: width < 768
+      });
+      
+      // Auto-close sidebar on mobile
+      if (width < 768 && sidebarOpen) {
+        setSidebarOpen(false);
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [sidebarOpen]);
+  
+  // Check for saved user on initial load
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
 
-    const claimRecord = (async(data)=>{
-      let path = "/api/rewards/claim";
-      const result = await api.post(path, data)
-      setrewardResults(result)
-    })
-
+  // Register function
+  const onRegister = async (formData) => {
+    if(wallet && formData){
+      const data = {userId: wallet.address, ...formData}
+      const user = await api.register(data)
+      if(user){
+        console.log(user);
+        setUser(user)
+      }
+    }
+  };
+  
+  // Login function
+  const login = (userData) => {
+    localStorage.setItem('user', JSON.stringify(userData));
+    setUser(userData);
+  };
+  
+  // Logout function
+  const logout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+  
+  // Toggle sidebar
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+  
+  // Context value
+  const value = {
+    user,
+    isAuthenticated: !!user,
+    screen,
+    sidebarOpen,
+    showLoginModal,
+    login,
+    logout,
+    toggleSidebar,
+    setSidebarOpen,
+    onRegister,
+    api
+  };
+  
   return (
-    <AppContext.Provider value={{ getRewards, userProfile, register ,claimRecord, setUser, 
-     user, wallet: wallet?.address, rewardResults, _app}}>
+    <AppContext.Provider value={value}>
       {children}
     </AppContext.Provider>
   );
 };
+
+// Custom hook for using the context
+export const useApp = () => {
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error('useApp must be used within an AppProvider');
+  }
+  return context;
+};
+
+export default AppContext;

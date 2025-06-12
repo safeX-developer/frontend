@@ -41,7 +41,7 @@ api.interceptors.response.use(
       toast.error(error.response.data?.error)
     } else if (error.request) {
       console.error('Network Error:', error.request);
-      toast.error(error.request)
+      toast.error("Network Error")
     } else {
       console.error('Error:', error.message);
       toast.error(error.message)

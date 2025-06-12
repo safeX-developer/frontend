@@ -1,83 +1,17 @@
-import { Toaster } from 'sonner'
-import React, { Suspense, lazy } from 'react';
-import { Routes, Route, Navigate } from 'react-router';
-import { BrowserRouter } from "react-router-dom";
-import P2P from "./p2p/Index"
-import P2pLayout from "./p2p/trade/P2pLayout"
-const BuyPage = lazy(() => import("./p2p/trade/BuyPage"))
-const SellPage = lazy(() => import("./p2p/trade/Sell"))
-const MyAds = lazy(() => import('./pages/MyAds/MyAds'))
-const Listed = lazy(() => import('./pages/MyAds/Listed'))
-const AllMyAds = lazy(() => import('./pages/MyAds/All'));
-const CreatePage = lazy(() => import('./pages/MyAds/CreatePage'));
-
-import "./styles/page.css"
-import Welcome from './pages/Welcome';
-import Select from './pages/Select';
-import Profile from './p2p/profile/Profile';
-import Reward from './pages/reward/Index';
-import Register from './pages/register/Register';
-import DailyReward from './pages/reward/DailyReward';
-import Referral from './pages/reward/Referral';
-import Task from './pages/reward/Task';
-import SocialVerification from './pages/reward/social-verification';
-import Referal from './pages/reward/Referal';
-import Transaction from './pages/transactions/Transaction';
-import Order from './pages/order/Order';
-import OrderList from './pages/order/OrderList';
-import SettingIndex from './pages/setting/SettingIndex';
-import ProfileSetting from './pages/setting/ProfileSetting';
-import SecuritySetting from './pages/setting/SecuritySetting';
-import Deactivate from './pages/setting/Deactivate';
-
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppLayout from './router/AppLayout';
+import { AppProvider } from './context/AppContext';
+import { ThirdwebProvider } from "thirdweb/react";
 
 function App() {
-  
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Toaster position="bottom-right" expand={false} richColors  />
-      <div id="root" >
-        <div className="sc-lhMiDA ePAxUv">
-        <BrowserRouter>
-            <Routes>
-            <Route path='/' element={<Navigate to="welcome" />} />
-            <Route path='/welcome' element={<Welcome />} />
-            <Route path='/ref/:code' element={<Referal />} />
-            <Route path='/welcome/select' element={<Select />} />
-            <Route path='p2p' element={<P2P />}>
-              <Route path='register' element={<Register />} />
-              <Route path="trade" element={ <P2pLayout />} >
-                  <Route path='buy' element={<BuyPage />} />
-                  <Route path='sell' element={<SellPage />} />
-              </Route>
-              <Route path='profile/:userId' element={<Profile />}/> 
-              <Route path='rewards' element={<Reward />} >
-                <Route index element={<DailyReward />} />
-                <Route path='referral' element={<Referral />} />
-                <Route path='task' element={<Task />} />
-                <Route path='socials' element={<SocialVerification />} />
-              </Route> 
-                  <Route path='create-ad' element={<CreatePage />}/> 
-                  <Route path='setting' element={<SettingIndex />} >
-                    <Route index element={<ProfileSetting />} />
-                    <Route path='security' element={<SecuritySetting />} />
-                    <Route path='deactivate' element={<Deactivate />} />
-                  </Route>
-                  <Route path='transaction' element={<Transaction />}/> 
-                  <Route path='order' element={<Order />}/> 
-                  <Route path='order-list/:id' element={<OrderList />}/> 
-                  <Route path='my-ads' element={<MyAds />} >
-                    <Route index element={<Listed />}/> 
-                    <Route path='all' element={<AllMyAds />}/> 
-                  </Route> 
-                </Route>
-            </Routes>
-          </BrowserRouter>
-        </div>
-      </div>
-
-      </Suspense>
-  )
+    <ThirdwebProvider >
+      <AppProvider>
+        <Router>
+          <AppLayout />
+        </Router>
+      </AppProvider>
+    </ThirdwebProvider>
+  );
 }
-
-export default App
+export default App;

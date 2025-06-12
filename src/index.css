@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root{
+    --primary-color: #0050FF;
+    --sec-color: #F56630;
+    --sec1-color: #d85f33;
+    --inactive-btn: rgb(38, 39, 46);
+    --text-color: #98A2B3;
+    --active-text: #F9FAFB;
+    --background-color: #000000; 
+    --bg-color: #000000; 
+    --card-color: #141414;
+    --card-color-light:rgb(41 41 57 / 86%);
+    --card-primary-color: rgba(32, 32, 45, 0.863);
+    --green-700-normal: #20b26c;
+    --green-900-focus: #00944f;
+    --red-700-normal: #ef454a;
+    --red-900-focus: #cc3939;
+    --input-color: rgb(41 41 57 / 86%),
+    --border: #75737392;
+    --backdrop:#000000b5
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.border{
+   border: 1px solid var(--sec-color);
+}
+
+.border-inactive{
+   border: 1px solid var(--border);
+}
