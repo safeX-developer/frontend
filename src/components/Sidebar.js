@@ -1,0 +1,326 @@
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState, useRef, useEffect } from 'react';
+import clsx from 'clsx';
+
+const Sidebar = ({ onClose }) => {
+  // Mock user data - in a real app, this would come from authentication context
+  const user = {
+    username: 'JohnDoe',
+    walletAddress: '0x1a2b...3c4d',
+    isOnline: true,
+  };
+
+  // State for active link and mode switch
+  const [activeLink, setActiveLink] = useState('/p2p/trades');
+  const [activeMode, setActiveMode] = useState('p2p');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  const dropdownRef = useRef(null);
+  const sidebarRef = useRef(null);
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Set initial value
+    checkIfMobile();
+    
+    // Add event listener
+    window.addEventListener('resize', checkIfMobile);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  // Function to handle link clicks
+  const handleLinkClick = (path) => {
+    setActiveLink(path);
+    if (isMobile && onClose) {
+      onClose();
+    }
+  };
+
+  // Function to handle mode selection
+  const handleModeSelect = (mode) => {
+    setActiveMode(mode);
+    setDropdownOpen(false);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Close sidebar when clicking outside on mobile
+  useEffect(() => {
+    if (!isMobile || !onClose) return;
+
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobile, onClose]);
+
+  // Mode display names
+  const modeNames = {
+    'talent': 'Talent',
+    'hiring': 'Hiring',
+    'p2p': 'P2P'
+  };
+
+  return (
+    <aside 
+      ref={sidebarRef}
+      className="fixed left-0 top-[0px] sm:top-[61px] h-[calc(100vh-61px)] navbar-shadow w-full sm:w-[232px] bg-[#141414] z-400 flex flex-col"
+    >
+      {/* Close button - only visible on mobile */}
+      {isMobile && (
+        <div className="flex justify-end p-4">
+          <button 
+            onClick={onClose}
+            className="text-gray-400 hover:text-white"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-6 w-6" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M6 18L18 6M6 6l12 12" 
+              />
+            </svg>
+          </button>
+        </div>
+      )}
+
+      {/* Main Navigation links */}
+      <nav className="flex-1 p-4">
+        <ul className="space-y-2">
+          <li>
+            <Link
+              href="/p2p/trades"
+              className={clsx(
+                'flex items-center px-3 py-2 rounded-md transition-colors',
+                activeLink === "/p2p/trades"
+                  ? 'bg-[var(--active)] text-white'
+                  : 'text-gray-300 hover:text-white hover:bg-[#1a1a1a]'
+              )}
+              onClick={() => handleLinkClick("/p2p/trades")}
+            >
+              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+              </svg>
+              P2P
+            </Link>
+          </li>
+          <li>
+            <Link
+              href='/p2p/my-ads'
+              className={clsx(
+                'flex items-center px-3 py-2 rounded-md transition-colors',
+                activeLink === '/p2p/my-ads'
+                  ? 'bg-[var(--active)] text-white'
+                  : 'text-gray-300 hover:text-white hover:bg-[#1a1a1a]'
+              )}
+              onClick={() => handleLinkClick('/p2p/my-ads')}
+            >
+              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              My Ads
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/p2p/wallet"
+              className={clsx(
+                'flex items-center px-3 py-2 rounded-md transition-colors',
+                activeLink === '/p2p/wallet'
+                  ? 'bg-[var(--active)] text-white' 
+                  : 'text-gray-300 hover:text-white hover:bg-[#1a1a1a]'
+              )}
+              onClick={() => handleLinkClick('/p2p/wallet')}
+            >
+              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              </svg>
+              Wallet
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/p2p/rewards"
+              className={clsx(
+                'flex items-center px-3 py-2 rounded-md transition-colors',
+                activeLink === '/p2p/rewards'
+                  ? 'bg-[var(--active)] text-white'
+                  : 'text-gray-300 hover:text-white hover:bg-[#1a1a1a]'
+              )}
+              onClick={() => handleLinkClick('/p2p/rewards')}
+            >
+              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Rewards
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      
+      {/* Support and Settings links */}
+      <div className="px-4 pb-3">
+        <ul className="space-y-2 border-t border-gray-800 pt-3">
+          <li>
+            <Link
+              href="/p2p/support"
+              className={clsx(
+                'flex items-center px-3 py-2 rounded-md transition-colors',
+                activeLink === '/p2p/support'
+                  ? 'bg-[var(--active)] text-white'
+                  : 'text-gray-300 hover:text-white hover:bg-[#1a1a1a]'
+              )}
+              onClick={() => handleLinkClick('/p2p/support')}
+            >
+              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              Support
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/p2p/settings"
+              className={clsx(
+                'flex items-center px-3 py-2 rounded-md transition-colors',
+                activeLink === '/p2p/settings'
+                  ? 'bg-[var(--active)] text-white'
+                  : 'text-gray-300 hover:text-white hover:bg-[#1a1a1a]'
+              )}
+              onClick={() => handleLinkClick('/p2p/settings')}
+            >
+              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Settings
+            </Link>
+          </li>
+        </ul>
+      </div>
+      
+      {/* Mode Switch Dropdown */}
+      <div className="px-4 pb-2">
+        <div className="relative" ref={dropdownRef}>
+          <button
+            onClick={() => setDropdownOpen(!dropdownOpen)}
+            className="w-full flex items-center justify-between bg-[#232323] text-white px-4 py-2 rounded-md hover:bg-[#2a2a2a] transition-colors"
+          >
+            <span>{modeNames[activeMode]}</span>
+            <svg 
+              className={clsx(
+                'w-4 h-4 transition-transform',
+                dropdownOpen && 'transform rotate-180'
+              )}
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          {dropdownOpen && (
+            <div className="absolute bottom-full left-0 w-full mb-1 bg-[#232323] rounded-md shadow-lg overflow-hidden z-10">
+              <div className="py-1">
+                <button
+                  onClick={() => handleModeSelect('talent')}
+                  className={clsx(
+                    'w-full text-left px-4 py-2 text-sm',
+                    activeMode === 'talent'
+                      ? 'bg-[var(--active)] text-white'
+                      : 'text-gray-300 hover:bg-[#2a2a2a] hover:text-white'
+                  )}
+                >
+                  Talent
+                </button>
+                <button
+                  onClick={() => handleModeSelect('hiring')}
+                  className={clsx(
+                    'w-full text-left px-4 py-2 text-sm',
+                    activeMode === 'hiring'
+                      ? 'bg-[var(--active)] text-white'
+                      : 'text-gray-300 hover:bg-[#2a2a2a] hover:text-white'
+                  )}
+                >
+                  Hiring
+                </button>
+                <button
+                  onClick={() => handleModeSelect('p2p')}
+                  className={clsx(
+                    'w-full text-left px-4 py-2 text-sm',
+                    activeMode === 'p2p'
+                      ? 'bg-[var(--active)] text-white'
+                      : 'text-gray-300 hover:bg-[#2a2a2a] hover:text-white'
+                  )}
+                >
+                  P2P
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      
+      {/* User profile section - at the bottom */}
+      <div className="p-4 border-t border-gray-800 mt-auto">
+        <div className="flex items-center">
+          {/* User avatar with first letter */}
+          <div className="relative">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-r from-purple-500 to-blue-500 text-white font-bold text-xl">
+              {user.username.charAt(0)}
+            </div>
+            {/* Online indicator */}
+            {user.isOnline && (
+              <div className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-green-500 border-2 border-[#141414]"></div>
+            )}
+          </div>
+          
+          {/* Username and wallet address */}
+          <div className="ml-3">
+            <p className="text-white font-medium">{user.username}</p>
+            <p className="text-gray-400 text-xs truncate max-w-[140px]">{user.walletAddress}</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  );
+};
+
+export default Sidebar;
