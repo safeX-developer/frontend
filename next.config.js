@@ -1,8 +1,14 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Make sure this is present if you want static export
-  // ... any other Next.js configurations
-};
+  // Your existing config
+  experimental: {
+    optimizeFonts: false,
+  },
+  // If you're using static export, keep these:
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+}
 
-module.exports = nextConfig; // <-- Ensure this line is here
+module.exports = nextConfig

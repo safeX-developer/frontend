@@ -1,11 +1,21 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import TradeCard from '@/components/TradeCard';
 import BuyModal from '@/components/tradeModal/buy/buyModal';
 
-export default function BuyPage() {
+// Loading fallback component
+const LoadingFallback = () => {
+  return (
+      <div className="flex items-center justify-center h-full">
+        <div className="animate-spin rounded-full h-12 w-12 " style={{borderTop: "2px solid var(--active)", borderBottom: "2px solid var(--active)"}}></div>
+      </div>
+  );
+}
+
+
+function BuyPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const modal = searchParams.get('modal');
@@ -110,5 +120,13 @@ export default function BuyPage() {
         />
       )}
     </div>
+  );
+}
+
+export default function BuyPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <BuyPageContent />
+    </Suspense>
   );
 }
