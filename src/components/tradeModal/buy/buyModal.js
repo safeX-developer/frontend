@@ -42,7 +42,6 @@ const BuyModal = ({ isOpen, onClose, coin="USDT", fiat = 'USD', price = 1550, qu
             {tab === 'payment-completed' && (
                 <PaymentCompleted   
                      onBack={()=> router.back()}
-
                 />
             )}
         </div>
