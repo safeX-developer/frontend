@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { FaArrowLeft, FaComment, FaCircle } from 'react-icons/fa'
+import { FaArrowLeft, FaComment } from 'react-icons/fa'
+import BuyConfirmation from './buyConfirmation';
 
 export default function PaymentCompleted({onBack, duration = 15 }) {
   const [timeLeft, setTimeLeft] = useState(duration * 60); // Convert minutes to seconds
-      
+  const [showBuyConfirmation, setShowBuyConfirmation] = useState(false);
+
   useEffect(() => {
     // Start countdown timer
     const timer = setInterval(() => {
@@ -22,10 +24,12 @@ export default function PaymentCompleted({onBack, duration = 15 }) {
   // Format time as MM:SS
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
+
   
   return (
     <>
-      <div className="p-4 sticky top-0 rounded-t-lg navbar-shadow bg-[#2b2a2a] z-10 flex items-center">
+    
+      <div className="p-4 sticky top-0 rounded-t-lg navbar-shadow bg-[#2b2a2a] z-0 flex items-center">
         <button
           onClick={onBack}
           className="text-gray-400 hover:text-white transition-colors cursor-pointer mr-3"
@@ -71,13 +75,13 @@ export default function PaymentCompleted({onBack, duration = 15 }) {
         </div>
         
         {/* Bank Transfer Card */}
-        <div className="border-2 border-[#F56630] relative rounded-lg p-3 mb-4">
+        <div className="border-1 border-[#F56630] relative rounded-lg p-3 mb-4">
           {/* Title with active indicator and chat icon */}
           <div className="flex justify-between items-center mb-3">
             <div className="flex items-center">
-              <div className="relative mr-2">
-                <div className="w-3 h-3 bg-[#F56630] rounded-full"></div>
-                <div className="w-5 h-5 border border-[#F56630] rounded-full absolute -top-1 -left-1"></div>
+              <div className="relative mr-2 ml-1.5">
+                <div className="w-2 h-2 bg-[#F56630] rounded-full"></div>
+                <div className="w-4 h-4 border border-[#F56630] rounded-full absolute -top-1 -left-1"></div>
               </div>
               <h3 className="text-white font-medium px-2">Bank Transfer</h3>
             </div>
@@ -154,10 +158,12 @@ export default function PaymentCompleted({onBack, duration = 15 }) {
         </div>
         
         {/* Payment Completed Button */}
-        <button className="w-full py-3 rounded-md bg-[#F56630] text-white text-sm font-medium hover:opacity-90 transition-opacity mt-2">
+        <button onClick={()=> setShowBuyConfirmation(true)} className="w-full py-3 rounded-md bg-[#F56630] text-white text-sm font-medium hover:opacity-90 transition-opacity mt-2">
           Payment Completed
         </button>
+        {showBuyConfirmation && <BuyConfirmation onClose={()=> setShowBuyConfirmation(false)}/>}
       </div>
+
     </>
   );
 }
