@@ -20,7 +20,6 @@ function BuyPageContent() {
   const searchParams = useSearchParams();
   const modal = searchParams.get('modal');
   const tab = searchParams.get('tab');
-  
   const [selectedTrade, setSelectedTrade] = React.useState(null);
 
   // Sample trade data

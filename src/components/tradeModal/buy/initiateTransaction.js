@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { FaTimes, FaClock } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 export default function intiateTransaction( { 
     onClose,
@@ -15,6 +16,7 @@ export default function intiateTransaction( {
     const [activeTab, setActiveTab] = useState('fiat');
     const [fiatAmount, setFiatAmount] = useState('');
     const [cryptoAmount, setCryptoAmount] = useState('');
+    const router = useRouter();
 
     const handleSetMaxAmount = () => {
         if (activeTab === 'fiat') {
@@ -36,9 +38,12 @@ export default function intiateTransaction( {
         return (parseFloat(cryptoAmount) * price).toFixed(2);
     };
 
+    const handleSubmit = (()=>{
+        router.push("?modal=buy&tab=pay-now")
+    })
+
   return (
-    <div className="fixed inset-0 bg-[#0000009d] bg-opacity-70 flex items-center justify-center z-650 p-4">
-      <div className="bg-[#232323] navbar-shadow rounded-lg w-full max-w-md relative flex flex-col h-[500px]">
+    <>
         {/* Fixed header with title and close button */}
         <div className="p-4 sticky top-0 rounded-t-lg navbar-shadow bg-[#2b2a2a] z-10">
           <h2 className="text-[16px] text-center font-semibold text-white">Buy {fiat}</h2>
@@ -51,7 +56,7 @@ export default function intiateTransaction( {
         </div>
 
         {/* Scrollable content */}
-        <div className="px-5 py-3 overflow-y-auto flex-1 text-sm">
+        <div className="px-2 sm:px-5 py-3 overflow-y-auto flex-1 text-sm">
           {/* Price with countdown */}
           <div className="mb-1 flex gap-2">
             <div className="flex text-green-600 text-[16px] items-baseline font-bold">
@@ -73,9 +78,10 @@ export default function intiateTransaction( {
             </div>
 
             {/* Payment method */}
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-0">
               <span className="text-gray-400">Payment</span>
-              <span className="font-medium">{paymentMethod}</span>
+              <span className="mx-1 text-yellow-600  font-bold">|</span>
+              <span className="font-medium text-gray-400 ">{paymentMethod}</span>
             </div>
 
             {/* Payment duration */}
@@ -84,8 +90,6 @@ export default function intiateTransaction( {
               <span className="font-medium">{duration}Mins(s)</span>
             </div>
           </div>
-          
-      
           
           {/* Card with tabs */}
           <div className="mt-4 bg-[#1a1a1a] rounded-lg p-4">
@@ -138,7 +142,7 @@ export default function intiateTransaction( {
                 </div>
 
                 {/* Proceed button */}
-                <button className="w-full bg-[var(--active)] text-white py-2 rounded-md hover:opacity-90 transition-opacity text-sm font-medium cursor-pointer">
+                <button onClick={handleSubmit} className="w-full bg-[var(--active)] text-white py-2 rounded-md hover:opacity-90 transition-opacity text-sm font-medium cursor-pointer">
                   Proceed
                 </button>
 
@@ -231,7 +235,8 @@ export default function intiateTransaction( {
 
 
         </div>
-      </div>
-    </div>
+
+
+     </>
   );
 }
