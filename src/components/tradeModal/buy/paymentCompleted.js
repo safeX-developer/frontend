@@ -1,53 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { FaArrowLeft, FaComment } from 'react-icons/fa'
 import BuyConfirmation from './buyConfirmation';
+import Header from './components/Header';
 
 export default function PaymentCompleted({onBack, duration = 15 }) {
-  const [timeLeft, setTimeLeft] = useState(duration * 60); // Convert minutes to seconds
   const [showBuyConfirmation, setShowBuyConfirmation] = useState(false);
-
-  useEffect(() => {
-    // Start countdown timer
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => {
-        if (prevTime <= 1) {
-          clearInterval(timer);
-          return 0;
-        }
-        return prevTime - 1;
-      });
-    }, 1000);
-    // Clean up timer on unmount
-    return () => clearInterval(timer);
-  }, []);
-     
-  // Format time as MM:SS
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
 
   
   return (
     <>
-    
-      <div className="p-4 sticky top-0 rounded-t-lg navbar-shadow bg-[#2b2a2a] z-0 flex items-center">
-        <button
-          onClick={onBack}
-          className="text-gray-400 hover:text-white transition-colors cursor-pointer mr-3"
-        >
-          <FaArrowLeft />
-        </button>
-        <h2 className="text-[14px] font-bold text-white flex-1 text-center">Complete your payment within:</h2>
-        <div className="flex items-center text-sm ">
-          <div className="bg-[#1a1a1a] rounded px-3 py-2 text-white font-bold">
-            {minutes.toString().padStart(2, '0')}
-          </div>
-          <span className="text-white mx-1 font-bold">:</span>
-          <div className="bg-[#1a1a1a] rounded px-3 py-2 text-white font-bold">
-            {seconds.toString().padStart(2, '0')}
-          </div>
-        </div>
-      </div>
-      
+      <Header 
+        title='Complete your payment within:'
+        isCloseBtn={false}
+        onBack={onBack}            
+        isBackBtn={true}
+        isCountdown={true}
+        duration={duration}
+      />
       <div className="p-3 overflow-y-auto flex-1 text-sm">
         <div className="rounded-lg mb-2">
           <div className="pl-0 text-gray-400 text-[11px]">

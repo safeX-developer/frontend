@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { FaTimes, FaArrowLeft, FaComment, FaCopy, FaArrowRight, FaCheckCircle } from 'react-icons/fa';
+import { FaArrowLeft, FaComment, FaCopy, FaArrowRight, FaCheckCircle } from 'react-icons/fa';
+import Header from './components/Header';
 
 export default function PayNow({onCancel, onPaynow, onBack, duration = 15 }) {
   const [timeLeft, setTimeLeft] = useState(duration * 60); // Convert minutes to seconds
@@ -26,25 +27,16 @@ export default function PayNow({onCancel, onPaynow, onBack, duration = 15 }) {
  
   return (
     <>
-      {/* Fixed header with title and close button */}
-      <div className="p-4 sticky top-0 rounded-t-lg navbar-shadow bg-[#2b2a2a] z-10 flex items-center">
-        <button
-          onClick={onBack}
-          className="text-gray-400 hover:text-white transition-colors cursor-pointer mr-3"
-        >
-          <FaArrowLeft />
-        </button>
-        <h2 className="text-[14px] font-bold text-white flex-1 text-center">Complete your payment within:</h2>
-        <div className="flex items-center text-sm ">
-          <div className="bg-[#1a1a1a] rounded px-3 py-2 text-white font-bold">
-            {minutes.toString().padStart(2, '0')}
-          </div>
-          <span className="text-white mx-1 font-bold">:</span>
-          <div className="bg-[#1a1a1a] rounded px-3 py-2 text-white font-bold">
-            {seconds.toString().padStart(2, '0')}
-          </div>
-        </div>
-      </div>
+        <Header 
+            title='Complete your payment within:'
+            isCloseBtn={false}
+            onBack={onBack}            
+            isBackBtn={true}
+            isCountdown={true}
+            duration={duration}
+        />
+
+
       
       {/* Scrollable content */}
       <div className="p-4 overflow-y-auto flex-1 text-sm">

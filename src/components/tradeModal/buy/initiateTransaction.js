@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FaTimes, FaClock } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
+import Header from './components/Header';
 
 export default function intiateTransaction( { 
     onClose,
@@ -44,16 +45,11 @@ export default function intiateTransaction( {
 
   return (
     <>
-        {/* Fixed header with title and close button */}
-        <div className="p-4 sticky top-0 rounded-t-lg navbar-shadow bg-[#2b2a2a] z-10">
-          <h2 className="text-[16px] text-center font-semibold text-white">Buy {fiat}</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors absolute right-5 top-4 cursor-pointer"
-          >
-            <FaTimes />
-          </button>
-        </div>
+       <Header 
+          isCloseBtn={true}
+          title={"Buy " + coin}
+          onClose={onClose}
+       />
 
         {/* Scrollable content */}
         <div className="px-2 sm:px-5 py-3 overflow-y-auto flex-1 text-sm">
