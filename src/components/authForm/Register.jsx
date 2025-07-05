@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import { Country, State, City } from 'country-state-city'
+import { prepareContractCall } from "thirdweb";
+import { useSendTransaction } from "thirdweb/react";
+import { contract } from "../../context/AppContext"
 
-export default function Register({ isOpen, onRegister }) {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    username: '',
-    country: '',
-    state: '',
-    city: '',
-    address: ''
-  })
+export default function Register({ isOpen }) {
+  const { mutate: sendTransaction } = useSendTransaction();
   
+  // Individual state for each form field
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [username, setUsername] = useState('')
+  const [country, setCountry] = useState('')
+  const [state, setState] = useState('')
+  const [city, setCity] = useState('')
+  const [address, setAddress] = useState('')
+  const [email, setEmail] = useState('')
+  const [referredBy, setReferredBy] = useState('')
+  const [load, setLoad] = useState(false)
   const [countries, setCountries] = useState([])
   const [states, setStates] = useState([])
   const [cities, setCities] = useState([])
   
   // Check if form is valid (all fields filled)
   const isFormValid = () => {
-    return Object.values(formData).every(value => value.trim() !== '')
+    return firstName.trim() !== '' && lastName.trim() !== '' && username.trim() !== '' && 
+           country.trim() !== '' && state.trim() !== '' && city.trim() !== '' && 
+           address.trim() !== '' && email.trim() !== ''
   }
   
   // Load countries on component mount
@@ -27,36 +35,74 @@ export default function Register({ isOpen, onRegister }) {
     setCountries(allCountries)
   }, [])
   
+  // Check for referral code in URL on initial load
+  useEffect(() => {
+    // Parse URL for referral code
+    const parseReferralCode = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const inviteCode = urlParams.get('invite');
+      
+      if (inviteCode) {
+        // Store in localStorage
+        localStorage.setItem('referralCode', inviteCode);
+        // Update state
+        setReferredBy(inviteCode);
+        console.log('Referral code detected:', inviteCode);
+      } else {
+        // Check if we have a stored referral code
+        const storedCode = localStorage.getItem('referralCode');
+        if (storedCode) {
+          setReferredBy(storedCode);
+          console.log('Using stored referral code:', storedCode);
+        }
+      }
+    };
+    
+    parseReferralCode();
+  }, []);
+  
   // Load states when country changes
   useEffect(() => {
-    if (formData.country) {
-      const countryStates = State.getStatesOfCountry(formData.country)
+    if (country) {
+      const countryStates = State.getStatesOfCountry(country)
       setStates(countryStates)
       // Reset state and city when country changes
-      setFormData(prev => ({ ...prev, state: '', city: '' }))
+      setState('')
+      setCity('')
       setCities([])
     }
-  }, [formData.country])
+  }, [country])
   
   // Load cities when state changes
   useEffect(() => {
-    if (formData.country && formData.state) {
-      const stateCities = City.getCitiesOfState(formData.country, formData.state)
+    if (country && state) {
+      const stateCities = City.getCitiesOfState(country, state)
       setCities(stateCities)
       // Reset city when state changes
-      setFormData(prev => ({ ...prev, city: '' }))
+      setCity('')
     }
-  }, [formData.country, formData.state])
-  
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+  }, [country, state])
   
   const handleSubmit = (e) => {
     e.preventDefault()
     if (isFormValid()) {
-      onRegister(formData)
+      setLoad(true)
+      const transaction = prepareContractCall({
+        contract,
+        method:
+          "function register(string country, string state, string username, string firstName, string lastName, string city, string email, string referredBy) returns (bool)",
+        params: [
+          country,
+          state,
+          username,
+          firstName,
+          lastName,
+          city,
+          email,
+          referredBy,
+        ],
+      });
+      sendTransaction(transaction);
     }
   }
   
@@ -93,8 +139,8 @@ export default function Register({ isOpen, onRegister }) {
                   type="text"
                   id="firstName"
                   name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   required
                   className="w-full px-3 py-2 border-inactive rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   style={{ backgroundColor: 'var(--background-color)' }}
@@ -109,8 +155,8 @@ export default function Register({ isOpen, onRegister }) {
                   type="text"
                   id="lastName"
                   name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   required
                   className="w-full px-3 py-2 border-inactive rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                   style={{ backgroundColor: 'var(--background-color)' }}
@@ -128,8 +174,8 @@ export default function Register({ isOpen, onRegister }) {
                 type="text"
                 id="username"
                 name="username"
-                value={formData.username}
-                onChange={handleChange}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required
                 className="w-full px-3 py-2 border-inactive rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 style={{ backgroundColor: 'var(--background-color)' }}
@@ -145,8 +191,8 @@ export default function Register({ isOpen, onRegister }) {
               <select
                 id="country"
                 name="country"
-                value={formData.country}
-                onChange={handleChange}
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
                 required
                 className="w-full px-3 py-2 border-inactive rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 style={{ backgroundColor: 'var(--background-color)' }}
@@ -168,10 +214,10 @@ export default function Register({ isOpen, onRegister }) {
               <select
                 id="state"
                 name="state"
-                value={formData.state}
-                onChange={handleChange}
+                value={state}
+                onChange={(e) => setState(e.target.value)}
                 required
-                disabled={!formData.country}
+                disabled={!country}
                 className="w-full px-3 py-2 border-inactive rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
                 style={{ backgroundColor: 'var(--background-color)' }}
               >
@@ -192,10 +238,10 @@ export default function Register({ isOpen, onRegister }) {
               <select
                 id="city"
                 name="city"
-                value={formData.city}
-                onChange={handleChange}
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
                 required
-                disabled={!formData.state}
+                disabled={!state}
                 className="w-full px-3 py-2 border-inactive rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
                 style={{ backgroundColor: 'var(--background-color)' }}
               >
@@ -217,12 +263,47 @@ export default function Register({ isOpen, onRegister }) {
                 type="text"
                 id="address"
                 name="address"
-                value={formData.address}
-                onChange={handleChange}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 required
                 className="w-full px-3 py-2 border-inactive rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 style={{ backgroundColor: 'var(--background-color)' }}
                 placeholder="123 Main St, Apt 4B"
+              />
+            </div>
+            
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-3 py-2 border-inactive rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                style={{ backgroundColor: 'var(--background-color)' }}
+                placeholder="john@example.com"
+              />
+            </div>
+            
+            {/* Referred By */}
+            <div>
+              <label htmlFor="referredBy" className="block text-sm font-medium text-gray-300 mb-1">
+                Referred By (Optional)
+              </label>
+              <input
+                type="text"
+                id="referredBy"
+                name="referredBy"
+                value={referredBy}
+                onChange={(e) => setReferredBy(e.target.value)}
+                className="w-full px-3 py-2 border-inactive rounded-md text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                style={{ backgroundColor: 'var(--background-color)' }}
+                placeholder="Referral code"
               />
             </div>
           </form>
@@ -232,14 +313,13 @@ export default function Register({ isOpen, onRegister }) {
         <div className="sticky bottom-0 bg-[var(--card-color)] px-6 py-4 border-t border-gray-700 rounded-b-lg">
           <button
             onClick={handleSubmit}
-            disabled={!isFormValid()}
+            disabled={!isFormValid() || load}
             className={`w-full px-4 py-2 text-white rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
               isFormValid() 
                 ? 'bg-[var(--sec-color)] hover:bg-[var(--sec1-color)]' 
                 : 'bg-gray-600 cursor-not-allowed opacity-70'
             }`}
-          >
-            Register
+          > {load ? "Loading..." : "Register"}
           </button>
         </div>
       </div>

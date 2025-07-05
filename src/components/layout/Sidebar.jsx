@@ -8,30 +8,30 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [activeSwitch, setActiveSwitch] = useState('P2P');
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
+ 
   const navItems = [
     { name: 'P2P', path: '/p2p/trades', icon: 'p2p' },
-    { name: 'My Ads', path: '/p2p/my-ads', icon: 'ads' }, // Updated name, path and icon
-    // { name: 'Create Trade', path: '/trades/create', icon: 'plus' },
+    { name: 'My Ads', path: '/p2p/my-ads', icon: 'ads' }, 
+    { name: 'Reward', path: '/p2p/rewards', icon: 'reward' }, 
     // { name: 'Profile', path: '/profile', icon: 'user' },
     // { name: 'Settings', path: '/settings', icon: 'cog' },
   ];
-  
+ 
   const isActive = (path) => {
     return location.pathname === path;
   };
-  
+ 
   const handleSwitchChange = (switchName) => {
     setActiveSwitch(switchName);
     setDropdownOpen(false);
   };
-  
+ 
   const navigateToProfile = () => {
     if (user && user.userId) {
       navigate(`/p2p/profile/${user.userId}`);
     }
   };
-  
+ 
   return (
     <aside
       className="transition-all duration-300 ease-in-out h-screen bg-[var(--card-color)] text-white fixed left-0 top-0 z-40 flex flex-col"
@@ -41,11 +41,7 @@ const Sidebar = () => {
         <div className="flex items-center justify-between mb-5">
           {sidebarOpen && (
             <Link to="/" className="flex items-center pl-2.5 mb-5">
-              <img
-                src="/asset/logo.png"
-                alt="SafeX Logo"
-                className="h-7 mr-3"
-              />
+              <img src="/asset/logo.png" alt="SafeX Logo" className="h-7 mr-3" />
             </Link>
           )}
           <button
@@ -119,18 +115,14 @@ const Sidebar = () => {
                   </svg>
                 )}
                 
-                {item.icon === 'plus' && (
+                {item.icon === 'reward' && (
                   <svg
                     className="w-6 h-6 transition duration-75"
                     fill="currentColor"
-                    viewBox="0 0 20 20"
+                    viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                      clipRule="evenodd"
-                    ></path>
+                    <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
                   </svg>
                 )}
                 
@@ -178,14 +170,14 @@ const Sidebar = () => {
             <>
               <p className="text-xs text-[var(--text-color)] mb-2">Switch Platform</p>
               <div className="relative">
-                <button 
+                <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   className="flex items-center justify-between w-full px-3 py-2 text-sm font-medium text-white bg-[var(--card-color)] rounded-md hover:bg-gray-600 focus:outline-none"
                 >
                   <span>{activeSwitch}</span>
-                  <svg 
-                    className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} 
-                    fill="currentColor" 
+                  <svg
+                    className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
+                    fill="currentColor"
                     viewBox="0 0 20 20"
                   >
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -200,8 +192,8 @@ const Sidebar = () => {
                           key={option}
                           onClick={() => handleSwitchChange(option)}
                           className={`block w-full text-left px-4 py-2 text-sm ${
-                            activeSwitch === option 
-                              ? 'bg-[var(--sec-color)] text-white' 
+                            activeSwitch === option
+                              ? 'bg-[var(--sec-color)] text-white'
                               : 'text-gray-300 hover:bg-gray-600'
                           }`}
                         >
@@ -215,7 +207,7 @@ const Sidebar = () => {
             </>
           ) : (
             <div className="flex justify-center">
-              <button 
+              <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="p-2 text-white bg-[var(--card-color)] rounded-md hover:bg-[var(--sec-color)] focus:outline-none"
               >
@@ -233,8 +225,8 @@ const Sidebar = () => {
                         key={option}
                         onClick={() => handleSwitchChange(option)}
                         className={`block w-full text-left px-4 py-2 text-sm ${
-                          activeSwitch === option 
-                            ? 'bg-[var(--sec-color)] text-white' 
+                          activeSwitch === option
+                                                      ? 'bg-[var(--sec-color)] text-white'
                             : 'text-gray-300 hover:bg-gray-600'
                         }`}
                       >
@@ -251,7 +243,7 @@ const Sidebar = () => {
         {/* User Profile - Only show if user exists */}
         {user && (
           <div 
-               onClick={navigateToProfile}
+            onClick={navigateToProfile}
             className={`flex items-center ${sidebarOpen ? 'justify-start' : 'justify-center'} p-2 rounded-lg bg-[var(--background-color)] cursor-pointer transition-colors`}
           >
             <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0" style={{

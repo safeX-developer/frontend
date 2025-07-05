@@ -31,11 +31,11 @@ export default function Profile() {
     tradingVolume: user?.totalTransactionValue?.amount >= 300000 ? true : false
   };
 
-  console.log(user)
+
   return (
     <>
     {load ?  <LoadingSpinner /> : 
-     
+     !user ? <div className=' h-full w-full flex items-center justify-center text-center text-2xl font-bold'>No User Found</div> :
       <div className="container mx-auto mt-10 px-4 py-8">
         {/* User Profile Card */}
         <div className="bg-[var(--card-color)] rounded-lg shadow-lg p-6 mb-6">
@@ -123,9 +123,9 @@ export default function Profile() {
               className="p-4 border-inactive rounded-lg bg-[var(--card-color)]" 
               style={{ boxShadow: '3px 3px 3px 3px rgba(0, 0, 0, 0.2)' }}
             >
-              <div className="text-l font-bold text-white">2823</div>
+              <div className="text-l font-bold text-white">{user?.completedOrders || 0}</div>
               <div className="text-xs text-gray-400">
-                completed Orders in 3 days
+                completed Orders in 30days
               </div>
             </div>
             
@@ -134,8 +134,8 @@ export default function Profile() {
               className="p-4 border-inactive rounded-lg bg-[var(--card-color)]" 
               style={{ boxShadow: '3px 3px 3px 3px rgba(0, 0, 0, 0.2)' }}
             >
-              <div className="text-l font-bold text-white">3178</div>
-              <div className="text-xs text-gray-400">completed Orders</div>
+              <div className="text-l font-bold text-white">{user?.allOrders || 0}</div>
+              <div className="text-xs text-gray-400">Total Orders</div>
             </div>
             
             {/* Completion Rate Card */}
@@ -143,7 +143,7 @@ export default function Profile() {
               className="p-4 border-inactive rounded-lg bg-[var(--card-color)]" 
               style={{ boxShadow: '3px 3px 3px 3px rgba(0, 0, 0, 0.2)' }}
             >
-              <div className="text-l font-bold text-green-500">99%</div>
+              <div className="text-l font-bold text-green-500">{user?.completionRates || 0}%</div>
               <div className="text-xs text-gray-400">Completion rate</div>
             </div>
             
@@ -152,14 +152,14 @@ export default function Profile() {
               className="p-4 border-inactive rounded-lg bg-[var(--card-color)]" 
               style={{ boxShadow: '3px 3px 3px 3px rgba(0, 0, 0, 0.2)' }}
             >
-              <div className="text-l font-bold text-yellow-500">64</div>
+              <div className="text-l font-bold text-yellow-500">{user?.goodRating}</div>
               <div className="text-xs text-gray-400">Good rating</div>
             </div>
           </div>
         </div>
         
         {/* Additional profile content would go here */}
-        <TabsLayout />
+        <TabsLayout user={user} />
       </div>
       }
     </>

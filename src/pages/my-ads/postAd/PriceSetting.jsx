@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function PriceSetting({
   priceType,
@@ -7,10 +7,161 @@ function PriceSetting({
   setFixedPrice,
   premium,
   setPremium,
-  currency = "NGN"
+  currency = "NGN",
+  coin = "USDT",
+  referencePrice,
+  setReferencePrice,
+  tradedPrice,
+  setTradedPrice
 }) {
   const [showTooltip, setShowTooltip] = useState(false);
+
+  const [priceError, setPriceError] = useState('');
   
+  // Fetch reference price when currency or coin changes
+  useEffect(() => {
+    fetchReferencePrice();
+  }, [currency, coin]);
+  
+  // Update traded price when price type, fixed price, premium, or reference price changes
+  useEffect(() => {
+    calculateTradedPrice();
+  }, [priceType, fixedPrice, premium, referencePrice]);
+  
+  // Validate price when it changes
+  useEffect(() => {
+    if (priceType === 'fixed' && fixedPrice && referencePrice > 0) {
+      validateFixedPrice(parseFloat(fixedPrice));
+    } else if (priceType === 'float' && premium && referencePrice > 0) {
+      validateFloatPrice(premium);
+    } else {
+      setPriceError('');
+    }
+  }, [fixedPrice, premium, referencePrice, priceType]);
+  
+  // Function to fetch the reference price (market rate)
+  const fetchReferencePrice = async () => {
+    try {
+      // In a real implementation, you would fetch this from an API
+      // For example: const response = await fetch(`https://api.example.com/price/${coin}/${currency}`);
+      
+      // For now, we'll use a mock value
+      // In a real app, you'd replace this with an actual API call
+      const mockPrices = {
+        "USDT": {
+          "NGN": 1550,
+          "USD": 1.0,
+          "EUR": 0.92,
+          "GBP": 0.79
+        },
+        "BTC": {
+          "NGN": 67000000,
+          "USD": 43000,
+          "EUR": 39500,
+          "GBP": 34000
+        },
+        "ETH": {
+          "NGN": 4500000,
+          "USD": 2900,
+          "EUR": 2650,
+          "GBP": 2300
+        },
+        "USDC": {
+          "NGN": 1545,
+          "USD": 1.0,
+          "EUR": 0.92,
+          "GBP": 0.79
+        }
+      };
+      
+      // Get the reference price for the selected coin and currency
+      const price = mockPrices[coin]?.[currency] || 0;
+      setReferencePrice(price);
+    } catch (error) {
+      console.error("Error fetching reference price:", error);
+      setReferencePrice(0);
+    }
+  };
+  
+  // Validate if fixed price is within acceptable range (90%-110% of reference price)
+  const validateFixedPrice = (price) => {
+    const minAcceptablePrice = referencePrice * 0.9;
+    const maxAcceptablePrice = referencePrice * 1.1;
+    
+    if (price < minAcceptablePrice) {
+      setPriceError(`Price is too low. Minimum recommended price is ${formatNumber(minAcceptablePrice)} ${currency}`);
+    } else if (price > maxAcceptablePrice) {
+      setPriceError(`Price is too high. Maximum recommended price is ${formatNumber(maxAcceptablePrice)} ${currency}`);
+    } else {
+      setPriceError('');
+    }
+  };
+  
+  // Validate if float price premium is within acceptable range (90% to 110%)
+  const validateFloatPrice = (premiumValue) => {
+    // Parse premium (remove % if present)
+    let cleanPremium = premiumValue;
+    if (typeof premiumValue === 'string' && premiumValue.includes('%')) {
+      cleanPremium = premiumValue.replace('%', '');
+    }
+    
+    // Convert to number
+    const premiumPercent = parseFloat(cleanPremium);
+    
+    if (isNaN(premiumPercent)) {
+      setPriceError('Please enter a valid percentage value');
+      return;
+    }
+    
+    // Check if premium is within acceptable range (90% to 110%)
+    if (premiumPercent < 90) {
+      setPriceError('Premium is too low. Minimum recommended premium is 90%');
+    } else if (premiumPercent > 110) {
+      setPriceError('Premium is too high. Maximum recommended premium is 110%');
+    } else {
+      setPriceError('');
+    }
+  };
+  
+  // Calculate the traded price based on price type
+  const calculateTradedPrice = () => {
+    if (priceType === 'fixed') {
+      // For fixed price, the traded price is simply the fixed price
+      setTradedPrice(fixedPrice || 0);
+    } else {
+      // For float price, calculate based on premium percentage
+      if (!premium) {
+        setTradedPrice(0);
+        return;
+      }
+      
+      // Parse premium (remove % if present)
+      let premiumValue = premium;
+      if (typeof premium === 'string' && premium.includes('%')) {
+        premiumValue = premium.replace('%', '');
+      }
+      
+      // Convert to number and calculate
+      // For float price, 100% means exactly the reference price
+      const premiumPercent = parseFloat(premiumValue);
+      if (!isNaN(premiumPercent)) {
+        const calculatedPrice = referencePrice * (premiumPercent / 100);
+        setTradedPrice(calculatedPrice.toFixed(2));
+      } else {
+        setTradedPrice(0);
+      }
+    }
+  };
+  
+  // Format number with commas for display
+  const formatNumber = (num) => {
+    if (!num) return "0";
+    return parseFloat(num).toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  };
+
   return (
     <>     
       {/* Price Setting Section */}
@@ -78,15 +229,17 @@ function PriceSetting({
                   </button>
                 </label>
                 
-                <div className="absolute left-33 -top-4 mt-2 w-75 rounded-md shadow-lg z-10">
-                  <div className="relative">
-                    {/* Triangle pointer */}
-                    <div className="absolute top-2 -left-1 w-4 h-4 bg-[var(--card-color)] transform rotate-45"></div>
-                    <div className="relative bg-[var(--card-color)] text-[12px] text-gray-300 px-3 py-2 rounded">
-                      Floating Price = Reference Price × Premium
+                {showTooltip && (
+                  <div className="absolute left-33 -top-4 mt-2 w-75 rounded-md shadow-lg z-10">
+                    <div className="relative">
+                      {/* Triangle pointer */}
+                      <div className="absolute top-2 -left-1 w-4 h-4 bg-[var(--card-color)] transform rotate-45"></div>
+                      <div className="relative bg-[var(--card-color)] text-[12px] text-gray-300 px-3 py-2 rounded">
+                        Floating Price = Reference Price × (Premium/100)
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
@@ -94,7 +247,7 @@ function PriceSetting({
           <div className="mt-3 text-xs text-gray-400">
             {priceType === 'fixed'
               ? "A fixed price does not fluctuate based on market movements."
-              : "Your floating offer price is calculated by multiplying the premium and the reference price."}
+              : "Your floating offer price is calculated by multiplying the reference price by the premium percentage."}
           </div>
           
           {/* Dynamic Input Field Based on Price Type */}
@@ -105,8 +258,10 @@ function PriceSetting({
             <div className="relative rounded-md shadow-sm">
               <input
                 type={priceType === 'fixed' ? 'number' : 'text'}
-                className="block w-full bg-[var(--card-color)] rounded-md py-2 pl-3 pr-12 text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                placeholder={priceType === 'fixed' ? 'Enter price' : '80%-120%'}
+                className={`block w-full bg-[var(--card-color)] rounded-md py-2 pl-3 pr-12 text-white placeholder-gray-400 focus:outline-none focus:ring-1 ${
+                  priceError ? 'focus:ring-red-500 focus:border-red-500 border-red-500' : 'focus:ring-blue-500 focus:border-blue-500'
+                } sm:text-sm`}
+                placeholder={priceType === 'fixed' ? 'Enter price' : '90% - 110%'}
                 value={priceType === 'fixed' ? fixedPrice : premium}
                 onChange={(e) => {
                   if (priceType === 'fixed') {
@@ -122,15 +277,22 @@ function PriceSetting({
                 </span>
               </div>
             </div>
+            
+            {/* Error message */}
+            {priceError && (
+              <p className="mt-1 text-sm text-red-500">
+                {priceError}
+              </p>
+            )}
           </div>
           
           {/* Price Information Note */}
           <div className="mt-3 p-3 bg-[var(--card-color)] rounded-md">
             <p className="text-[12px] text-gray-300 mb-1">
-              Traded Price: {currency}/USDT
+              Traded Price: {formatNumber(tradedPrice)} {currency}/{coin}
             </p>
             <p className="text-[12px] text-gray-300">
-              Reference Price: 0.74 {currency}/USDT
+              Reference Price: {formatNumber(referencePrice)} {currency}/{coin}
             </p>
           </div>
         </div>

@@ -10,18 +10,10 @@ export default function P2pLayout() {
     const [tab, setTab] = useState(0);
     const [methods, setMethods] = useState([
         {active: true, name: "All Payment Methods"},
-        {active: false, name: "FPS"},
         {active: false, name: "Bank Transfer"},
-        {active: false, name: "Cash in Person"},
         {active: false, name: "PayMe"},
         {active: false, name: "PayPal"},
         {active: false, name: "NETELLER"},
-        {active: false, name: "Swish"},
-        {active: false, name: "Skrill"},
-        {active: false, name: "Livi Bank"},
-        {active: false, name: "A-Bank"},
-        {active: false, name: "Privat Bank"},
-        {active: false, name: "Wise"},
     ]);
 
     const countries = [
@@ -85,9 +77,9 @@ export default function P2pLayout() {
 
     return (
         <div className="rounded-lg">
-            <div className="mt-0">
+            <div className="mt-2">
                 {/* Header section containing both Buy/Sell Switch and Search/Filter */}
-                <div className="flex items-center justify-between bg-[var(--background-color)] px-1 pt-4 pb-6 rounded-t-lg border-b border-border sticky top-8 z-10">
+                <div className="flex items-center justify-between bg-[var(--background-color)] px-1 pt-4 pb-6 rounded-t-lg border-b border-border sticky top-9 z-10">
                     {/* Buy/Sell Switch */}
                     <div className="flex-shrink-0">
                         <div className="flex gap-2 p-1 bg-[var(--card-color)] rounded-lg overflow-hidden">

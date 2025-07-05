@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ReviewTab() {
+export default function ReviewTab({user}) {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState('');
   const [activeTab, setActiveTab] = useState('good');
@@ -54,7 +54,7 @@ export default function ReviewTab() {
   ];
   
   // Filter reviews based on active tab
-  const filteredReviews = allReviews.filter(review => 
+  const filteredReviews = user?.reviews.filter(review => 
     activeTab === 'good' ? review.isGood : !review.isGood
   );
   
@@ -66,8 +66,8 @@ export default function ReviewTab() {
   const currentReviews = filteredReviews.slice(indexOfFirstReview, indexOfLastReview);
   
   // Calculate rating percentage
-  const goodReviews = allReviews.filter(review => review.isGood).length;
-  const totalReviews = allReviews.length;
+  const goodReviews = user?.reviews.filter(review => review.isGood).length;
+  const totalReviews = user?.reviews.length;
   const goodRatingPercentage = Math.round((goodReviews / totalReviews) * 100);
   
   const handlePageChange = (pageNumber) => {

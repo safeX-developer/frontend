@@ -3,12 +3,12 @@ import ProfileTab from './ProfileTab';
 import ReviewTab from './ReviewTab';
 import PaymentMethodTab from './PaymentMethodTab';
 
-export default function TabsLayout() {
+export default function TabsLayout({user}) {
   const [activeTab, setActiveTab] = useState('profile');
   
   const tabs = [
     { id: 'profile', label: 'Profile' },
-    { id: 'review', label: 'Leave A Review' },
+    { id: 'review', label: 'Leave A Review ' + `(${user?.reviews?.length || 0})` },
     { id: 'payment', label: 'Payment Method' }
   ];
   
@@ -39,9 +39,9 @@ export default function TabsLayout() {
       
       {/* Tab Content */}
       <div className="p-6">
-        {activeTab === 'profile' && <ProfileTab />}
-        {activeTab === 'review' && <ReviewTab />}
-        {activeTab === 'payment' && <PaymentMethodTab />}
+        {activeTab === 'profile' && <ProfileTab user={user} />}
+        {activeTab === 'review' && <ReviewTab user={user} />}
+        {activeTab === 'payment' && <PaymentMethodTab user={user} />}
       </div>
     </div>
   );

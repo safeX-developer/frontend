@@ -1,0 +1,1 @@
+export const SafeXPlatform = "0x5ff18b499c04642269d25de3eb79346faf9c4e45"

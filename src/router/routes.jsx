@@ -5,6 +5,7 @@ const HomePage = lazy(() => import('../pages/home/Welcome'));
 const P2PTrades = lazy(() => import('../pages/p2p/P2pLayout'));
 const MyAds = lazy(() => import('../pages/my-ads/MyAds'));
 const Profile = lazy(() => import('../pages/profile/Profile'));
+const Reward = lazy(() => import('../pages/reward/Reward'));
 
 // // Trade related pages
 // const TradeList = lazy(() => import('../pages/trades/TradeList'));
@@ -31,6 +32,10 @@ const routes = [
   {
     path: '/p2p/profile/:userId',
     element: <Profile />,
+  },
+    {
+    path: '/p2p/rewards',
+    element: <Reward />,
   },
   // {
   //   path: '/trades',

@@ -1,14 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
-import {  createThirdwebClient } from "thirdweb";
+import { useReadContract } from "thirdweb/react";
 import { ConnectButton } from "thirdweb/react";
 import { darkTheme } from "thirdweb/react";
 import { inAppWallet, createWallet } from "thirdweb/wallets";
 import Register from '../authForm/Register';
-
-const client = createThirdwebClient({
-    clientId: "6d3bbd638121ead90345bff8365907d8",
-});
+import { client } from '../../context/AppContext';
 
 const wallets = [
     inAppWallet({
@@ -34,11 +32,12 @@ const wallets = [
 
 
 const Navbar = () => {
-  const { sidebarOpen,user, toggleSidebar, showLoginModal, onRegister } = useApp();
+  const {sidebarOpen,user, toggleSidebar, showLoginModal,setSidebarOpen,  onRegister  } = useApp();
+
 
   return (
     <>
-    {showLoginModal && !user && <Register isOpen={showLoginModal} onRegister={onRegister} />}
+    {showLoginModal && !user && <Register isOpen={showLoginModal} isClose={setSidebarOpen} onRegister={onRegister} />}
       
     <nav
       className="border-b border-gray-200 px-4 py-2.5 fixed right-0 top-0 z-50 transition-all duration-300"
@@ -48,7 +47,6 @@ const Navbar = () => {
         boxShadow: '0 2px 4px #383b4387'
       }}
     > 
-  
       <div className="flex flex-wrap justify-between items-center">
         <div className="flex items-center">
           <button
@@ -82,6 +80,11 @@ const Navbar = () => {
                         primaryButtonText: "hsl(0, 0%, 100%)",
                       }
                   })}
+                  detailsButton={{
+                    style:{
+                      maxHeight: "3rem",
+                    }
+                  }}
                   connectModal={{ size: "wide" }}
               />
             </div>

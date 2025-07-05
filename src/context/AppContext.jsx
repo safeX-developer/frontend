@@ -1,99 +1,96 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { useActiveAccount } from "thirdweb/react";
 import ApiService from '../api/api';
+import { createThirdwebClient,getContract } from "thirdweb";
+import { defineChain } from "thirdweb/chains";
+import { readContract } from "thirdweb";
+
+export const client = createThirdwebClient({
+    clientId: "c872f44da560205986e0c8b12472681c",
+});
+
+export const contract = getContract({
+  client,
+  chain: defineChain(11155111),
+  address: "0xbE6C642d84d1363ac34035B34e774A68D826A22D",
+});
+
 // Create context
 const AppContext = createContext();
 
 // Provider component
 export const AppProvider = ({ children }) => {
-  // User state
+  // All useState hooks must be called in the same order every time
   const [user, setUser] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const api = new ApiService()
-  const wallet = useActiveAccount()
-  // Screen state
+  const [contractInstance, setContractInstance] = useState(null);
+  const [referralCode, setReferralCode] = useState(null);
   const [screen, setScreen] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
     isMobile: window.innerWidth < 768
   });
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
+  const [socketConnected, setSocketConnected] = useState(false);
+  const [ownerData, setOwnerData] = useState(null);
+  const [ownerLoading, setOwnerLoading] = useState(false);
+  const [ownerError, setOwnerError] = useState(null);
 
-  useEffect(()=>{
-    async function getUser(){
-      if(wallet){
-      const userEl = await api.getUserByAddress(wallet.address)
-        if(userEl){
-          setUser(userEl)
-        }else{
+  // const { contract, isLoading: contractLoading, error: contractError } = useContract(MarketAddress, MarketAddressABI);
+  // console.log(contract)
+
+  // All other hooks
+  const wallet = useActiveAccount();
+  const api = new ApiService();
+
+  useEffect(() => {
+    async function getUserInfo(){
+      try {
+        const data = await readContract({
+          contract,
+          method:
+            "function getUserBasicInfo(address userId) view returns (string username, string firstName, string lastName, string country, string state, string city)",
+          params: [wallet.address],
+        });
+        console.log(data)
+      } catch (error) {
+        if(error?.code === 3){
           setShowLoginModal(true)
         }
+        // console.error("Error initializing contract:", error?.code);
       }
     }
-    getUser()
-  },[wallet])
-  
-  // Sidebar state
-  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
-  
+    getUserInfo()
+  }, [wallet]);
+
+
+
   // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      
       setScreen({
         width,
         height,
         isMobile: width < 768
       });
-      
       // Auto-close sidebar on mobile
       if (width < 768 && sidebarOpen) {
         setSidebarOpen(false);
       }
     };
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [sidebarOpen]);
-  
-  // Check for saved user on initial load
-  useEffect(() => {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-  }, []);
 
-  // Register function
-  const onRegister = async (formData) => {
-    if(wallet && formData){
-      const data = {userId: wallet.address, ...formData}
-      const user = await api.register(data)
-      if(user){
-        console.log(user);
-        setUser(user)
-      }
-    }
-  };
-  
-  // Login function
-  const login = (userData) => {
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
-  };
-  
-  // Logout function
-  const logout = () => {
-    localStorage.removeItem('user');
-    setUser(null);
-  };
-  
+
   // Toggle sidebar
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
-  
+
   // Context value
   const value = {
     user,
@@ -101,14 +98,15 @@ export const AppProvider = ({ children }) => {
     screen,
     sidebarOpen,
     showLoginModal,
-    login,
-    logout,
     toggleSidebar,
     setSidebarOpen,
-    onRegister,
-    api
+    api,
+    contract: contractInstance,
+    ownerData,
+    ownerLoading,
+    ownerError,
   };
-  
+
   return (
     <AppContext.Provider value={value}>
       {children}

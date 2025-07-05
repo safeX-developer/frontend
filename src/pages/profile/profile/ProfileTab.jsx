@@ -1,12 +1,19 @@
 import React from 'react';
 
-export default function ProfileTab() {
+export default function ProfileTab({user}) {
   // Social media platforms with verification status
-  const socialPlatforms = [
-    { name: 'Telegram', verified: true },
-    { name: 'Facebook', verified: true },
-    { name: 'Instagram', verified: true },
-  ];
+  // const socialPlatforms = [
+  //   { name: 'Telegram', verified: true  },
+  //   { name: 'Facebook', verified: true },
+  //   { name: 'Instagram', verified: true },
+  // ];
+
+  let socialPlatforms = user?.socialMedia || []
+
+  const converDateToReadableAndTime = (date) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    return new Date(date).toLocaleDateString(undefined, options);
+  };
 
   // Profile information items with icons
   const profileItems = [
@@ -22,7 +29,7 @@ export default function ProfileTab() {
     },
     {
       label: 'User name',
-      value: 'Amarachi.okoro',
+      value: user?.username,
       icon: (
         <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
@@ -31,7 +38,7 @@ export default function ProfileTab() {
     },
     {
       label: 'Email',
-      value: 'amarachi.okoro@example.com',
+      value: user?.email || "Not provided",
       icon: (
         <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -41,7 +48,7 @@ export default function ProfileTab() {
     },
     {
       label: 'Full Name',
-      value: 'Amarachi Okoro',
+      value: (user?.firstName + " " + user?.lastName) || "Not provided",
       icon: (
         <svg className="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
@@ -50,7 +57,7 @@ export default function ProfileTab() {
     },
     {
       label: 'Country',
-      value: 'Nigeria',
+      value: user?.country || "Null",
       icon: (
         <svg className="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 011 1v12a1 1 0 01-1 1H6a3 3 0 01-3-3V6zm3-2a1 1 0 00-1 1v10a1 1 0 001 1h9V4H6z" clipRule="evenodd" />
@@ -60,7 +67,7 @@ export default function ProfileTab() {
     },
     {
       label: 'State',
-      value: 'Lagos',
+      value: user?.state || "Null",
       icon: (
         <svg className="w-5 h-5 text-indigo-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -69,7 +76,7 @@ export default function ProfileTab() {
     },
     {
       label: 'City',
-      value: 'Ikeja',
+      value: user?.city || "Null",
       icon: (
         <svg className="w-5 h-5 text-pink-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -78,7 +85,7 @@ export default function ProfileTab() {
     },
     {
       label: 'Address',
-      value: '123 Adeola Odeku Street, Victoria Island',
+      value: user?.address || "Null",
       icon: (
         <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
@@ -87,7 +94,7 @@ export default function ProfileTab() {
     },
     {
       label: 'Total Transaction',
-      value: 'USDT 10,000',
+      value: user?.totalTransactions || 0,
       icon: (
         <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
@@ -97,7 +104,7 @@ export default function ProfileTab() {
     },
     {
       label: 'Date Created',
-      value: 'Friday, Sep 25, 2025',
+      value: converDateToReadableAndTime(user?.createdAt) || "Null",
       icon: (
         <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
@@ -110,6 +117,7 @@ export default function ProfileTab() {
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {profileItems.map((item, index) => (
+          
           <div
             key={index}
             className="p-4 rounded-lg shadow-md border-inactive border-gray-700 bg-[#0000000d]"
@@ -123,8 +131,9 @@ export default function ProfileTab() {
                 
                 {item.isSpecial ? (
                   <div className="flex flex-wrap gap-2 mt-2">
-                    {item.value.map((social, idx) => (
-                      <button
+                    {item.value.length === 0 ? "No Social is verified" : item.value.map((social, idx) => (
+                      social.verified ? (
+                        <button
                         key={idx}
                         className={`px-3 py-1 text-xs rounded flex items-center ${
                           social.verified
@@ -139,6 +148,9 @@ export default function ProfileTab() {
                         )}
                         {social.name}
                       </button>
+                      )
+                      : ""
+                    
                     ))}
                   </div>
                 ) : (
