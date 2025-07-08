@@ -16,6 +16,7 @@ export const contract = getContract({
   address: "0xbE6C642d84d1363ac34035B34e774A68D826A22D",
 });
 
+
 // Create context
 const AppContext = createContext();
 
