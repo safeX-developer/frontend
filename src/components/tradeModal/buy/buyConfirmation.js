@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FaTimes, FaExclamationTriangle } from 'react-icons/fa';
 import 'animate.css';
 
-export default function BuyConfirmation({ onClose }) {
+
+export default function BuyConfirmation({ onClose , handleConfirm}) {
   const [isVisible, setIsVisible] = useState(false);
   const [checkBox1, setCheckBox1] = useState(false);
   const [checkBox2, setCheckBox2] = useState(false);
@@ -124,6 +125,8 @@ export default function BuyConfirmation({ onClose }) {
 
           {/* Confirm Button */}
           <button 
+
+          onClick={handleConfirm}
             className={`w-full py-3 rounded-md text-white text-sm font-medium transition-opacity ${
               checkBox1 && checkBox2 
                 ? 'bg-[#F56630] hover:opacity-90' 

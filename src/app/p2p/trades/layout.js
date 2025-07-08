@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import NextTopLoader from 'nextjs-toploader';
 
 export default function TradesLayout({ children }) {
  const router = useRouter();
@@ -176,6 +177,17 @@ export default function TradesLayout({ children }) {
         </div>
       </div>
       <div className="pt-5 w-full"> 
+        <NextTopLoader
+          color="#2299DD" // Color of the progress bar
+          initialPosition={0.08} // Initial position when loading starts
+          crawlSpeed={200} // Speed of the progress bar's initial crawl
+          height={3} // Height of the progress bar in pixels
+          crawl={true} // Whether the progress bar should crawl
+          showSpinner={false} // Whether to show the loading spinner (usually not needed for top bar)
+          easing="ease" // CSS easing function
+          speed={200} // Animation speed in milliseconds
+          shadow="0 0 10px #2299DD,0 0 5px #2299DD" // Optional shadow for the bar
+        />
         {children}
       </div>
     </div>

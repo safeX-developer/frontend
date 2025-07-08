@@ -14,7 +14,8 @@ const TradeCard = ({
   price,
   paymentTime = '2mins',
   type = 'buy',
-  onButtonClick
+  onButtonClick,
+  fiat= "NGN"
 }) => {
   // Generate a color based on username for the avatar background
   const generateGradientColor = (name) => {
@@ -93,7 +94,7 @@ const TradeCard = ({
             <span className="ml-1 text-white">{volume.toLocaleString()} USDT</span>
           </div>
           <div className="text-xl font-bold text-white mt-2">
-            ${price.toLocaleString()}
+            {price.toLocaleString()} {fiat}
           </div>
         </div>
         

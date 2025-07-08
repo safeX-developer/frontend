@@ -35,8 +35,12 @@ function BuyPageContent() {
       price: 1652,
       type: 'buy',
       coin: 'USDT',
+      fiat: 'NGN',
       quantity: 3.2934,
-      duration: 15
+      duration: 15,
+      bankAccountNumber: "0123456789",
+      bankBranch: "Main Branch",
+      bankName: "Valiant Bank",
     },
     {
       username: 'BitcoinMaster',
@@ -48,9 +52,13 @@ function BuyPageContent() {
       volume: 9500,
       price: 1650,
       type: 'buy',
+      fiat: 'NGN',
       coin: 'USDT',
       quantity: 2.5678,
-      duration: 15
+      duration: 15,
+      bankAccountNumber: "0123456789",
+      bankBranch: "Main Branch",
+      bankName: "Valiant Bank",
     },
     {
       username: 'CryptoTrader',
@@ -62,9 +70,13 @@ function BuyPageContent() {
       volume: 7800,
       price: 1655,
       type: 'buy',
+      fiat: 'NGN',
       coin: 'USDT',
       quantity: 1.9876,
-      duration: 15
+      duration: 15,
+      bankAccountNumber: "0123456789",
+      bankBranch: "Main Branch",
+      bankName: "Valiant Bank",
     }
   ];
 
@@ -101,6 +113,7 @@ function BuyPageContent() {
             volume={trade.volume}
             price={trade.price}
             type={trade.type}
+            fiat={trade.fiat}
             onButtonClick={() => handleBuyClick(trade)}
           />
         ))}
@@ -113,9 +126,18 @@ function BuyPageContent() {
           onClose={handleCloseModal}
           coin={selectedTrade.coin}
           price={selectedTrade.price}
+          username={selectedTrade?.username}
           quantity={selectedTrade.quantity}
           paymentMethod={selectedTrade.paymentMethod}
           duration={selectedTrade.duration}
+          completedTrades={selectedTrade?.completedTrades}
+          minLimit={selectedTrade?.minLimit}
+          maxLimit={selectedTrade.maxLimit}
+          volume={selectedTrade.volume}
+          fiat={selectedTrade.fiat}
+          bankAccountNumber={selectedTrade?.bankAccountNumber}
+          bankBranch={selectedTrade.bankBranch}
+          bankName={selectedTrade.bankName}
         />
       )}
     </div>

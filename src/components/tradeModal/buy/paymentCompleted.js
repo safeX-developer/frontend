@@ -3,7 +3,7 @@ import { FaArrowLeft, FaComment } from 'react-icons/fa'
 import BuyConfirmation from './buyConfirmation';
 import Header from './components/Header';
 
-export default function PaymentCompleted({onBack, duration = 15 }) {
+export default function PaymentCompleted({onBack, duration = 15 , handleConfirm}) {
   const [showBuyConfirmation, setShowBuyConfirmation] = useState(false);
 
   
@@ -130,7 +130,7 @@ export default function PaymentCompleted({onBack, duration = 15 }) {
         <button onClick={()=> setShowBuyConfirmation(true)} className="w-full py-3 rounded-md bg-[#F56630] text-white text-sm font-medium hover:opacity-90 transition-opacity mt-2">
           Payment Completed
         </button>
-        {showBuyConfirmation && <BuyConfirmation onClose={()=> setShowBuyConfirmation(false)}/>}
+        {showBuyConfirmation && <BuyConfirmation handleConfirm={handleConfirm} onClose={()=> setShowBuyConfirmation(false)}/>}
       </div>
 
     </>

@@ -1,6 +1,8 @@
 import { Inter, Roboto_Mono, Nunito } from "next/font/google";
 import NextTopLoader from 'nextjs-toploader';
 import "./globals.css";
+import { ThirdwebProvider } from "thirdweb/react";
+import { AppProvider } from "@/context/app.context"; // Import the provider instead
 
 // Replace Geist with Inter (a widely used and reliable Google Font)
 const inter = Inter({
@@ -10,7 +12,8 @@ const inter = Inter({
 });
 
 const nunito = Nunito({
-  variable: "--font-nunito",  // Changed variable name to avoid conflict
+  variable: "--font-nunito",
+  // Changed variable name to avoid conflict
   subsets: ["latin"],
   display: "swap",
 });
@@ -44,7 +47,11 @@ export default function RootLayout({ children }) {
           speed={200} // Animation speed in milliseconds
           shadow="0 0 10px #2299DD,0 0 5px #2299DD" // Optional shadow for the bar
         />
-        {children}
+        <ThirdwebProvider>
+          <AppProvider>
+            {children}
+          </AppProvider>
+        </ThirdwebProvider>
       </body>
     </html>
   );

@@ -4,8 +4,26 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import InitiateTransaction from './initiateTransaction';
 import PayNow from './paynow';
 import PaymentCompleted from './paymentCompleted';
+import Transactioncompleted from './transactionCompleted';
 
-const BuyModal = ({ isOpen, onClose, coin="USDT", fiat = 'USD', price = 1550, quantity = 3.2934, paymentMethod = 'Bank transfer', duration = 15 }) => {
+const BuyModal = ({ 
+  isOpen, 
+  onClose, 
+  username="Valiant Joe",
+  coin="USDT", 
+  fiat = 'USD', 
+  price = 1550, 
+  quantity = 3.2934, 
+  paymentMethod = 'Bank transfer', 
+  duration = 15,
+  amount=1500, 
+  transactionFee=0,
+  orderNo="28098320928983092",
+  orderTime="2025-07-02 18:19:22",
+  bankAccountNumber= "0123456789",
+  bankBranch= "Main Branch",
+  bankName= "Valiant Bank",
+}) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const modal = searchParams.get('modal')
@@ -24,6 +42,13 @@ const BuyModal = ({ isOpen, onClose, coin="USDT", fiat = 'USD', price = 1550, qu
       };
     }
   }, [isOpen]);
+
+  const seller = {
+    name: "Valiant Joe",
+    bankAccountNumber: "0123456789",
+    bankBranch: "Main Branch",
+    bankName: "Valiant Bank",
+  }
   
   if (!isOpen) return null;
   
@@ -49,6 +74,14 @@ const BuyModal = ({ isOpen, onClose, coin="USDT", fiat = 'USD', price = 1550, qu
                     onBack={()=> router.back()}
                     duration={duration}
                     onCancel={onClose}
+                    coin={coin}
+                    amount={amount} 
+                    price={price} 
+                    fiat={fiat}
+                    totalQuantity={quantity} 
+                    transactionFee={transactionFee}
+                    orderNo={orderNo}
+                    orderTime={orderTime}
                     onPaynow={()=> router.push('?modal=buy&tab=payment-completed')}
                 />
             )}
@@ -56,7 +89,26 @@ const BuyModal = ({ isOpen, onClose, coin="USDT", fiat = 'USD', price = 1550, qu
             {tab === 'payment-completed' && (
                 <PaymentCompleted
                     onBack={()=> router.back()}
+                    handleConfirm={()=> router.push('?modal=buy&tab=payment-success')}
                 />
+            )}
+            {tab === 'payment-success' && (
+              <Transactioncompleted 
+                duration={10} 
+                coin={coin}
+                amount={amount} 
+                price={price} 
+                fiat={fiat}
+                totalQuantity={quantity} 
+                transactionFee={transactionFee}
+                orderNo={orderNo}
+                orderTime={orderTime}
+                name={username} 
+                bankAccountNumber={bankAccountNumber}
+                bankBranch={bankBranch}
+                bankName={bankName}
+                onBack={()=> router.back()}
+              />
             )}
         </div>
       </div>

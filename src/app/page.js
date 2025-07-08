@@ -70,7 +70,7 @@ export default function Home() {
         
         <div className="flex justify-center mt-8">
           <button
-            onClick={() => router.push("/p2p/trades")}
+            onClick={() => router.push("/p2p/trades/buy")}
             className={`bg-[var(--active)] cursor-pointer text-lg px-8 py-3 rounded-full text-white hover:bg-opacity-90 ${
               isLoaded ? 'animate__animated animate__fadeInUp' : 'opacity-0'
             }`}
