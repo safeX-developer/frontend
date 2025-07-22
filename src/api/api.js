@@ -37,6 +37,7 @@ constructor(apiInstance) {
 
   async performTask(userId) {
     try {
+      console.log(userId)
       const response = await api.post(`/api/rewards/claim/${userId}`);
       return response;
       } catch (error) {
@@ -53,6 +54,33 @@ constructor(apiInstance) {
       console.error( error);
       throw error;
     }
+  }
+  async getTasks(userId){
+    try {
+      const response = await api.get(`/api/profile/get-user-task/${userId}`);
+      return response
+    } catch (error) {
+      console.error( error);
+      throw error;
+    }
+  }
+  async getSingleTask(taskId){
+      try {
+        const response = await api.get(`/api/profile/get-single-task/${taskId}`);
+        return response
+      } catch (error) {
+        console.error( error);
+        throw error;
+      }
+  }
+  async performTask(input, userId){
+      try {
+        const response = await api.patch(`/api/profile/perform-task/${userId}`, input);
+        return response
+      } catch (error) {
+        console.error( error);
+        throw error;
+      }
   }
 }
 

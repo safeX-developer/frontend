@@ -1,5 +1,3 @@
-'use client';
-
 import axios from 'axios';
 import { getCookie } from './cookies';
 import { toast } from 'sonner';

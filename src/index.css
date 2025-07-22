@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --active: #F56630;
+  --grey-color: hsla(0,0%,63%,1);
+  --primary-color: #0050FF;
+  --sec-color: #F56630;
+  --sec1-color: #d85f33;
+  --inactive-btn: rgb(38, 39, 46);
+  --text-color: #98A2B3;
+  --active-text: #F9FAFB;
+  --background-color: #000000; 
+  --bg-color: #000000; 
+  --card-color: #141414;
+  --card-color-light:rgb(41 41 57 / 86%);
+  --card-primary-color: rgba(32, 32, 45, 0.863);
+  --green-700-normal: #20b26c;
+  --green-900-focus: #00944f;
+  --red-700-normal: #ef454a;
+  --red-900-focus: #cc3939;
+  --input-color: rgb(41 41 57 / 86%),
+  --border: #75737392;
+  --backdrop:#000000b5
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Nunito", "Poppins",  Arial, Helvetica, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+.font-nunito {
+  font-family: var(--font-nunito), sans-serif;
+}
+
+.card{
+  background: #141414;
+}
+
+.navbar-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+
+::-webkit-scrollbar{
+  display :none;
+}
+button{
+  cursor: pointer;
+}
