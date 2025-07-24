@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router';
 
-// Lazy load pages for better performance
 const Welcome = lazy(() => import('./pages/Welcome/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const TradesLayout = lazy(() => import('./pages/trades/Dashboard'));
