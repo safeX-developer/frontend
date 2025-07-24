@@ -6,6 +6,7 @@ import tabsData from "./data/tabsData";
 import RewardInfo from "./tabs/RewardInfo";
 import RewardProvider, { useReward } from './context/api';
 import { useLocation, useNavigate } from 'react-router-dom';
+import AffiliateReward from './tabs/affiliate-reward/Index';
 
 function RewardLayoutEl() {
   const { dailyTaskData, setDailyTaskData, loading, setLoading, fetchDailyTaskData } = useReward()
@@ -36,6 +37,8 @@ function RewardLayoutEl() {
         />;
       case 'task':
         return <TaskReward />;
+      case 'affiliate':
+        return <AffiliateReward />;
       case 'social':
         return <SocialReward />;
       default:

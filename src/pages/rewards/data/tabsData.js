@@ -15,6 +15,11 @@ const tabsData = [
     label: 'Social Media',
     component: 'SocialReward'
   }
+  ,{
+    id: 'affiliate',
+    label: 'Affiliate',
+    component: 'AffiliateReward'
+  }
 ];
 
 export default tabsData;

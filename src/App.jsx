@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense } from 'react';
 import "animate.css"
+import { Toaster } from 'sonner';
 import Layout from './components/Layout';
 import { routes } from './routes';
 
@@ -33,15 +34,19 @@ const renderRoutes = (routes) => {
 
 function App() {
   return (
-    <Router>
-      <Suspense fallback={<Loading />}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            {renderRoutes(routes)}
-          </Route>
-        </Routes>
-      </Suspense>
-    </Router>
+    <>
+    <Toaster richColors position='bottom-right' />
+        <Router>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                {renderRoutes(routes)}
+              </Route>
+            </Routes>
+          </Suspense>
+        </Router>
+    </>
+
   );
 }
 
