@@ -4,8 +4,8 @@ import { Navigate } from 'react-router';
 const Welcome = lazy(() => import('./pages/Welcome/Index'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const TradesLayout = lazy(() => import('./pages/trades/Dashboard'));
-const BuyTrades = lazy(() => import('./pages/trades/buy'));
-const SellTrades = lazy(() => import('./pages/trades/sell'));
+const BuyTrades = lazy(() => import('./pages/trades/buy/Index'));
+const SellTrades = lazy(() => import('./pages/trades/sell/Index'));
 const RewardLayout = lazy(() => import('./pages/rewards/Index'));
 
 export const routes = [
