@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './components/Header'
 import TransactionInfo from './components/TransactionInfo'
-import PaymentMethod from './components/paymentMethod'
+import PaymentMethod from './components/PaymentMethod'
 import TransactionInfoCard from './components/TransactionInfoCard'
 
 export default function Transactioncompleted({

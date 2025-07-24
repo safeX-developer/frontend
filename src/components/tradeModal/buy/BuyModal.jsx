@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import InitiateTransaction from './initiateTransaction';
-import PayNow from './paynow';
-import PaymentCompleted from './paymentCompleted';
-import Transactioncompleted from './transactionCompleted';
+import InitiateTransaction from './InitiateTransaction';
+import PayNow from './Paynow';
+import PaymentCompleted from './PaymentCompleted';
+import Transactioncompleted from './TransactionCompleted';
 
 const BuyModal = ({
   isOpen,

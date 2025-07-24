@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FaArrowLeft, FaComment } from 'react-icons/fa'
-import BuyConfirmation from './buyConfirmation';
+import BuyConfirmation from './BuyConfirmation';
 import Header from './components/Header';
 
 export default function PaymentCompleted({onBack, duration = 15 , handleConfirm}) {

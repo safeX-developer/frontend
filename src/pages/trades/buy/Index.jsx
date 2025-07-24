@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import TradeCard from '../../../components/TradeCard';
-import BuyModal from '../../../components/tradeModal/buy/buyModal';
+import BuyModal from '../../../components/tradeModal/buy/BuyModal';
 
 // Loading fallback component
 const LoadingFallback = () => {
