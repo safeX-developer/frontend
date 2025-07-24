@@ -3,39 +3,30 @@ import DailyReward from "./tabs/daily-reward";
 import TaskReward from "./tabs/taskReward/TaskReward";
 import SocialReward from "./tabs/socialReward";
 import tabsData from "./data/tabsData";
-import { useApp } from '../../context/app.context';
-import { toast } from 'sonner';
 import RewardInfo from "./tabs/RewardInfo";
+import RewardProvider, { useReward } from './context/api';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-function RewardLayout() {
-  const { user, api } = useApp();
-  const [activeTab, setActiveTab] = useState('daily');
-  const [dailyTaskData, setDailyTaskData] = useState(null);
-  const [loading, setLoading] = useState(false);
+function RewardLayoutEl() {
+  const { dailyTaskData, setDailyTaskData, loading, setLoading, fetchDailyTaskData } = useReward()
+  const navigate = useNavigate()
+  const location = useLocation()
+
   
-  // Fetch daily task data when component mounts
-  useEffect(() => {
-    if (user?.userId) {
-      fetchDailyTaskData();
+  // Parse URL query parameters
+  const queryParams = new URLSearchParams(location.search);
+  const activeTabFromUrl = queryParams.get('tab');
+
+  useEffect(()=>{
+    if(!activeTabFromUrl){
+      navigate("?tab=daily")
     }
-  }, [user]);
- 
-  // Function to fetch daily task data
-  const fetchDailyTaskData = async () => {
-    try {
-      setLoading(true);
-      const response = await api.dailyReward(user.userId);
-      setDailyTaskData(response);
-      setLoading(false);
-    } catch (error) {
-      toast.error('Failed to load daily rewards data');
-      setLoading(false);
-    }
-  };
+  },[])
+
     
   // Function to render the appropriate component based on active tab
   const renderTabContent = () => {
-    switch (activeTab) {
+    switch (activeTabFromUrl) {
       case 'daily':
         return <DailyReward
           setDailyTaskData={setDailyTaskData}
@@ -51,6 +42,7 @@ function RewardLayout() {
         return <DailyReward />;
     }
   };
+
 
   return (
     <div className="p-6">
@@ -78,11 +70,11 @@ function RewardLayout() {
               <button 
                 key={tab.id} 
                 className={`py-2 px-6 text-sm font-medium rounded-full focus:outline-none ${
-                  activeTab === tab.id
+                  activeTabFromUrl === tab.id
                   ? 'bg-[var(--active)] text-white'
                   : 'text-gray-400 hover:text-white'
                 }`} 
-                onClick={() => setActiveTab(tab.id)} 
+                onClick={() => navigate(`?tab=${tab.id}`)} 
               >
                 {tab.label}
               </button>
@@ -101,5 +93,13 @@ function RewardLayout() {
     </div>
   );
 }
+  function RewardLayout (){
+    return (
+    <RewardProvider >
+        <RewardLayoutEl />
+    </RewardProvider>
+    )
+  }
+
 
 export default RewardLayout;

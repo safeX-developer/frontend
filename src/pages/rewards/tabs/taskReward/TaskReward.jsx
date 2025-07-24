@@ -57,13 +57,14 @@ function RewardInfo() {
     }
   };
 
-  const handleStartTask = async (task) => {
-    navigate(`?task=${task.taskId}&type=${task.type}`);
-  };
-
-    // Parse URL query parameters
   const queryParams = new URLSearchParams(location.search);
   const taskIdFromUrl = queryParams.get('task');
+  const activeTabFromUrl = queryParams.get('tab');
+
+  const handleStartTask = async (task) => {
+    navigate(`?task=${task.taskId}&type=${task.type}&tab=${activeTabFromUrl}`);
+  };
+
 
   // Render loading state
   if (loading) {
@@ -112,7 +113,9 @@ function RewardInfo() {
       </div>
       
       <div className="space-y-3">
-        {tasks.map(task => (
+        {tasks
+          .sort((a, b) => a.isDone - b.isDone)
+          .map(task => (
           <div
             key={task.taskId}
             className="w-full bg-[var(--background-color)] rounded-lg p-3 flex items-center justify-between"

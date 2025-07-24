@@ -96,7 +96,7 @@ const Navbar = ( {welcomeRoute} ) => {
               <img
                 src="/asset/logo.png"
                 alt="Logo"
-                style={{ width: '120px', height: '40px' }}
+                style={{ width: '240px', height: '40px' }}
               />
             </Link>
           </div>

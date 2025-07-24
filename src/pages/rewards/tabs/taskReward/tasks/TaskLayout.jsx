@@ -3,18 +3,19 @@ import { Close, ArrowForward, PlayCircleOutline, CheckCircle, Warning } from '@m
 import { useApp } from '../../../../../context/app.context';
 import { useLocation, useNavigate } from 'react-router-dom';
 import YoutubeTask from './YoutubeTask';
+import { useReward } from '../../../context/api';
+import { toast } from 'sonner';
 
-
-export default function TaskLayout({  onComplete }) {
+export default function TaskLayout() {
   const [username, setUsername] = useState('');
   const [task, setTask] = useState({})
   const location = useLocation()
   const navigate = useNavigate()
   const { api, user } = useApp()
+  const { fetchDailyTaskData } = useReward()
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
-  // Handle window resize to detect desktop vs mobile
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 768);
@@ -35,7 +36,6 @@ export default function TaskLayout({  onComplete }) {
         if(response.success){
             setTask(response.data)
         }
-
       } catch (error) {
         console.error('Error fetching username:', error);
       }
@@ -54,16 +54,20 @@ export default function TaskLayout({  onComplete }) {
   };
 
   // Handle final task completion
-  const handleCompleteTask = () => {
-    if (onComplete) {
-      onComplete(task, username);
+  const handleCompleteTask = async() => {
+    let data = {type, taskId}
+    const response = await api.performTaskEl( data, user?.userId)
+    if(response?.success){
+        fetchDailyTaskData()
+        toast.success(`${type} task completed`)
+        navigate(location.pathname + "?tab=task")
     }
     setShowConfirmation(false);
     onClose();
   };
 
   const onClose = (()=>{
-    navigate(location.pathname)
+    navigate(location.pathname + "?tab=task")
   })
 
   return (
@@ -129,7 +133,7 @@ export default function TaskLayout({  onComplete }) {
           <div className={`${isDesktop ? 'w-1/2' : 'w-full'} p-6 flex flex-col`}>
             <div className="flex-grow flex flex-col items-center justify-center">
               {task?.type === 'youtube' ? (
-              <YoutubeTask youtubeUrl={task?.link} />
+              <YoutubeTask youtubeUrl={task?.link} taskId={taskId} type={type} />
               ) : (
                 <div className="text-center mb-8">
                   <div className="w-20 h-20 rounded-full bg-[var(--card-color)] mx-auto flex items-center justify-center mb-4">

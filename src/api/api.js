@@ -37,7 +37,6 @@ constructor(apiInstance) {
 
   async performTask(userId) {
     try {
-      console.log(userId)
       const response = await api.post(`/api/rewards/claim/${userId}`);
       return response;
       } catch (error) {
@@ -73,7 +72,7 @@ constructor(apiInstance) {
         throw error;
       }
   }
-  async performTask(input, userId){
+  async performTaskEl(input, userId){
       try {
         const response = await api.patch(`/api/profile/perform-task/${userId}`, input);
         return response
