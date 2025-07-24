@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import DailyReward from "./tabs/daily-reward";
+import DailyReward from "./tabs/daily-reward/Index";
 import TaskReward from "./tabs/taskReward/TaskReward";
-import SocialReward from "./tabs/socialReward";
+import SocialReward from "./tabs/socialReward/Index";
 import tabsData from "./data/tabsData";
 import RewardInfo from "./tabs/RewardInfo";
 import RewardProvider, { useReward } from './context/api';
