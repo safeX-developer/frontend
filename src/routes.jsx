@@ -6,7 +6,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const TradesLayout = lazy(() => import('./pages/trades/Dashboard'));
 const BuyTrades = lazy(() => import('./pages/trades/buy'));
 const SellTrades = lazy(() => import('./pages/trades/sell'));
-const RewardLayout = lazy(() => import('./pages/rewards'));
+const RewardLayout = lazy(() => import('./pages/rewards/Index'));
 
 export const routes = [
   {
