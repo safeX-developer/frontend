@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 import { useActiveAccount, useReadContract, useConnect } from "thirdweb/react";
 import { useApp, client } from '../context/app.context';
 import { inAppWallet, createWallet } from "thirdweb/wallets";
-import Register from '../modal/auth/register';
+import Register from '../modal/auth/Register';
 import confiq from "../utliz/confiq";
 
 const wallets = [
