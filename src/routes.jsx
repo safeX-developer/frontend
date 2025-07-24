@@ -16,7 +16,6 @@ export const routes = [
     name: 'Home',
     showInNav: false,
   },
-  
   {
     path: '/welcome',
     element: <Welcome />,
