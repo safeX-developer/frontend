@@ -13,7 +13,6 @@ function RewardLayoutEl() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  
   // Parse URL query parameters
   const queryParams = new URLSearchParams(location.search);
   const activeTabFromUrl = queryParams.get('tab');

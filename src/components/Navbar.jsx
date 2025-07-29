@@ -6,6 +6,7 @@ import { useApp, client } from '../context/app.context';
 import { inAppWallet, createWallet } from "thirdweb/wallets";
 import Register from '../modal/auth/Register';
 import confiq from "../utliz/confiq";
+import LoadingSpinner from "./LoadingSpinner"
 
 const wallets = [
   inAppWallet({
@@ -32,7 +33,7 @@ const wallets = [
 const Navbar = ( {welcomeRoute} ) => {
   const wallet = useActiveAccount();
   const { connect, isConnecting, error } = useConnect();
-  const { user, showLoginModal } = useApp();
+  const { user, showLoginModal, appLoad } = useApp();
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(true);
 
@@ -65,6 +66,11 @@ const Navbar = ( {welcomeRoute} ) => {
   return (
     <>
       {showLoginModal && !user && <Register isOpen={showLoginModal} />}
+      {appLoad && (
+        <div className='h-full w-full bg-[#0000009a] fixed top-0 left-0 z-[90000000] text-white flex justify-center items-center flex-col'>
+            <LoadingSpinner />
+        </div>
+      )}
       <nav className="fixed top-0 navbar-shadow left-0 w-full card z-50 px-4 py-3">
         <div className="container mx-auto flex justify-between items-center">
           {/* Mobile menu button - on the left for mobile */}

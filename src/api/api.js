@@ -81,6 +81,27 @@ constructor(apiInstance) {
         throw error;
       }
   }
+
+    async sendCodeToEmail(userId){
+      try {
+        const response = await api.get(`/api/profile/send-email-otp/${userId}`);
+        return response
+      } catch (error) {
+        console.error( error);
+        throw error;
+      }
+  }
+    async verifyEmail(userId, data){
+      try {
+        const response = await api.post(`/api/profile/verify-email/${userId}`, {
+          otpCode: data
+        });
+        return response
+      } catch (error) {
+        console.error( error);
+        throw error;
+      }
+    }
 }
 
 export default ApiService;

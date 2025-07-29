@@ -1,8 +1,14 @@
 import React from 'react';
 import { YouTube, Facebook, Twitter, Chat, Email, Telegram, LinkedIn, Instagram, Stars } from '@mui/icons-material';
+import EmailComponents from './socials/Email';
+import { useApp } from '../../../../context/app.context';
+import { toast } from "sonner"
+
 
 function SocialReward() {
-
+  const [type, setType] = React.useState("")
+  const [loadEmail, setLoadEmail] = React.useState(false)
+  const { user, api} = useApp()
   const getTaskTypeIcon = (icon) => {
     switch (icon) {
       case 'youtube':
@@ -26,58 +32,53 @@ function SocialReward() {
     }
   };
   
+  console.log(user)
+  const renderTabContent = (()=>{
+    switch (type){
+      case "email":
+        return <EmailComponents email={user?.email} close={()=> setType(false)} />
+      default:
+        return ""
+    }
+  })
 
   // Social media task data
   const socialTasks = [
-    {
-      id: 1,
-      type: 'twitter',
-      title: "Verify Twitter account",
-      points: 300,
-      isDone: false,
-    },
     {
       id: 2,
       type: 'email',
       title: "Verify email address",
       points: 200,
       isDone: false,
-    },
-    {
-      id: 3,
-      type: 'telegram',
-      title: "Verify Telegram account",
-      points: 300,
-      isDone: false,
-    },
-    {
-      id: 4,
-      type: 'linkedin',
-      title: "Verify LinkedIn account",
-      points: 250,
-      isDone: false,
-    },
-    {
-      id: 5,
-      type: 'instagram',
-      title: "Verify Instagram account",
-      points: 200,
-      isDone: true,
-    },
-    {
-      id: 6,
-      type: 'youtube',
-      title: "Verify YouTube account",
-      points: 250,
-      isDone: false,
+
     },
   ];
 
+  const handleSelectTab = (async(type)=>{
+    if(!user){
+      toast.error("Connect your wallet to continue")
+      return
+    }
+    if(type === "email"){
+      setLoadEmail(true)
+      const response = await api?.sendCodeToEmail(user?.userId)
+      if(response?.success){
+        toast.success(response.message)
+        setType("email")
+      }
+      else{
+        toast.error(response.message)
+      }
+      setLoadEmail(false)
+    }
+  })
+
   return (
     <div className="space-y-3">
-      {socialTasks.map(task => (
+      {renderTabContent()}
+      {socialTasks.map((task, idex) => (
         <div 
-          key={task.id} 
+          key={idex} 
           className="w-full bg-[var(--background-color)] rounded-lg p-3 flex items-center justify-between"
         >
           <div className="flex items-center">
@@ -99,9 +100,10 @@ function SocialReward() {
                 ? 'bg-gray-700 text-gray-400 cursor-not-allowed' 
                 : 'bg-[var(--sec-color)] text-white hover:bg-opacity-90 transition-colors'
             }`}
-            disabled={task.isDone}
+            disabled={task.isDone || loadEmail}
+            onClick={()=> handleSelectTab(task.type)}
           >
-            {task.isDone ? 'Verified' : 'Verify'}
+            {task.isDone ?  'Verified' : loadEmail ? "Loading..." : 'Verify'}
           </button>
         </div>
       ))}

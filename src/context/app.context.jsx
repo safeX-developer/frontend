@@ -25,7 +25,7 @@ export const AppProvider = ({ children }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [contractInstance, setContractInstance] = useState(null);
   const [referralCode, setReferralCode] = useState(null);
-  
+  const [appLoad, setAppLoad] = useState(false)
   // All other hooks
   const wallet = useActiveAccount();
   const api = new ApiService();
@@ -54,8 +54,8 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     async function getUserInfo() {
       if (!wallet?.address) return;
-      
       try {
+        setAppLoad(true)
         const data = await api.getUserByAddress(wallet.address);
         if (!data) {
           setShowLoginModal(true);
@@ -63,6 +63,7 @@ export const AppProvider = ({ children }) => {
         }
         setUser(data);
         setShowLoginModal(false);
+        setAppLoad(false)
       } catch (error) {
         if (error?.code === 3) {
           setShowLoginModal(true);
@@ -112,7 +113,8 @@ export const AppProvider = ({ children }) => {
     wallet,
     register,
     contract: contractInstance,
-    referralCode
+    referralCode,
+    appLoad
   };
   
   return (
