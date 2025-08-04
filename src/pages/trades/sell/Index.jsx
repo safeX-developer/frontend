@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TradeCard from '../../../components/TradeCard';
+import SellUSDTModal from '../../../components/tradeModal/sell/sellmodal';
 
 function SellPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTrade, setSelectedTrade] = useState(null);
 
   // Sample trade data for selling
   const trades = [
@@ -60,11 +63,23 @@ function SellPage() {
             price={trade.price}
             paymentTime={trade.paymentTime}
             type={trade.type}
-            onButtonClick={() => console.log(`Sell clicked for ${trade.username}`)}
+            onButtonClick={() => {
+              setSelectedTrade(trade);
+              setIsModalOpen(true);
+            }}
             fiat="NGN"
           />
         ))}
       </div>
+      
+      {/* Sell Modal */}
+      {isModalOpen && (
+        <SellUSDTModal 
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          tradeData={selectedTrade}
+        />
+      )}
     </div>
   );
 }

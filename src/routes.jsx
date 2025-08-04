@@ -7,10 +7,17 @@ const TradesLayout = lazy(() => import('./pages/trades/Dashboard'));
 const BuyTrades = lazy(() => import('./pages/trades/buy/Index'));
 const SellTrades = lazy(() => import('./pages/trades/sell/Index'));
 const RewardLayout = lazy(() => import('./pages/rewards/Index'));
+const BuyRewards = lazy(() => import('./pages/rewards/buy/Index'));
 
 export const routes = [
   {
     path: '/',
+    element: <Navigate to="/welcome" />,
+    name: 'Home',
+    showInNav: false,
+  },
+{
+    path: '/sellmodal',
     element: <Navigate to="/welcome" />,
     name: 'Home',
     showInNav: false,
